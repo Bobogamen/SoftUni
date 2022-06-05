@@ -36,8 +36,8 @@ public class Route {
     @ManyToMany
     private Set<Category> categories;
 
-    @OneToOne
-    private Picture header;
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+    private Set<Picture> pictures;
 
     public Route() {
         this.comments = new HashSet<>();
@@ -99,12 +99,12 @@ public class Route {
         this.comments = comments;
     }
 
-    public Picture getHeader() {
-        return header;
+    public Set<Picture> getPictures() {
+        return pictures;
     }
 
-    public void setHeader(Picture header) {
-        this.header = header;
+    public void setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
     }
 
     public Set<Category> getCategories() {
@@ -113,5 +113,13 @@ public class Route {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
