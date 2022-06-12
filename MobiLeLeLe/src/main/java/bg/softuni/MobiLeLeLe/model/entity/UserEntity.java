@@ -1,4 +1,4 @@
-package bg.softuni.MobiLeLeLe.model;
+package bg.softuni.MobiLeLeLe.model.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class UserEntity extends BaseEntity{
     }
 
     public void setActive(boolean active) {
-        isActive = active;
+        this.isActive = active;
     }
 
     public String getImageUrl() {

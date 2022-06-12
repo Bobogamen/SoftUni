@@ -1,4 +1,4 @@
-package bg.softuni.MobiLeLeLe.model;
+package bg.softuni.MobiLeLeLe.model.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;

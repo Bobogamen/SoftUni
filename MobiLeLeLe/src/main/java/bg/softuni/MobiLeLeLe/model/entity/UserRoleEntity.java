@@ -1,6 +1,6 @@
-package bg.softuni.MobiLeLeLe.model;
+package bg.softuni.MobiLeLeLe.model.entity;
 
-import bg.softuni.MobiLeLeLe.model.enums.UserRoleEnum;
+import bg.softuni.MobiLeLeLe.model.entity.enums.UserRoleEnum;
 
 import javax.persistence.*;
 

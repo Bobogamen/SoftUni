@@ -1,7 +1,7 @@
-package bg.softuni.MobiLeLeLe.model;
+package bg.softuni.MobiLeLeLe.model.entity;
 
-import bg.softuni.MobiLeLeLe.model.enums.EngineEnum;
-import bg.softuni.MobiLeLeLe.model.enums.TransmissionEnum;
+import bg.softuni.MobiLeLeLe.model.entity.enums.EngineEnum;
+import bg.softuni.MobiLeLeLe.model.entity.enums.TransmissionEnum;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
