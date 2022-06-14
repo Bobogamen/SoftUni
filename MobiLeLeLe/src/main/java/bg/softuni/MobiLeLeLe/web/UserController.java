@@ -4,10 +4,10 @@ import bg.softuni.MobiLeLeLe.model.dto.UserLoginDTO;
 import bg.softuni.MobiLeLeLe.model.dto.UserRegisterDTO;
 import bg.softuni.MobiLeLeLe.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 
 @Controller
 @RequestMapping("/users")
@@ -46,18 +46,4 @@ public class UserController {
         return "redirect:/";
 
     }
-
-    @GetMapping("/register")
-    public String register() {
-        return "auth-register";
-    }
-
-    @PostMapping("/register")
-    public String register (UserRegisterDTO userRegisterDTO) {
-
-        userService.registerAndLogin(userRegisterDTO);
-
-        return "redirect:/";
-    };
-
 }

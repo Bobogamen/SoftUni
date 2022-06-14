@@ -8,11 +8,15 @@ import java.util.List;
 @Table(name = "users")
 public class UserEntity extends BaseEntity{
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     private String password;
+
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
     private boolean isActive;
     private String imageUrl;
