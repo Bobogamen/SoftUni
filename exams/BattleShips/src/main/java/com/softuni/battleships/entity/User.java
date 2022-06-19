@@ -12,9 +12,11 @@ public class User {
 
     @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false)
     private String password;
 
-    @Column(name = "full_name")
+    @Column(nullable = false, name = "full_name")
     private String fullName;
 
     @Column(nullable = false, unique = true)
