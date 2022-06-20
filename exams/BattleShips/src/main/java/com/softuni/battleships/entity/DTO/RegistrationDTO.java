@@ -4,7 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-public class UserRegistrationDTO {
+public class RegistrationDTO {
 
     @NotEmpty
     @Size(min = 3, max = 10)
@@ -26,7 +26,7 @@ public class UserRegistrationDTO {
     @Size(min = 3)
     private String confirmPassword;
 
-    public UserRegistrationDTO() {
+    public RegistrationDTO() {
 
     }
 
