@@ -1,6 +1,7 @@
 package com.softuni.battleships.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,8 +13,7 @@ public class Ship {
     private long id;
 
     @Column(nullable = false, unique = true)
-    @Enumerated(EnumType.ORDINAL)
-    private ShipType name;
+    private String name;
 
     @Column(nullable = false)
     private long health;
@@ -22,7 +22,7 @@ public class Ship {
     private long power;
 
     @Column(nullable = false)
-    private LocalDateTime created;
+    private LocalDate created;
 
     @ManyToOne
     private Category category;
@@ -41,11 +41,11 @@ public class Ship {
         this.id = id;
     }
 
-    public ShipType getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(ShipType name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -65,11 +65,11 @@ public class Ship {
         this.power = power;
     }
 
-    public LocalDateTime getCreated() {
+    public LocalDate getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDateTime created) {
+    public void setCreated(LocalDate created) {
         this.created = created;
     }
 
