@@ -9,14 +9,10 @@ public class HomeController {
 
     private LoggedUser loggedUser;
 
-    @GetMapping("/home")
+    @GetMapping("home")
     public String home() {
 
-        if (loggedUser == null) {
-            return "redirect:/";
-        }
-
-        return "/home";
+        return "home";
     }
 
 

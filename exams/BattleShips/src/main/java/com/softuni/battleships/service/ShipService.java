@@ -27,7 +27,7 @@ public class ShipService {
 
         int category = createShipDTO.getCategory();
 
-        Category category1 = new Category()
+        Category category1 = new Category();
 
         Ship ship = new Ship();
 
@@ -35,7 +35,6 @@ public class ShipService {
         ship.setHealth(createShipDTO.getHealth());
         ship.setPower(createShipDTO.getPower());
         ship.setCreated(createShipDTO.getCreated());
-        ship.setCategory();
 
 
 

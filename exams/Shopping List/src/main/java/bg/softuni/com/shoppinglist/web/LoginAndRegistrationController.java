@@ -96,7 +96,7 @@ public class LoginAndRegistrationController {
             return "redirect:/login";
         }
 
-        return "/home";
+        return "redirect:/home";
     }
 
     @GetMapping("/logout")
