@@ -3,6 +3,7 @@ package bg.softuni.com.shoppinglist.web;
 import bg.softuni.com.shoppinglist.entity.DTO.AddProductDTO;
 import bg.softuni.com.shoppinglist.repository.ProductRepository;
 import bg.softuni.com.shoppinglist.service.ProductService;
+import bg.softuni.com.shoppinglist.session.LoggedUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,12 @@ import javax.validation.Valid;
 public class ProductController{
 
     private ProductService productService;
-
+    private LoggedUser loggedUser;
     private ProductRepository productRepository;
 
-    public ProductController(ProductService productService, ProductRepository productRepository) {
+    public ProductController(ProductService productService, LoggedUser loggedUser, ProductRepository productRepository) {
         this.productService = productService;
+        this.loggedUser = loggedUser;
         this.productRepository = productRepository;
     }
     @ModelAttribute("addProductDTO")
@@ -30,6 +32,11 @@ public class ProductController{
 
     @GetMapping("/add-product")
     public String addProduct() {
+
+        if (loggedUser.getId() == 0) {
+            return "redirect:/";
+        }
+
         return "product-add";
     }
 
@@ -38,12 +45,16 @@ public class ProductController{
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes) {
 
-        if (bindingResult.hasErrors() || !this.productService.addProduct(addProductDTO)) {
+        if (bindingResult.hasErrors() || this.productService.productUniqueName(addProductDTO)) {
             redirectAttributes.addFlashAttribute("addProductDTO", addProductDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addProductDTO", bindingResult);
 
             return "redirect:/add-product";
         }
+
+        productService.addProduct(addProductDTO);
+
+        return "redirect:/home";
 
     }
 

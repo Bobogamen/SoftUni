@@ -2,6 +2,7 @@ package bg.softuni.com.shoppinglist.service;
 
 import bg.softuni.com.shoppinglist.entity.DTO.LoginDTO;
 import bg.softuni.com.shoppinglist.entity.DTO.RegistrationDTO;
+import bg.softuni.com.shoppinglist.entity.Product;
 import bg.softuni.com.shoppinglist.entity.User;
 import bg.softuni.com.shoppinglist.repository.UserRepository;
 import bg.softuni.com.shoppinglist.session.LoggedUser;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,27 +40,28 @@ public class UserService {
 
     }
 
-
     public boolean login(LoginDTO loginDTO) {
 
-        Optional<User> username = userRepository.findByUsername(loginDTO.getUsername());
-
-        if (username.isEmpty()) {
+        if (userRepository.findByUsername(loginDTO.getUsername()).isEmpty()) {
             return false;
         }
 
-        boolean passwordMatch = passwordEncoder.matches(loginDTO.getPassword(), username.get().getPassword());
+        User user = userRepository.getByUsername(loginDTO.getUsername());
 
-        if (!passwordMatch) {
+
+        if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) {
             return false;
         }
 
-        this.loggedUser.login(username.get());
+        loggedUser.setId(user.getId());
+        loggedUser.setUsername(user.getUsername());
+
+        System.out.println();
 
         return true;
     }
 
     public void logout() {
-        loggedUser.logout();
+        loggedUser.clear();
     }
 }
