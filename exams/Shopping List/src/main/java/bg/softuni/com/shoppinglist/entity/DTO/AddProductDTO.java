@@ -2,7 +2,6 @@ package bg.softuni.com.shoppinglist.entity.DTO;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
@@ -21,8 +20,7 @@ public class AddProductDTO {
     @Positive
     private float price;
 
-    @Future
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @DateTimeFormat
     private LocalDateTime neededBefore;
 
     @NotEmpty

@@ -1,5 +1,6 @@
 package bg.softuni.com.shoppinglist.session;
 
+import bg.softuni.com.shoppinglist.entity.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -9,6 +10,18 @@ public class LoggedUser {
 
     private long id;
     private String username;
+
+    public void login(User user) {
+        this.id = user.getId();
+        this.username = user.getUsername();
+
+    }
+
+    public void logout() {
+        this.id = 0;
+        this.username = null;
+
+    }
 
     public long getId() {
         return id;
@@ -24,10 +37,5 @@ public class LoggedUser {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public void clear() {
-        this.id = 0;
-        this.username = null;
     }
 }
