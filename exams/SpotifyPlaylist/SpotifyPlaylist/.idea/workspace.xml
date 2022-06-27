@@ -5,92 +5,120 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b0464f9-acc2-4b69-b5fd-0e1fb34735f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/view/ShoppingItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/view/ShoppingList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73/storage_v2/_src_/schema/spotify.uubdiA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73/storage_v2/_src_/schema/spotity.bOjdiA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/SpotifyPlaylistAppApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/config/ApplicationConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/init/StyleSeeder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/dto/AddSongDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/dto/LoginDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/dto/RegistrationDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/entity/Song.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/entity/Style.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/entity/enums/StyleEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/repository/SongRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/repository/StyleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/service/SongService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/util/LoggedUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/view/SongListViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/view/SongViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/web/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/web/LoginAndRegisterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/web/SongController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/reset-css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/jazz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/playlist.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/pop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/rock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/commons.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/song-add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/spotifyplaylistapp/SpotifyPlaylistAppApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/SpotifyPlaylistAppApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/repository/SongRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/service/SongService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/service/UserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/web/HomeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/web/SongController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/css/reset-css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/img/background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/img/jazz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/img/playlist.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/img/pop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/static/img/rock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/fragments/commons.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/song-add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../BattleShips/src/main/java/com/softuni/battleships/web/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../BattleShips/src/main/java/com/softuni/battleships/web/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../BattleShips/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../BattleShips/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/web/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/web/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/web/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/web/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shopping List/src/main/resources/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/configuration/ApplicationConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/entity/DTO/AddProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/entity/DTO/LoginDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/entity/DTO/RegistrationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/entity/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/entity/enums/CategoryType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/repository/CategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/seeders/CategorySeeder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/session/LoggedUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/view/ShoppingItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/view/ShoppingList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/web/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/web/LoginAndRegistrationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/java/shoppinglist/web/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/static/css/reset-css.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/static/img/background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/static/img/drink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/static/img/food.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/static/img/household.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/static/img/other.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/templates/fragments/navbar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/templates/product-add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ShoppingList/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/7.4.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/7.4.1/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/7.4.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/7.4.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/7.4.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/7.4.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/7.4.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/7.4.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/ShoppingListApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/configuration/ApplicationConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/entity/Category.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/entity/DTO/AddProductDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/entity/DTO/LoginDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/entity/DTO/RegistrationDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/entity/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/entity/enums/CategoryType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/repository/CategoryRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/repository/ProductRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/seeders/CategorySeeder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/service/ProductService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/session/LoggedUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/view/ShoppingItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/view/ShoppingList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/web/HomeController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/web/LoginAndRegistrationController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/classes/java/main/bg/softuni/com/shoppinglist/web/ProductController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/static/css/reset-css.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/static/img/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/static/img/drink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/static/img/food.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/static/img/household.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/static/img/other.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/templates/fragments/navbar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/templates/product-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/resources/main/templates/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/entity/DTO/AddProductDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/repository/CategoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/repository/ProductRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/service/ProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/session/LoggedUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/view/ShoppingItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/view/ShoppingList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/web/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/java/bg/softuni/com/shoppinglist/web/ProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/resources/templates/fragments/navbar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/resources/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shopping List/src/main/resources/templates/product-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,25 +170,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/My Documents/SoftUni/exams/SpotifyPlaylist/SpotifyPlaylist",
-    "settings.editor.selected.configurable": "application.passwordSafe",
-    "spring.configuration.checksum": "ddfee4d9c20eec7d91aa63942194687a"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/My Documents/SoftUni/exams/SpotifyPlaylist/SpotifyPlaylist&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;application.passwordSafe&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;ddfee4d9c20eec7d91aa63942194687a&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.spotifyplaylistapp.model.dto" />
@@ -189,6 +217,9 @@
       <updated>1656155158238</updated>
       <workItem from="1656155159427" duration="14524000" />
       <workItem from="1656182830601" duration="1879000" />
+      <workItem from="1656273528160" duration="653000" />
+      <workItem from="1656275143547" duration="3000" />
+      <workItem from="1656342709596" duration="798000" />
     </task>
     <servers />
   </component>
