@@ -21,11 +21,8 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @OneToMany
-    private List<Product> productList;
-
     public User() {
-        this.productList = new ArrayList<>();
+
     }
 
 
@@ -61,11 +58,4 @@ public class User {
         this.email = email;
     }
 
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
 }

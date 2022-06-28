@@ -41,28 +41,28 @@ public class AddProductDTO {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public float getPrice() {
         return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
     }
 
     public LocalDateTime getNeededBefore() {
         return neededBefore;
     }
 
-    public void setNeededBefore(LocalDateTime neededBefore) {
-        this.neededBefore = neededBefore;
-    }
-
     public String getCategory() {
         return category;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setNeededBefore(LocalDateTime neededBefore) {
+        this.neededBefore = neededBefore;
     }
 
     public void setCategory(String category) {

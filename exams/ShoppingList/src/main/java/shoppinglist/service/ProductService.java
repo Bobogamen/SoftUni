@@ -12,7 +12,6 @@ import shoppinglist.repository.UserRepository;
 import shoppinglist.session.LoggedUser;
 import shoppinglist.view.ShoppingList;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

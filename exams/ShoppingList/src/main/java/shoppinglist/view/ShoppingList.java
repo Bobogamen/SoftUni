@@ -32,7 +32,6 @@ public class ShoppingList {
             this.totalPrice = 0;
         }
     }
-
     public List<ShoppingItem> getFood() {
         return food;
     }
@@ -73,15 +72,15 @@ public class ShoppingList {
         this.totalPrice = totalPrice;
     }
 
-    private List<ShoppingItem> getList(List<ShoppingItem> shoppingItems, CategoryType category)  {
-        return shoppingItems.stream().filter(x -> x.getCategory().equals(category)).filter(u -> u.getOwnerId() == this.userId).collect(Collectors.toList());
-    }
-
     public long getUserId() {
         return userId;
     }
 
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    private List<ShoppingItem> getList(List<ShoppingItem> shoppingItems, CategoryType category)  {
+        return shoppingItems.stream().filter(x -> x.getCategory().equals(category)).filter(u -> u.getOwnerId() == this.userId).collect(Collectors.toList());
     }
 }
