@@ -66,9 +66,9 @@ public class ProductService {
 
     }
 
-    public ShoppingList getProducts() {
+    public ShoppingList getProducts(long ownerId) {
 
-        return new ShoppingList(this.productRepository.findAllShoppingItems());
+        return new ShoppingList(this.productRepository.findAllShoppingItems(), ownerId);
     }
 
 

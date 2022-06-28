@@ -9,11 +9,14 @@ public class ShoppingItem {
     private float price;
     private CategoryType category;
 
-    public ShoppingItem(long id, String name, float price, CategoryType category) {
+    private long ownerId;
+
+    public ShoppingItem(long id, String name, float price, CategoryType category, long ownerId) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.category = category;
+        this.ownerId = ownerId;
     }
 
     public long getId() {
@@ -46,5 +49,13 @@ public class ShoppingItem {
 
     public void setCategory(CategoryType category) {
         this.category = category;
+    }
+
+    public long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
     }
 }

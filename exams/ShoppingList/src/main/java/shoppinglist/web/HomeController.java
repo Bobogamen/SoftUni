@@ -24,7 +24,7 @@ public class HomeController {
             return "redirect:/";
         }
 
-        model.addAttribute("products", this.productService.getProducts());
+        model.addAttribute("products", this.productService.getProducts(loggedUser.getId()));
 
 
         return "/home";

@@ -1,6 +1,8 @@
 package shoppinglist.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -19,8 +21,11 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    public User() {
+    @OneToMany
+    private List<Product> productList;
 
+    public User() {
+        this.productList = new ArrayList<>();
     }
 
 
@@ -54,5 +59,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 }

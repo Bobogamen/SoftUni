@@ -1,5 +1,6 @@
 package shoppinglist.view;
 
+import shoppinglist.entity.User;
 import shoppinglist.entity.enums.CategoryType;
 
 import java.util.List;
@@ -13,14 +14,19 @@ public class ShoppingList {
     private List<ShoppingItem> other;
     private float totalPrice;
 
-    public ShoppingList(List<ShoppingItem> shoppingItems) {
+    private long userId;
+
+    public ShoppingList(List<ShoppingItem> shoppingItems, long userId) {
+
+        this.userId = userId;
+
         this.food = getList(shoppingItems, CategoryType.FOOD);
         this.drink = getList(shoppingItems, CategoryType.DRINK);;
         this.household = getList(shoppingItems, CategoryType.HOUSEHOLD);;
         this.other = getList(shoppingItems, CategoryType.OTHER);
 
         if (this.food.size() > 0 || this.drink.size() > 0 || this.household.size() > 0 || this.other.size() > 0) {
-            this.totalPrice = shoppingItems.stream()
+            this.totalPrice = shoppingItems.stream().filter(u -> u.getOwnerId() == this.userId)
                     .map(ShoppingItem::getPrice).reduce((sum, price) -> sum += price).orElse(null);
         } else {
             this.totalPrice = 0;
@@ -67,10 +73,15 @@ public class ShoppingList {
         this.totalPrice = totalPrice;
     }
 
-    private List<ShoppingItem> getList(List<ShoppingItem> shoppingItems, CategoryType category) {
-        return shoppingItems.stream().filter(x -> x.getCategory().equals(category)).collect(Collectors.toList());
+    private List<ShoppingItem> getList(List<ShoppingItem> shoppingItems, CategoryType category)  {
+        return shoppingItems.stream().filter(x -> x.getCategory().equals(category)).filter(u -> u.getOwnerId() == this.userId).collect(Collectors.toList());
     }
 
+    public long getUserId() {
+        return userId;
+    }
 
-
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 }

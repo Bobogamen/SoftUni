@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByName(String name);
 
-    @Query("SELECT new shoppinglist.view.ShoppingItem(p.id, p.name, p.price, c.name) " +
+    @Query("SELECT new shoppinglist.view.ShoppingItem(p.id, p.name, p.price, c.name, p.owner.id) " +
             "FROM Product p " +
             "JOIN p.category c")
     List<ShoppingItem> findAllShoppingItems();
