@@ -9,12 +9,11 @@ import com.example.spotifyplaylistapp.repository.SongRepository;
 import com.example.spotifyplaylistapp.repository.StyleRepository;
 import com.example.spotifyplaylistapp.repository.UserRepository;
 import com.example.spotifyplaylistapp.util.LoggedUser;
-import com.example.spotifyplaylistapp.view.PlayList;
 import com.example.spotifyplaylistapp.view.SongListViewModel;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class SongService {
@@ -69,24 +68,14 @@ public class SongService {
         return new SongListViewModel(this.songRepository.findAll());
     }
 
-    public void addSongToPlaylist(long id) {
-
-        System.out.println();
+    public void addSongToPlaylist(UUID id) {
 
         User user = this.userRepository.findUserById(loggedUser.getId());
 
-        List<Song> songs = user.getSongs();
+        Song song = this.songRepository.findSongById(id);
 
-        System.out.println();
-
-        Song song = this.songRepository.getById(id);
-
-        user.addSong(song);
-
-        System.out.println();
-
-        user.setSongs(songs);
-
-        System.out.println();
+        if (!user.getSongs().contains(song)) {
+            user.addSong(song);
+        }
     }
 }

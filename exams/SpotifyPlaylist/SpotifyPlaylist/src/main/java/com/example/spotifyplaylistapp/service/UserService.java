@@ -59,5 +59,9 @@ public class UserService {
     public void logout() {
         loggedUser.clear();
     }
+
+    public User getUser(long id) {
+        return this.userRepository.findUserById(id);
+    }
 }
 
