@@ -16,7 +16,7 @@ public class AddSongDTO {
     private String title;
 
     @Positive
-    private float duration;
+    private int duration;
 
     @PastOrPresent
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -44,11 +44,11 @@ public class AddSongDTO {
         this.title = title;
     }
 
-    public float getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(float duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 

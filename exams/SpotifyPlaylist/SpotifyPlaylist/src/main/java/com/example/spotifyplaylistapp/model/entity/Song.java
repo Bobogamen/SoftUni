@@ -1,5 +1,7 @@
 package com.example.spotifyplaylistapp.model.entity;
 
+import com.example.spotifyplaylistapp.model.entity.enums.StyleEnum;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -18,7 +20,7 @@ public class Song {
     private String title;
 
     @Column(nullable = false)
-    private float duration;
+    private int duration;
 
     private LocalDate releaseDate;
 
@@ -27,6 +29,15 @@ public class Song {
 
     @ManyToOne
     private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
     public Song() {
     }
@@ -55,11 +66,18 @@ public class Song {
         this.title = title;
     }
 
-    public float getDuration() {
-        return duration;
+    public String getDuration() {
+        int min = this.duration / 60;
+        int sec = this.duration - min * 60;
+
+        return String.format("%d:%02d", min, sec);
     }
 
-    public void setDuration(float duration) {
+    public int getDurationInt() {
+        return this.duration;
+    }
+
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
@@ -75,15 +93,11 @@ public class Song {
         return style;
     }
 
+    public StyleEnum getStyleEnum() {
+        return getStyle().getStyleName();
+    }
+
     public void setStyle(Style style) {
         this.style = style;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

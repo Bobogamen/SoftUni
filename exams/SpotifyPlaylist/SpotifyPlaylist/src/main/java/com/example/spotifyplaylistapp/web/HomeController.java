@@ -1,11 +1,8 @@
 package com.example.spotifyplaylistapp.web;
 
-import com.example.spotifyplaylistapp.model.entity.User;
-import com.example.spotifyplaylistapp.repository.SongRepository;
-import com.example.spotifyplaylistapp.repository.StyleRepository;
 import com.example.spotifyplaylistapp.service.SongService;
-import com.example.spotifyplaylistapp.service.UserService;
 import com.example.spotifyplaylistapp.util.LoggedUser;
+import com.example.spotifyplaylistapp.view.PlayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +25,7 @@ public class HomeController {
             return "redirect:/";
         }
 
-        //model.addAttribute("songs", this.songService.getSongs());
-
+        model.addAttribute("songs", this.songService.getSongs());
 
         return "/home";
     }

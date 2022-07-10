@@ -9,6 +9,7 @@ import com.example.spotifyplaylistapp.repository.SongRepository;
 import com.example.spotifyplaylistapp.repository.StyleRepository;
 import com.example.spotifyplaylistapp.repository.UserRepository;
 import com.example.spotifyplaylistapp.util.LoggedUser;
+import com.example.spotifyplaylistapp.view.PlayList;
 import com.example.spotifyplaylistapp.view.SongListViewModel;
 import org.springframework.stereotype.Service;
 
@@ -65,7 +66,27 @@ public class SongService {
     }
 
     public SongListViewModel getSongs() {
-        return new SongListViewModel(this.songRepository.findAllSongs());
+        return new SongListViewModel(this.songRepository.findAll());
     }
 
+    public void addSongToPlaylist(long id) {
+
+        System.out.println();
+
+        User user = this.userRepository.findUserById(loggedUser.getId());
+
+        List<Song> songs = user.getSongs();
+
+        System.out.println();
+
+        Song song = this.songRepository.getById(id);
+
+        user.addSong(song);
+
+        System.out.println();
+
+        user.setSongs(songs);
+
+        System.out.println();
+    }
 }

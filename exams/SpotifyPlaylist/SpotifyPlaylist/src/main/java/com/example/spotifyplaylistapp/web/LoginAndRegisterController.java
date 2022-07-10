@@ -63,7 +63,7 @@ public class LoginAndRegisterController {
 
         userService.register(registrationDTO);
 
-        return "redirect:/";
+        return "/login";
     }
 
     @GetMapping("/login")

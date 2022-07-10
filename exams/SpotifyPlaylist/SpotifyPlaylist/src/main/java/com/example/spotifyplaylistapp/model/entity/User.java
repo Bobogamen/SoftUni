@@ -64,7 +64,11 @@ public class User {
         return songs;
     }
 
-    public void setSongs(List<Song> playList) {
-        this.songs = playList;
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
+    public void addSong(Song song) {
+        this.songs.add(song);
     }
 }
