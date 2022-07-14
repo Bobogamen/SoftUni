@@ -21,7 +21,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Song> songs;
 
     public User() {
