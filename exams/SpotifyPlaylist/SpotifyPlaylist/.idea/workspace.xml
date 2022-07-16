@@ -4,33 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b0464f9-acc2-4b69-b5fd-0e1fb34735f9" name="Changes" comment="add songs view done.">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="8b0464f9-acc2-4b69-b5fd-0e1fb34735f9" name="Changes" comment="Change @ManyToMany because DB restriction for unique entry.">
+      <change beforePath="$PROJECT_DIR$/../../../Pathfinder/src/main/resources/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Pathfinder/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73/storage_v2/_src_/schema/spotify.uubdiA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73/storage_v2/_src_/schema/spotify.uubdiA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/entity/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/entity/Song.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/model/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/repository/SongRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/repository/SongRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/service/SongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/service/SongService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/web/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/web/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/web/SongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/spotifyplaylistapp/web/SongController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/init/StyleSeeder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/init/StyleSeeder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/model/dto/AddSongDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/model/dto/AddSongDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/model/entity/Song.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/model/entity/Song.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/model/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/model/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/repository/SongRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/repository/SongRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/service/SongService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/service/SongService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/view/SongListViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/view/SongListViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/view/SongViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/web/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/web/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/web/LoginAndRegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/web/LoginAndRegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/web/SongController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/spotifyplaylistapp/web/SongController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../~$otify Playlist_Problem Description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/bootstrap.min.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +125,9 @@
       <workItem from="1657387961216" duration="106000" />
       <workItem from="1657388106491" duration="16725000" />
       <workItem from="1657422109189" duration="1952000" />
-      <workItem from="1657469440102" duration="9971000" />
+      <workItem from="1657469440102" duration="10578000" />
+      <workItem from="1657787749450" duration="1749000" />
+      <workItem from="1657948754029" duration="9633000" />
     </task>
     <task id="LOCAL-00001" summary="add songs view done.">
       <created>1657469561327</created>
@@ -154,7 +136,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657469561327</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Finally, done.">
+      <created>1657479970374</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657479970374</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Change @ManyToMany because DB restriction for unique entry.">
+      <created>1657788907749</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1657788907749</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +169,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add songs view done." />
-    <option name="LAST_COMMIT_MESSAGE" value="add songs view done." />
+    <MESSAGE value="Finally, done." />
+    <MESSAGE value="Change @ManyToMany because DB restriction for unique entry." />
+    <option name="LAST_COMMIT_MESSAGE" value="Change @ManyToMany because DB restriction for unique entry." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

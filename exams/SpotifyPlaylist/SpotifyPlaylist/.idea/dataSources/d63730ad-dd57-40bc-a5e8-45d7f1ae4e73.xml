@@ -1181,17 +1181,13 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <RefColNames>id</RefColNames>
       <RefTableName>songs</RefTableName>
     </foreign-key>
-    <index id="329" parent="292" name="UK_6rkhyx2q5hbt7jw4rysrvcrjg">
-      <ColNames>songs_id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="330" parent="292" name="FK7jxoobydr84yuyj84n7161pre">
+    <index id="329" parent="292" name="FK7jxoobydr84yuyj84n7161pre">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="331" parent="292" name="UK_6rkhyx2q5hbt7jw4rysrvcrjg">
-      <UnderlyingIndexName>UK_6rkhyx2q5hbt7jw4rysrvcrjg</UnderlyingIndexName>
-    </key>
+    <index id="330" parent="292" name="FKhd5jnagwlkb5jcnj06ubybr4i">
+      <ColNames>songs_id</ColNames>
+      <Type>btree</Type>
+    </index>
   </database-model>
 </dataSource>
