@@ -25,11 +25,11 @@ public class SongController {
     private SongRepository songRepository;
     private UserRepository userRepository;
 
-    public SongController(SongService songService, LoggedUser loggedUser, SongRepository songRepository, UserRepository userRepository, UserRepository userRepository1) {
+    public SongController(SongService songService, LoggedUser loggedUser, SongRepository songRepository, UserRepository userRepository) {
         this.songService = songService;
         this.loggedUser = loggedUser;
         this.songRepository = songRepository;
-        this.userRepository = userRepository1;
+        this.userRepository = userRepository;
     }
 
     @ModelAttribute("addSongDTO")

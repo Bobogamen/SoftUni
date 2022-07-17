@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b0464f9-acc2-4b69-b5fd-0e1fb34735f9" name="Changes" comment="Change @ManyToMany because DB restriction for unique entry.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../.idea/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +125,7 @@
       <workItem from="1657948754029" duration="9633000" />
       <workItem from="1657989197951" duration="359000" />
       <workItem from="1657989592185" duration="6000" />
+      <workItem from="1658038467716" duration="87000" />
     </task>
     <task id="LOCAL-00001" summary="add songs view done.">
       <created>1657469561327</created>
