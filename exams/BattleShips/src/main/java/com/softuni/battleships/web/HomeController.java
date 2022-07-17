@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    private LoggedUser loggedUser;
+    private final LoggedUser loggedUser;
 
     public HomeController(LoggedUser loggedUser) {
         this.loggedUser = loggedUser;

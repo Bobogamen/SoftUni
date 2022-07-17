@@ -19,8 +19,8 @@ import java.util.Optional;
 @Controller
 public class LoginAndRegisterController {
 
-    private UserService userService;
-    private UserRepository userRepository;
+    private final UserService userService;
+    private final UserRepository userRepository;
 
     public LoginAndRegisterController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
@@ -55,7 +55,7 @@ public class LoginAndRegisterController {
 
         boolean passwordMatch = registrationDTO.getPassword().equals(registrationDTO.getConfirmPassword());
 
-        if (bindingResult.hasErrors() || !passwordMatch || !uniqueUsernameAndEmail) {
+        if (bindingResult.hasErrors() || !passwordMatch || uniqueUsernameAndEmail) {
 
             redirectAttributes.addFlashAttribute("registrationDTO", registrationDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registrationDTO", bindingResult);
@@ -96,8 +96,6 @@ public class LoginAndRegisterController {
 
             return "redirect:/login";
         }
-
-
 
         return "redirect:/home";
     }
