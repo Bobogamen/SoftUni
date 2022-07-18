@@ -14,10 +14,10 @@ public class UserRole {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private UserRoleEnum role;
+    private UserRoleEnum name;
 
-    public UserRole(UserRoleEnum role) {
-        this.role = role;
+    public UserRole(UserRoleEnum name) {
+        this.name = name;
     }
 
     public UserRole() {
@@ -32,11 +32,11 @@ public class UserRole {
         this.id = id;
     }
 
-    public UserRoleEnum getRole() {
-        return role;
+    public UserRoleEnum getName() {
+        return name;
     }
 
-    public void setRole(UserRoleEnum role) {
-        this.role = role;
+    public void setName(UserRoleEnum name) {
+        this.name = name;
     }
 }

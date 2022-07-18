@@ -38,6 +38,7 @@ public class User {
     public User() {
         this.address = new ArrayList<>();
         this.items = new ArrayList<>();
+        this.userRoles = new ArrayList<>();
     }
 
     public long getId() {
@@ -108,8 +109,8 @@ public class User {
         return userRoles;
     }
 
-    public void setUserRoles(List<UserRole> userRoles) {
-        this.userRoles = userRoles;
+    public void setUserRole(UserRole role) {
+        this.userRoles.add(role);
     }
 
     public void addRole(UserRole role) {

@@ -25,17 +25,17 @@ public class SecurityConfiguration {
              authorizeRequests(). // define which requests are allowed and which not
              requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll(). // everyone can download static resources (css, js, images)
              //which links can have access
-             antMatchers("/", "/users/login", "/users/register").permitAll().
+             antMatchers("/", "/login", "/register").permitAll().
              anyRequest().authenticated(). //any other links
         and().
-             formLogin().loginPage("/users/login"). //setting login page
+             formLogin().loginPage("/login"). //setting login page
              usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
              passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
              defaultSuccessUrl("/home"). //set login successful page
              failureForwardUrl("/"). //set login fail page
         and().
              logout(). //logout set
-             logoutUrl("/users/logout"). //set logout link
+             logoutUrl("/logout"). //set logout link
              logoutSuccessUrl("/"). //after logout where redirect
              invalidateHttpSession(true).deleteCookies("JSESSIONID");
 

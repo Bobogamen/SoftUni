@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/reset-css.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>OnlineShop Register</title>
+</head>
+<body>
+<nav th:replace="fragments/nav"></nav>
+
+<main>
+    <section class="vh-100">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card bg-transparent border-0">
+                            <div class="card-body p-1">
+                                <div class="h3 text-uppercase text-center mb-3 mt-5">Create account</div>
+                                <form th:action="@{/register}"
+                                      th:method="POST"
+                                      th:object="${registrationDTO}">
+
+                                    <div class="form-outline mb-4">
+                                        <small class="invalid-feedback text-danger ml-2">Name must be between 5 and 30
+                                            character!</small>
+                                        <input th:field="*{name}"
+                                               th:errorclass="is-invalid"
+                                               type="text" placeholder="Your name" name="name" id="name"
+                                               class="form-control form-control-lg"></div>
+                                    <div class="form-outline mb-4">
+                                        <small class="text-danger ml-2">Enter valid email</small>
+                                        <input th:field="*{email}"
+                                               th:errorclass="is-invalid"
+                                               type="text" placeholder="Your email" name="email" id="email"
+                                               class="form-control form-control-lg"></div>
+                                    <div class="form-outline mb-4">
+                                        <small class="text-danger ml-2">Password must be between 5 and 30
+                                            symbols!</small>
+                                        <input th:field="*{password}"
+                                               th:errorclass="is-invalid"
+                                               type="password" placeholder="Password" name="password" id="password"
+                                               class="form-control form-control-lg"></div>
+                                    <div class="form-outline mb-4"><small class="text-danger ml-2">Password not match!</small>
+                                        <input th:field="*{confirmPassword}"
+                                               th:errorclass="is-invalid"
+                                               type="password" placeholder="Confirm your password"
+                                               name="confirmPassword" id="confirmPassword"
+                                               class="form-control form-control-lg"></div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                            Register
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>
