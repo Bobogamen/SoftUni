@@ -2,8 +2,8 @@ package com.onlineshop.service;
 
 import com.onlineshop.model.dto.RegistrationDTO;
 import com.onlineshop.model.entity.User;
-import com.onlineshop.model.entity.UserRole;
-import com.onlineshop.model.enums.UserRoleEnum;
+import com.onlineshop.model.entity.Role;
+import com.onlineshop.model.enums.RoleEnum;
 import com.onlineshop.repository.UserRepository;
 import com.onlineshop.repository.UserRoleRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,26 +25,18 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public boolean register(RegistrationDTO registrationDTO) {
+    public void register(RegistrationDTO registrationDTO) {
 
-        Optional<User> user = this.userRepository.findUserByEmail(registrationDTO.getEmail());
+        Role role = this.userRoleRepository.getByName(RoleEnum.CLIENT);
 
-        if (user.isEmpty()) {
+        User newUser = new User();
+        newUser.setEmail(registrationDTO.getEmail());
+        newUser.setName(registrationDTO.getName());
+        newUser.setRegisteredOn(LocalDateTime.now());
+        newUser.setUserRole(role);
+        newUser.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
-            UserRole role = this.userRoleRepository.getByName(UserRoleEnum.CLIENT);
+        this.userRepository.save(newUser);
 
-            User newUser = new User();
-            newUser.setEmail(registrationDTO.getEmail());
-            newUser.setName(registrationDTO.getName());
-            newUser.setRegisteredOn(LocalDateTime.now());
-            newUser.setUserRole(role);
-            newUser.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
-
-            this.userRepository.save(newUser);
-
-            return true;
-        } else {
-            return false;
-        }
     }
 }

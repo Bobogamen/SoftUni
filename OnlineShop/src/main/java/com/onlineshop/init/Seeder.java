@@ -1,9 +1,9 @@
 package com.onlineshop.init;
 
 import com.onlineshop.model.entity.Category;
-import com.onlineshop.model.entity.UserRole;
+import com.onlineshop.model.entity.Role;
 import com.onlineshop.model.enums.CategoryEnum;
-import com.onlineshop.model.enums.UserRoleEnum;
+import com.onlineshop.model.enums.RoleEnum;
 import com.onlineshop.repository.CategoryRepository;
 import com.onlineshop.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class Seeder implements CommandLineRunner {
         }
 
         if (this.userRoleRepository.count() == 0) {
-            List<UserRole> roles = Arrays.stream(UserRoleEnum.values()).map(UserRole::new).toList();
+            List<Role> roles = Arrays.stream(RoleEnum.values()).map(Role::new).toList();
 
             this.userRoleRepository.saveAll(roles);
         }

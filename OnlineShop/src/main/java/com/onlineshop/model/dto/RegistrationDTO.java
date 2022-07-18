@@ -1,21 +1,26 @@
 package com.onlineshop.model.dto;
 
+import com.onlineshop.model.validation.PasswordMatcher;
+import com.onlineshop.model.validation.UniqueEmail;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+@PasswordMatcher(password = "password",
+                 confirmPassword = "confirmPassword")
 public class RegistrationDTO {
-    @NotEmpty
-    @Email
+    @NotEmpty(message = "Email cannot be empty")
+    @Email(message = "Enter valid email address.")
+    @UniqueEmail
     private String email;
-    @NotEmpty
-    @Size(min = 5, max = 50)
+    @NotEmpty(message = "Name cannot be empty")
+    @Size(min = 5, max = 30, message = "Name must be between 5 and 30 character")
     private String name;
-    @NotEmpty
-    @Size(min = 5, max = 20)
+    @NotEmpty(message = "Password cannot be empty")
+    @Size(min = 5, max = 20, message = "Password must be between 5 and 20 symbols")
     private String password;
-    @NotEmpty
-    @Size(min = 5, max = 20)
+
     private String confirmPassword;
 
     public String getEmail() {

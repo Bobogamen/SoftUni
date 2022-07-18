@@ -1,6 +1,6 @@
 package com.onlineshop.model.enums;
 
-public enum UserRoleEnum {
+public enum RoleEnum {
     ADMIN,
     MODERATOR,
     CLIENT

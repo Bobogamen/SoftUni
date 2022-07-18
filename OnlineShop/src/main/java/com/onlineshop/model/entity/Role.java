@@ -1,12 +1,12 @@
 package com.onlineshop.model.entity;
 
-import com.onlineshop.model.enums.UserRoleEnum;
+import com.onlineshop.model.enums.RoleEnum;
 
 import javax.persistence.*;
 
 @Table
-@Entity(name = "user_roles")
-public class UserRole {
+@Entity(name = "roles")
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,13 +14,13 @@ public class UserRole {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private UserRoleEnum name;
+    private RoleEnum name;
 
-    public UserRole(UserRoleEnum name) {
+    public Role(RoleEnum name) {
         this.name = name;
     }
 
-    public UserRole() {
+    public Role() {
 
     }
 
@@ -32,11 +32,11 @@ public class UserRole {
         this.id = id;
     }
 
-    public UserRoleEnum getName() {
+    public RoleEnum getName() {
         return name;
     }
 
-    public void setName(UserRoleEnum name) {
+    public void setName(RoleEnum name) {
         this.name = name;
     }
 }

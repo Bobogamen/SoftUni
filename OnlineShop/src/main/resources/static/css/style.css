@@ -53,3 +53,10 @@ footer {
     position: sticky;
     left: 0;
 }
+
+.invalid-feedback {
+    display: none;
+    width: fit-content;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545

@@ -2,8 +2,8 @@ package com.onlineshop.model.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -20,7 +20,7 @@ public class User {
     private String name;
 
     @OneToMany(targetEntity = Address.class, mappedBy = "user")
-    private List<Address> address;
+    private Set<Address> address;
 
     @Column(nullable = false)
     private LocalDateTime registeredOn;
@@ -30,15 +30,15 @@ public class User {
 
     @ManyToMany(targetEntity = Item.class)
     @JoinTable(name = "cart")
-    private List<Item> items;
+    private Set<Item> items;
 
     @ManyToMany
-    private List<UserRole> userRoles;
+    private Set<Role> roles;
 
     public User() {
-        this.address = new ArrayList<>();
-        this.items = new ArrayList<>();
-        this.userRoles = new ArrayList<>();
+        this.address = new HashSet<>();
+        this.items = new HashSet<>();
+        this.roles = new HashSet<>();
     }
 
     public long getId() {
@@ -65,11 +65,11 @@ public class User {
         this.name = name;
     }
 
-    public List<Address> getAddress() {
+    public Set<Address> getAddress() {
         return address;
     }
 
-    public void setAddress(List<Address> address) {
+    public void setAddress(Set<Address> address) {
         this.address = address;
     }
 
@@ -93,11 +93,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Item> getItems() {
+    public Set<Item> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(Set<Item> items) {
         this.items = items;
     }
 
@@ -105,15 +105,15 @@ public class User {
         this.items.add(item);
     }
 
-    public List<UserRole> getUserRoles() {
-        return userRoles;
+    public Set<Role> getUserRoles() {
+        return roles;
     }
 
-    public void setUserRole(UserRole role) {
-        this.userRoles.add(role);
+    public void setUserRole(Role role) {
+        this.roles.add(role);
     }
 
-    public void addRole(UserRole role) {
-        this.userRoles.add(role);
+    public void addRole(Role role) {
+        this.roles.add(role);
     }
 }
