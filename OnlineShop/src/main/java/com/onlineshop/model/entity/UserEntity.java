@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class User {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(targetEntity = Address.class, mappedBy = "user")
+    @OneToMany(targetEntity = Address.class, mappedBy = "userEntity")
     private Set<Address> address;
 
     @Column(nullable = false)
@@ -32,10 +32,10 @@ public class User {
     @JoinTable(name = "cart")
     private Set<Item> items;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    public User() {
+    public UserEntity() {
         this.address = new HashSet<>();
         this.items = new HashSet<>();
         this.roles = new HashSet<>();

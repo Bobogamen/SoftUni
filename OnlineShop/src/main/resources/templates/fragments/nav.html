@@ -13,26 +13,28 @@
 <nav class="navbar navbar-expand-lg bg-transparent">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="mr-1">
-            <button type="button" class="btn btn-outline-danger" onclick="window.location.href='/'">Home</button>
+            <button type="submit" class="btn btn-outline-danger" onclick="window.location.href='/'">Home</button>
         </div>
         <div class="mr-1">
-            <button type="button" class="btn btn-outline-danger">Shop</button>
+            <button type="submit" class="btn btn-outline-danger">Shop</button>
         </div>
         <div>
-            <button type="button" class="btn btn-outline-danger">Discount</button>
+            <button type="submit" class="btn btn-outline-danger">Discount</button>
         </div>
 
         <div class="ml-auto">
-            <button type="button" class="btn btn-info">Admin</button>
-            <button type="button" class="btn btn-secondary">Moderator</button>
+            <button sec:authorize="hasRole('ADMIN')" type="submit" class="btn btn-primary" onclick="window.location.href='/admin'">Admin</button>
+            <button sec:authorize="hasRole('MODERATOR')" type="submit" class="btn btn-secondary" onclick="window.location.href='/moderator'">Moderator</button>
         </div>
 
-        <div role="group" aria-label="Basic mixed styles example" class="btn-group ml-auto">
-            <div>
-                <button type="button" class="btn btn-danger ml-auto">Logout</button>
-            </div>
-            <button type="button" class="btn btn-success ml-1" onclick="window.location.href='/login'">Login</button>
-            <button type="button" class="btn btn-warning" onclick="window.location.href='/register'">Register</button>
+        <div role="group" class="btn-group ml-auto" sec:authorize="isAuthenticated()">
+            <button type="submit" class="btn btn-info ml-auto" onclick="window.location.href='/profile'">Profile</button>
+            <button type="submit" class="btn btn-danger ml-auto" onclick="window.location.href='/logout'">Logout</button>
+        </div>
+
+        <div role="group" class="btn-group ml-auto" sec:authorize="isAnonymous()">
+            <button type="submit" class="btn btn-success ml-1 border-danger" onclick="window.location.href='/login'">Login</button>
+            <button type="submit" class="btn btn-warning border-danger" onclick="window.location.href='/register'">Register</button>
         </div>
     </div>
 </nav>

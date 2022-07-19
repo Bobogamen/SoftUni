@@ -1,42 +1,65 @@
 package com.onlineshop.service;
 
 import com.onlineshop.model.dto.RegistrationDTO;
-import com.onlineshop.model.entity.User;
+import com.onlineshop.model.entity.UserEntity;
 import com.onlineshop.model.entity.Role;
 import com.onlineshop.model.enums.RoleEnum;
 import com.onlineshop.repository.UserRepository;
-import com.onlineshop.repository.UserRoleRepository;
+import com.onlineshop.repository.RoleRepository;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
-    private final UserRoleRepository userRoleRepository;
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder) {
+    private UserDetailsService userDetailsService;
+
+    public UserService(UserRepository userRepository,
+                       RoleRepository roleRepository,
+                       PasswordEncoder passwordEncoder,
+                       UserDetailsService userDetailsService) {
         this.userRepository = userRepository;
-        this.userRoleRepository = userRoleRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userDetailsService = userDetailsService;
     }
 
     public void register(RegistrationDTO registrationDTO) {
 
-        Role role = this.userRoleRepository.getByName(RoleEnum.CLIENT);
+        Role role = this.roleRepository.getByName(RoleEnum.CLIENT);
 
-        User newUser = new User();
-        newUser.setEmail(registrationDTO.getEmail());
-        newUser.setName(registrationDTO.getName());
-        newUser.setRegisteredOn(LocalDateTime.now());
-        newUser.setUserRole(role);
-        newUser.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+        UserEntity newUserEntity = new UserEntity();
+        newUserEntity.setEmail(registrationDTO.getEmail());
+        newUserEntity.setName(registrationDTO.getName());
+        newUserEntity.setRegisteredOn(LocalDateTime.now());
+        newUserEntity.setUserRole(role);
+        newUserEntity.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
-        this.userRepository.save(newUser);
+        this.userRepository.save(newUserEntity);
 
     }
+
+    public void login(UserEntity userEntity) {
+
+        UserDetails userDetails = userDetailsService.loadUserByUsername(userEntity.getEmail());
+
+        Authentication auth =
+                new UsernamePasswordAuthenticationToken(
+                        userDetails,
+                        userDetails.getPassword(),
+                        userDetails.getAuthorities());
+
+        SecurityContextHolder.getContext().setAuthentication(auth);
+    };
 }

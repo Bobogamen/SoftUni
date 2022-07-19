@@ -17,7 +17,7 @@ public class Address {
     private String description;
 
     @ManyToOne
-    private User user;
+    private UserEntity userEntity;
 
     public Address() {
     }
@@ -38,12 +38,12 @@ public class Address {
         this.description = description;
     }
 
-    public User getUser() {
-        return user;
+    public UserEntity getUser() {
+        return userEntity;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 
     public String getName() {

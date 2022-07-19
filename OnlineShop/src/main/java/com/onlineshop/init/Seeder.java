@@ -5,7 +5,7 @@ import com.onlineshop.model.entity.Role;
 import com.onlineshop.model.enums.CategoryEnum;
 import com.onlineshop.model.enums.RoleEnum;
 import com.onlineshop.repository.CategoryRepository;
-import com.onlineshop.repository.UserRoleRepository;
+import com.onlineshop.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -16,12 +16,12 @@ import java.util.List;
 @Component
 public class Seeder implements CommandLineRunner {
 
-    private final UserRoleRepository userRoleRepository;
+    private final RoleRepository roleRepository;
     private final CategoryRepository categoryRepository;
 
     @Autowired //not need it, but I put it in purpose, to remind me.
-    public Seeder(UserRoleRepository userRoleRepository, CategoryRepository categoryRepository) {
-        this.userRoleRepository = userRoleRepository;
+    public Seeder(RoleRepository roleRepository, CategoryRepository categoryRepository) {
+        this.roleRepository = roleRepository;
         this.categoryRepository = categoryRepository;
     }
 
@@ -34,10 +34,10 @@ public class Seeder implements CommandLineRunner {
             this.categoryRepository.saveAll(categories);
         }
 
-        if (this.userRoleRepository.count() == 0) {
+        if (this.roleRepository.count() == 0) {
             List<Role> roles = Arrays.stream(RoleEnum.values()).map(Role::new).toList();
 
-            this.userRoleRepository.saveAll(roles);
+            this.roleRepository.saveAll(roles);
         }
     }
 }
