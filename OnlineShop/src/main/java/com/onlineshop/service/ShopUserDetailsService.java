@@ -2,6 +2,7 @@ package com.onlineshop.service;
 
 import com.onlineshop.model.entity.Role;
 import com.onlineshop.model.entity.UserEntity;
+import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,11 +28,11 @@ public class ShopUserDetailsService implements UserDetailsService {
 
     private UserDetails map(UserEntity userEntity) {
 
-        return  User.builder().
-                username(userEntity.getEmail()).
-                password(userEntity.getPassword()).
-                authorities(userEntity.getUserRoles().stream().map(this::map).toList()).
-                build();
+        return new ShopUserDetails(userEntity.getEmail(), userEntity.getPassword(),
+                userEntity.getName(),
+                userEntity.getRegisteredOn(),
+                userEntity.getAddress(),
+                userEntity.getUserRoles().stream().map(this::map).toList());
 
     }
 

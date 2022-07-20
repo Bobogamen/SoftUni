@@ -12,11 +12,10 @@
 <body>
 <nav th:replace="fragments/nav"></nav>
 <main>
+    <div th:text="|WELCOME ${#authentication.getPrincipal().getName()}|" class="h1 text-xl-center"></div>
+    <div th:text="${#authentication.getPrincipal().getRegisteredOn().toString()}" class="h3 text-xl-center"></div>
 
-    <main>
-        <div class="h1 text-xl-center">PROFILE</div>
 
-    </main>
 
 
 </main>

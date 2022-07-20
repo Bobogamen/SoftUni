@@ -1,12 +1,11 @@
-# admin
+# INSERT INTO users (id, email, name, password, registered_on) VALUES (1, 'b_davidov@abv.bg', 'BORIS ILIEV', '7b54249b25d85f0dd8e1e76645a57284d7e4cb7ad5bd3ba9e5d1ab4d0f12338d738c430c80546846', '2022-07-19 14:12:28.829210');
+# INSERT INTO users (id, email, name, password, registered_on) VALUES (2, 'd_borislavova@abv.bg', 'DESISLAVA NIKOLOVA', 'd544747b273765ecfdaaf58cb5c2a7fe4bca81699d5b01abd6187bb1271899a6742396f1a54207e4', '2022-07-19 14:13:08.062454');
+# INSERT INTO users (id, email, name, password, registered_on) VALUES (3, 'client@mail.com', 'Test client', 'c7c968c604daf2bd9536b7c8e5c224f0477a9e35d77a1c0b1cd6da26bf9182e2a00d06aa6f18a2d1', '2022-07-19 14:26:59.672020');
 
 
-# moderator
+# ADMIN
+# INSERT INTO users_roles(user_entity_id, roles_id) VALUE (1, 1);
+# INSERT INTO users_roles(user_entity_id, roles_id) VALUE (1, 2);
 
-
-# clients
-INSERT INTO onlineshop.users (id, email, name, password, registered_on) VALUES (1, 'b_davidov@abv.bg', 'BORIS ILIEV', '5f5c89ba3910e7e48e8973c78c38de2009e766edab12377634bb8d5adb0008f8e5fe65478e39edd2', '2022-07-18 18:24:26.913188');
-INSERT INTO onlineshop.users (id, email, name, password, registered_on) VALUES (2, 'd_borislavova@abv.bg', 'DESISLAVA NIKOLOVA', '4c09c27c0446765e168e579c7aad89c2ba9597dd41656d27635e232f434702d1475053561d3094da', '2022-07-18 18:24:49.623430');
-
-
-
+# MODERATOR
+# INSERT INTO users_roles(user_entity_id, roles_id) VALUE (2, 2);

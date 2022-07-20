@@ -40,7 +40,7 @@ public class SecurityConfiguration {
              failureForwardUrl("/login-fail"). //set login fail page
         and().
              logout(). //logout set
-             logoutUrl("/logout"). //set logout link
+             logoutUrl("/logout"). //set logout link MUST BE "POST" (not a link) use form
              logoutSuccessUrl("/"). //after logout where redirect
              invalidateHttpSession(true).deleteCookies("JSESSIONID");
 
