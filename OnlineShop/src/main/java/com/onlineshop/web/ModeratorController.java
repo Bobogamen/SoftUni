@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ModeratorController {
 
-    @GetMapping("/moderator")
+    @GetMapping("/users/moderator")
     public String moderator() {
         return "moderator";
     }

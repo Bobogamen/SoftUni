@@ -11,37 +11,21 @@
 </head>
 <body>
 <nav th:replace="fragments/nav"></nav>
-<body>
-<button id="loadBooks">LOAD ALL BOOKS</button>
+<body onload="loadUsers()">
+<button id="refresh">Refresh</button>
 <table>
     <thead>
     <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Isbn</th>
+        <th>id</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Address count</th>
+        <th>Order count</th>
+        <th>Order Total Sum</th>
         <th>Action</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-        <td>Harry Poter</td>
-        <td>J. K. Rowling</td>
-        <td>0-7475-3269-9</td>
-        <td>
-            <button>Edit</button>
-            <button>Delete</button>
-        </td>
-    </tr>
-    <tr>
-        <td>Game of Thrones</td>
-        <td>George R. R. Martin</td>
-        <td>9780553386790</td>
-        <td>
-            <button>Edit</button>
-            <button>Delete</button>
-        </td>
-    </tr>
-    </tbody>
+    <tbody id="user-container"></tbody>
 </table>
 </body>
 

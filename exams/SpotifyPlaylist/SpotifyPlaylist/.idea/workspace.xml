@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b0464f9-acc2-4b69-b5fd-0e1fb34735f9" name="Changes" comment="Change @ManyToMany because DB restriction for unique entry.">
-      <change afterPath="$PROJECT_DIR$/../../../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/model/dto/AddAddressDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/model/dto/UsersInfoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/model/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/model/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/model/user/ShopUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/model/user/ShopUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/service/ShopUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/service/ShopUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/web/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/web/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/web/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/web/ModeratorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/web/ModeratorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/web/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/web/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/web/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/java/com/onlineshop/web/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/resources/static/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/resources/static/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/resources/templates/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/resources/templates/fragments/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/resources/templates/fragments/nav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../OnlineShop/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../OnlineShop/src/main/resources/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d63730ad-dd57-40bc-a5e8-45d7f1ae4e73.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +147,9 @@
       <workItem from="1657989197951" duration="359000" />
       <workItem from="1657989592185" duration="6000" />
       <workItem from="1658038467716" duration="87000" />
+      <workItem from="1658577353538" duration="551000" />
+      <workItem from="1658587812103" duration="740000" />
+      <workItem from="1658597185278" duration="87000" />
     </task>
     <task id="LOCAL-00001" summary="add songs view done.">
       <created>1657469561327</created>

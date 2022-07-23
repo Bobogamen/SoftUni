@@ -68,58 +68,39 @@ footer {
 }
 
 table{
-    border:1px solid #234465;
-    padding: 1%;
+    border:2px solid black;
+    padding: 2%;
     margin: 0 auto;
     width: 70%;
-    border-radius: 4px;
 }
 table th{
-    text-decoration: underline;
     text-align: center;
+    padding: 10px;
+    border: 2px solid black;
+    font-weight: bold;
+
 }
 table tbody td{
+    margin: auto;
     text-align: center;
-    border-bottom:1px solid black;
-    padding: 0.5%;
-}
+    border: 2px solid black;
+    padding: 0.7%;
 
-table tbody tr:nth-child(even){
-    background-color: #234465;
-    color: white
-}
-
-table tbody tr:nth-child(odd){
-    color: #234465;
-    border-bottom: 1px solid black;
-}
-
-table tbody tr:nth-child(odd) button{
-    background: #234465;
-    color:white;
-}
-
-table tbody tr:nth-child(even) button{
-    background: white;
-    color:#234465;
-}
-
-table tr td:not(:last-child):hover{
-    text-decoration: underline;
 }
 
 table button{
+    background: wheat;
     border: none;
-    padding: 5px;
+    padding: 1px;
     border-radius: 5px;
-    margin-left: 8%;
+
 }
 
 table button:hover{
-    text-decoration: underline;
+    background: red;
 }
 
-button#loadBooks{
+button#refresh{
     margin: 0 auto;
     display:block;
     padding:1%;
@@ -151,8 +132,82 @@ form button{
     margin-top: 1%;
     margin-bottom: 1%;
     border-radius: 4px;
-    background-color: #234465;
-    color:white;
+    background-color: wheat;
+    color: black;
     border: none;
     padding: 0.5%;
+}
+form button:hover{
+    margin: 0 auto;
+    display:block;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-radius: 4px;
+    background-color: red;
+    color:black;
+    border: none;
+    padding: 0.5%;
+}
+
+
+
+.openBtn {
+    display: flex;
+    justify-content: left;
+}
+.openButton {
+    border: none;
+    border-radius: 5px;
+    background-color: #1c87c9;
+    color: white;
+    padding: 14px 20px;
+    cursor: pointer;
+    position: fixed;
+}
+.loginPopup {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.formPopup {
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-50%, 5%);
+    border: 3px solid #999999;
+    z-index: 9;
+}
+.formContainer {
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border: #df4759;
+}
+.formContainer input[type=text] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 20px 0;
+    border: none;
+    background: #eee;
+}
+.formContainer input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+.formContainer .btn {
+    padding: 12px 20px;
+    border: none;
+    background-color: #8ebf42;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+.formContainer .cancel {
+    background-color: #cc0000;
+}
+.formContainer .btn:hover,
+.openButton:hover {
+    opacity: 1;
 }

@@ -6,7 +6,6 @@ import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,7 +27,7 @@ public class ShopUserDetailsService implements UserDetailsService {
 
     private UserDetails map(UserEntity userEntity) {
 
-        return new ShopUserDetails(userEntity.getEmail(), userEntity.getPassword(),
+        return new ShopUserDetails(userEntity.getId(), userEntity.getEmail(), userEntity.getPassword(),
                 userEntity.getName(),
                 userEntity.getRegisteredOn(),
                 userEntity.getAddress(),

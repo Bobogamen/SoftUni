@@ -29,14 +29,14 @@ public class SecurityConfiguration {
              requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll(). // everyone can download static resources (css, js, images)
              //which links can have access by who
              antMatchers("/", "/login", "/register").permitAll(). //by everyone
-             antMatchers("/admin").hasRole(RoleEnum.ADMIN.name()). //only for admins
-             antMatchers("/moderator").hasRole(RoleEnum.MODERATOR.name()). //only for moderators
+             antMatchers("/users/admin").hasRole(RoleEnum.ADMIN.name()). //only for admins
+             antMatchers("/users/moderator").hasRole(RoleEnum.MODERATOR.name()). //only for moderators
              anyRequest().authenticated(). //any other links
         and().
              formLogin().loginPage("/login"). //setting login page
              usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
              passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
-             defaultSuccessUrl("/profile"). //set login successful page
+             defaultSuccessUrl("/users/profile"). //set login successful page
              failureForwardUrl("/login-fail"). //set login fail page
         and().
              logout(). //logout set

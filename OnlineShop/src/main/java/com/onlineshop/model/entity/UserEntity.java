@@ -19,7 +19,7 @@ public class UserEntity {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(targetEntity = Address.class, mappedBy = "userEntity")
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Address.class, mappedBy = "userEntity")
     private Set<Address> address;
 
     @Column(nullable = false)
@@ -28,7 +28,7 @@ public class UserEntity {
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany(targetEntity = Item.class)
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Item.class)
     @JoinTable(name = "cart")
     private Set<Item> items;
 

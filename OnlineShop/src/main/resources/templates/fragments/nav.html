@@ -25,17 +25,17 @@
 
         <div class="ml-auto">
             <button sec:authorize="hasRole('ADMIN')" type="submit" class="btn btn-primary"
-                    onclick="location.href='/admin'">Admin
+                    onclick="location.href='/users/admin'">Admin
             </button>
             <button sec:authorize="hasRole('MODERATOR')" type="submit" class="btn btn-secondary"
-                    onclick="location.href='/moderator'">Moderator
+                    onclick="location.href='/users/moderator'">Moderator
             </button>
         </div>
 
         <div class="ml-auto" sec:authorize="isAuthenticated()">
             <div class="row ml-auto mr-2">
                 <div class="col p-0 mr-1">
-                    <button type="submit" class="btn btn-info mr-auto" onclick="location.href='/profile'">Profile
+                    <button type="submit" class="btn btn-info mr-auto" onclick="location.href='/users/profile'">Profile
                     </button>
                 </div>
                 <div class="col p-0">

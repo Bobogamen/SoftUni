@@ -12,13 +12,48 @@
 <body>
 <nav th:replace="fragments/nav"></nav>
 <main>
-    <div th:text="|WELCOME ${#authentication.getPrincipal().getName()}|" class="h1 text-xl-center"></div>
-    <div th:text="${#authentication.getPrincipal().getRegisteredOn().toString()}" class="h3 text-xl-center"></div>
 
-
+    <div class="container py-5 bg-transparent">
+        <div class="row m-1 bg-light border border-danger rounded text-center">
+            <div class="col-4 p-2 m-2 bg-info border border-danger rounded align-self-center">
+                <p class="h4 font-weight-bold" th:text="${#authentication.getPrincipal().getName()}"></p>
+                <p class="h5" th:text="${#authentication.getPrincipal().getUsername()}"></p>
+                <p class="h6" th:text="|Registered on: ${#authentication.getPrincipal().getRegisteredDate()}
+                        at: ${#authentication.getPrincipal().getRegisteredTime()}|"></p>
+                <p class="h6" th:text="|IP Address: ${#authentication.getDetails().getRemoteAddress()}|"></p>
+            </div>
+            <div class="col p-2 m-2 bg-light border border-danger rounded">
+                <p class="h3 text-center">Addresses</p>
+                <button type="submit" class="btn btn-success p-1 mb-2" onclick="myFunction()">Add</button>
+                <div class="loginPopup">
+                    <div id="popupForm" style="display:none">
+                        <form th:action="@{/users/add-address/{id} (id = ${#authentication.getPrincipal().getId})}"
+                              th:method="POST"
+                              th:object="${addAddressDTO}"
+                              class="formContainer">
+                            <label for="name"></label>
+                            <input th:field="*{name}"
+                                   type="text" id="name" placeholder="Address name" name="name" required>
+                            <label for="description"></label>
+                            <input th:field="*{description}"
+                                   type="text" id="description" placeholder="Fill your address" name="description"
+                                   style="height: 100px;" required>
+                            <button type="submit" class="btn">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-1 bg-light border border-danger rounded text-center">
+            <div class="col p-2 m-2 bg-light border border-danger rounded">
+                <p class="h3 text-center text-center">Orders</p>
+            </div>
+        </div>
+    </div>
 
 
 </main>
+<script src="/js/app.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-3.5.1.slim.min.js"></script>
 </body>
