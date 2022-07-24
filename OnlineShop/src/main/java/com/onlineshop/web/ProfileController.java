@@ -1,8 +1,10 @@
 package com.onlineshop.web;
 
 import com.onlineshop.model.dto.AddAddressDTO;
+import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.service.AddressService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -19,7 +21,8 @@ public class ProfileController {
 
 
     @GetMapping("/profile")
-    public String profile() { 
+    public String profile() {
+
         return "/profile";
     }
 
@@ -30,8 +33,6 @@ public class ProfileController {
 
     @PostMapping("/add-address/{profile-id}")
     public String addAddress(@PathVariable("profile-id") long profileId, AddAddressDTO addAddressDTO) {
-
-        System.out.println();
 
         this.addressService.addAddress(addAddressDTO, profileId);
 

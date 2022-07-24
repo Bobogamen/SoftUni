@@ -3,6 +3,7 @@
 # INSERT INTO users (id, email, name, password, registered_on) VALUES (3, 'client@mail.com', 'Test client', 'c7c968c604daf2bd9536b7c8e5c224f0477a9e35d77a1c0b1cd6da26bf9182e2a00d06aa6f18a2d1', '2022-07-19 14:26:59.672020');
 
 
+
 # ADMIN
 # INSERT INTO users_roles(user_entity_id, roles_id) VALUE (1, 1);
 # INSERT INTO users_roles(user_entity_id, roles_id) VALUE (1, 2);

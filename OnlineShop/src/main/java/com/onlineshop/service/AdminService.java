@@ -19,11 +19,7 @@ public class AdminService {
         return this.userRepository.getAllUsersInfo();
     }
 
-
-
-
-
-
-
-
+    public void deleteUser(long id) {
+        this.userRepository.deleteById(id);
+    }
 }

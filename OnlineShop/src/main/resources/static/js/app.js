@@ -1,12 +1,4 @@
-function openTheForm() {
-    document.getElementById("popupForm").style.display = "block";
-}
-
-function closeTheForm() {
-    document.getElementById("popupForm").style.display = "none";
-}
-
-function myFunction() {
+function addAddressForm() {
     let x = document.getElementById("popupForm");
 
     if (x.style.display === "none") {
@@ -16,23 +8,19 @@ function myFunction() {
     }
 }
 
-let refreshUsers = document.getElementById('refresh')
-refreshUsers.addEventListener('click', loadUsers);
-refreshUsers.addEventListener('load', loadUsers)
+function deleteConfirmation(link) {
+    let message = 'Are you sure you want to delete this user?'
 
-let button = '<button type="submit" onclick="deleteConfirmation()">Delete</button>'
-
-function deleteConfirmation() {
-    let result = window.confirm('Are you sure you want to delete this user')
-
-    if (result === true) {
-        button = {
-            method: 'POST',
-
-        }
+    if (message === true) {
+        return location.href = link
+    } else {
+        return false
     }
-
 }
+
+let refreshUsers = document.getElementById('refresh')
+
+refreshUsers.addEventListener('click', loadUsers);
 
 function loadUsers(event) {
     let requestOptions = {
@@ -43,7 +31,7 @@ function loadUsers(event) {
     let userContainer = document.getElementById('user-container')
     userContainer.innerHTML = ''
 
-    fetch("/users/all-users", requestOptions)
+    fetch("/users/admin/all-users", requestOptions)
         .then(response => response.json())
         .then(json => json.forEach(user => {
             // here we will create some elements and add them to the table.
@@ -55,11 +43,8 @@ function loadUsers(event) {
             let addressCount = document.createElement('td')
             let orderCount = document.createElement('td')
             let totalSumOrders = document.createElement('td')
-            let buttonDelete = document.createElement('td')
-
-
-
-
+            let action = document.createElement('td')
+            let buttonDelete = document.createElement('button')
 
             id.textContent = user.id
             username.textContent = user.username
@@ -67,7 +52,17 @@ function loadUsers(event) {
             addressCount.textContent = user.addressCount
             orderCount.textContent = user.orderCount
             totalSumOrders.textContent = user.totalSumOrders
-            buttonDelete.insertAdjacentHTML("afterbegin", button)
+
+            var deleteLink = '/users/admin/delete/' + user.id
+
+
+            console.log(deleteLink)
+            buttonDelete.type = 'submit'
+            buttonDelete.setAttribute('href', deleteLink)
+            buttonDelete.textContent = 'Delete'
+
+
+            action.insertAdjacentElement("afterbegin", buttonDelete)
 
 
 
@@ -78,7 +73,7 @@ function loadUsers(event) {
             row.appendChild(addressCount)
             row.appendChild(orderCount)
             row.appendChild(totalSumOrders)
-            row.appendChild(buttonDelete)
+            row.appendChild(action)
 
             userContainer.appendChild(row);
         }))

@@ -18,5 +18,4 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     @Query("SELECT new com.onlineshop.model.dto.UsersInfoDTO(u.id, u.email, u.name, u.address.size, 0, 0.0) FROM UserEntity AS u")
     List<UsersInfoDTO> getAllUsersInfo();
-
 }

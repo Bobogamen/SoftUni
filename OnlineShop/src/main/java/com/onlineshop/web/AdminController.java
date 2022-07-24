@@ -3,9 +3,7 @@ package com.onlineshop.web;
 import com.onlineshop.model.dto.UsersInfoDTO;
 import com.onlineshop.service.AdminService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -28,10 +26,18 @@ public class AdminController {
         return modelAndView;
     }
 
-    @GetMapping("/all-users")
+    @GetMapping("/admin/all-users")
     public ResponseEntity<List<UsersInfoDTO>> getAllUsers() {
 
         return ResponseEntity.ok(this.adminService.getAllUsers());
+    }
+
+    @GetMapping("/admin/delete/{id}")
+    public ModelAndView deleteUser(@PathVariable long id) {
+
+        this.adminService.deleteUser(id);
+
+        return admin();
     }
 
 

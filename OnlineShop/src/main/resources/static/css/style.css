@@ -126,29 +126,6 @@ form{
     text-align: center;
 }
 
-form button{
-    margin: 0 auto;
-    display:block;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    border-radius: 4px;
-    background-color: wheat;
-    color: black;
-    border: none;
-    padding: 0.5%;
-}
-form button:hover{
-    margin: 0 auto;
-    display:block;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    border-radius: 4px;
-    background-color: red;
-    color:black;
-    border: none;
-    padding: 0.5%;
-}
-
 
 
 .openBtn {
