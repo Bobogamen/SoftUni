@@ -14,12 +14,23 @@ public class Address {
     private String name;
 
     @Column(nullable = false)
-    private String description;
+    private String addressLine;
+
+    @Column(nullable = false)
+    private String town;
 
     @ManyToOne
     private UserEntity userEntity;
 
     public Address() {
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 
     public long getId() {
@@ -30,12 +41,12 @@ public class Address {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAddressLine() {
+        return addressLine;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAddressLine(String description) {
+        this.addressLine = description;
     }
 
     public UserEntity getUser() {
@@ -52,5 +63,13 @@ public class Address {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
     }
 }

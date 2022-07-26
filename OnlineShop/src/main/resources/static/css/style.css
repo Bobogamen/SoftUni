@@ -141,7 +141,8 @@ form{
     cursor: pointer;
     position: fixed;
 }
-.loginPopup {
+.addFormPopup {
+    display: none;
     position: relative;
     text-align: center;
     width: 100%;
@@ -155,9 +156,9 @@ form{
     z-index: 9;
 }
 .formContainer {
-    max-width: 400px;
+    max-width: 600px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #33b5e5;
     border: #df4759;
 }
 .formContainer input[type=text] {
@@ -187,4 +188,11 @@ form{
 .formContainer .btn:hover,
 .openButton:hover {
     opacity: 1;
+}
+
+.addItemButton {
+    margin: 0;
+    position: relative;
+    top: 1%;
+    left: 50%;
 }

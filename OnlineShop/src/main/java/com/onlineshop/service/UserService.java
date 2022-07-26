@@ -29,7 +29,6 @@ public class UserService {
 
         this.userRepository.save(newUserEntity);
 
-
     }
 
 //    public void login(UserEntity userEntity) {

@@ -12,14 +12,52 @@
 <body>
 <nav th:replace="fragments/nav"></nav>
 <main>
+    <div class="bg-light border border-danger rounded m-3">
+        <p class="h3 text-center">Items</p>
+        <button type="submit" class="btn btn-success p-1 mb-2 addItemButton" onclick="showForm()">Add item</button>
+        <div class="loginPopup">
+            <div id="popupForm" style="display:none">
+                <form th:action="@{/users/moderator/add-item}"
+                      th:method="POST"
+                      th:object="${addItemDto}" class="formContainer">
 
-    <main>
-        <div class="h1 text-xl-center">MODERATOR</div>
+                    <label for="name"></label>
+                    <input th:field="*{name}"
+                           type="text" id="name" placeholder="Address name" name="name" required>
 
-    </main>
+                    <label for="description"></label>
+                    <input th:field="*{description}"
+                           type="text" id="description" placeholder="Describe item" name="description" required>
 
+                    <label for="price"></label>
+                    <input th:field="*{price}"
+                           type="text" id="price" placeholder="Enter price" name="price" required>
 
+                    <label for="discount"></label>
+                    <input th:field="*{discount}"
+                           type="text" id="discount" placeholder="Enter discount" name="discount" required>
+
+                    <label for="category"></label>
+                    <select class="browser-default custom-select" id="category" name="category">
+                        <option value="">Select category</option>
+                        <option th:each="c : ${T(com.onlineshop.model.enums.CategoryEnum).values()}"
+                                th:text="${c}"
+                                th:value="${c}"
+                                th:selected="${c} == *{category}">Category
+                        </option>
+
+                    </select>
+                    <div class="m-3">
+                        <label for="pictureURL" class="form-label">Choose item picture</label>
+                        <input class="form-control" type="file" id="pictureURL" multiple>
+                    </div>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </main>
+<script src="/js/app.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-3.5.1.slim.min.js"></script>
 </body>

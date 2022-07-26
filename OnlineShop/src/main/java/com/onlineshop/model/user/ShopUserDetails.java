@@ -1,7 +1,6 @@
 package com.onlineshop.model.user;
 
 import com.onlineshop.model.entity.Address;
-import com.onlineshop.model.entity.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,6 +13,8 @@ public class ShopUserDetails implements UserDetails {
     private final String username;
     private final String password;
     private final String name;
+    private int ordersCount;
+    private double ordersSum;
     private final LocalDateTime registeredOn;
     private final Collection<Address> addresses;
     private final Collection<GrantedAuthority> authorities;
@@ -21,13 +22,15 @@ public class ShopUserDetails implements UserDetails {
     public ShopUserDetails(long id, String username,
                            String password,
                            String name,
-                           LocalDateTime registeredOn,
+                           int ordersCount, double ordersSum, LocalDateTime registeredOn,
                            Collection<Address> addresses,
                            Collection<GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
+        this.ordersCount = ordersCount;
+        this.ordersSum = ordersSum;
         this.registeredOn = registeredOn;
         this.addresses = addresses;
         this.authorities = authorities;
@@ -88,5 +91,21 @@ public class ShopUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public int getOrdersCount() {
+        return ordersCount;
+    }
+
+    public void setOrdersCount(int ordersCount) {
+        this.ordersCount = ordersCount;
+    }
+
+    public double getOrdersSum() {
+        return ordersSum;
+    }
+
+    public void setOrdersSum(double ordersSum) {
+        this.ordersSum = ordersSum;
     }
 }

@@ -2,7 +2,9 @@ package com.onlineshop.model.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,25 +21,25 @@ public class UserEntity {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = Address.class, mappedBy = "userEntity")
-    private Set<Address> address;
+    @Column(nullable = false)
+    private String password;
 
     @Column(nullable = false)
     private LocalDateTime registeredOn;
 
-    @Column(nullable = false)
-    private String password;
+    private int ordersCount;
 
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Item.class)
-    @JoinTable(name = "cart")
-    private Set<Item> items;
+    @Column(columnDefinition="DECIMAL(10,2)")
+    private double ordersSum;
+
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Address.class, mappedBy = "userEntity")
+    private List<Address> address;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public UserEntity() {
-        this.address = new HashSet<>();
-        this.items = new HashSet<>();
+        this.address = new ArrayList<>();
         this.roles = new HashSet<>();
     }
 
@@ -65,11 +67,11 @@ public class UserEntity {
         this.name = name;
     }
 
-    public Set<Address> getAddress() {
+    public List<Address> getAddress() {
         return address;
     }
 
-    public void setAddress(Set<Address> address) {
+    public void setAddress(List<Address> address) {
         this.address = address;
     }
 
@@ -93,18 +95,6 @@ public class UserEntity {
         this.password = password;
     }
 
-    public Set<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(Set<Item> items) {
-        this.items = items;
-    }
-
-    public void addToCart(Item item) {
-        this.items.add(item);
-    }
-
     public Set<Role> getUserRoles() {
         return roles;
     }
@@ -115,5 +105,21 @@ public class UserEntity {
 
     public void addRole(Role role) {
         this.roles.add(role);
+    }
+
+    public int getOrdersCount() {
+        return ordersCount;
+    }
+
+    public void setOrdersCount(int ordersCount) {
+        this.ordersCount = ordersCount;
+    }
+
+    public double getOrdersSum() {
+        return ordersSum;
+    }
+
+    public void setOrdersSum(double ordersSum) {
+        this.ordersSum = ordersSum;
     }
 }

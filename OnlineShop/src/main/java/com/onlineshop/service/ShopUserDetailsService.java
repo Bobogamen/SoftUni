@@ -29,7 +29,7 @@ public class ShopUserDetailsService implements UserDetailsService {
 
         return new ShopUserDetails(userEntity.getId(), userEntity.getEmail(), userEntity.getPassword(),
                 userEntity.getName(),
-                userEntity.getRegisteredOn(),
+                userEntity.getOrdersCount(), userEntity.getOrdersSum(), userEntity.getRegisteredOn(),
                 userEntity.getAddress(),
                 userEntity.getUserRoles().stream().map(this::map).toList());
 

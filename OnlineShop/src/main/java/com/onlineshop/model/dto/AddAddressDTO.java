@@ -4,7 +4,9 @@ public class AddAddressDTO {
 
     private String name;
 
-    private String description;
+    private String addressLine;
+
+    private String town;
 
     public String getName() {
         return name;
@@ -14,11 +16,19 @@ public class AddAddressDTO {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAddressLine() {
+        return addressLine;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAddressLine(String addressLine) {
+        this.addressLine = addressLine;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
     }
 }

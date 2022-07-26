@@ -24,10 +24,17 @@ public class Item {
     @Column(nullable = false)
     private String pictureURL;
 
+    private int timesOrdered;
+
     @OneToOne
     private Category category;
 
-    public Item() {
+    public Item(String name, String description, double price, String pictureURL, Category category) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.pictureURL = pictureURL;
+        this.category = category;
     }
 
     public String getName() {
@@ -92,5 +99,13 @@ public class Item {
 
     public void setGame(Category category) {
         this.category = category;
+    }
+
+    public int getTimesOrdered() {
+        return timesOrdered;
+    }
+
+    public void setTimesOrdered(int timesOrdered) {
+        this.timesOrdered = timesOrdered;
     }
 }

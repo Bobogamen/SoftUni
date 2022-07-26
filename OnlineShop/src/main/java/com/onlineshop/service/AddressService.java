@@ -5,7 +5,10 @@ import com.onlineshop.model.entity.Address;
 import com.onlineshop.model.entity.UserEntity;
 import com.onlineshop.repository.AddressRepository;
 import com.onlineshop.repository.UserRepository;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AddressService {
@@ -19,14 +22,15 @@ public class AddressService {
     }
 
 
-    public void addAddress(AddAddressDTO addAddressDTO, long profileId) {
+    public void addAddress(AddAddressDTO addAddressDTO, UserDetails user) {
 
-        UserEntity userById = userRepository.getUserById(profileId);
+        Optional<UserEntity> userOpt = userRepository.findUserByEmail(user.getUsername());
 
         Address address = new Address();
         address.setName(addAddressDTO.getName());
-        address.setDescription(addAddressDTO.getDescription());
-        address.setUser(userById);
+        address.setAddressLine(addAddressDTO.getAddressLine());
+        address.setTown(addAddressDTO.getTown());
+        address.setUser(userOpt.get());
 
         this.addressRepository.save(address);
     }

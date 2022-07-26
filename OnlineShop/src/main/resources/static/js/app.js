@@ -1,4 +1,4 @@
-function addAddressForm() {
+function showForm() {
     let x = document.getElementById("popupForm");
 
     if (x.style.display === "none") {

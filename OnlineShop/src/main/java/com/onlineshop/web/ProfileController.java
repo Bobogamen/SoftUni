@@ -3,6 +3,7 @@ package com.onlineshop.web;
 import com.onlineshop.model.dto.AddAddressDTO;
 import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.service.AddressService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,10 +32,11 @@ public class ProfileController {
         return new AddAddressDTO();
     }
 
-    @PostMapping("/add-address/{profile-id}")
-    public String addAddress(@PathVariable("profile-id") long profileId, AddAddressDTO addAddressDTO) {
+    @PostMapping("/add-address")
+    public String addAddress(AddAddressDTO addAddressDTO,
+                             @AuthenticationPrincipal ShopUserDetails user) {
 
-        this.addressService.addAddress(addAddressDTO, profileId);
+        this.addressService.addAddress(addAddressDTO, user);
 
         return "redirect:/users/profile";
     }
