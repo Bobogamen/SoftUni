@@ -31,7 +31,8 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String register(@Valid RegistrationDTO registrationDTO,
-                           BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("registrationDTO", registrationDTO);

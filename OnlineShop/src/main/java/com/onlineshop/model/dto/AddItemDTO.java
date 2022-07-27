@@ -7,20 +7,21 @@ import javax.validation.constraints.*;
 public class AddItemDTO {
 
     @NotEmpty(message = "Name cannot be empty")
-//    @Size(min = 5, message = "Name must at least 5 character")
+    @Size(min = 3, message = "Name must at least 3 character")
     private String name;
 
-//    @NotEmpty(message = "Description cannot be empty")
+    @NotEmpty(message = "Description cannot be empty")
     private String description;
 
-//    @Positive(message = "Price must be positive number")
-//    @Digits(integer = 10, fraction = 2, message = "Price is more than 10 digits")
+    @Positive(message = "Price must be positive number")
+    @Digits(integer = 10, fraction = 2, message = "Price is more than 10 digits")
     private double price;
 
-//    @NotNull(message = "Enter 0 if discount is not applied")
+    @NotNull(message = "Enter 0 if discount is not applied")
+    @PositiveOrZero
     private double discount;
 
-//    @NotNull(message = "Item must be in category")
+    @NotNull(message = "Item must be in category")
     private CategoryEnum category;
 
     public String getName() {

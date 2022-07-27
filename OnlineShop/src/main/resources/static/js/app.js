@@ -1,3 +1,25 @@
+function loadSearchResult()
+{
+
+    $.ajax({
+        type: 'get',
+        url: [[ @{'/url'} ]],
+
+        success: function(data){
+
+            /*<![CDATA[*/
+
+
+            $('.search_list').html(data);
+
+
+            /*]]>*/
+        },
+
+    })
+
+}
+
 window.setTimeout(successMessage, 3000)
 
 function successMessage() {

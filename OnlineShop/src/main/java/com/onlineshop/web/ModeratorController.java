@@ -26,19 +26,23 @@ public class ModeratorController {
         this.pictureService = pictureService;
     }
 
-    @GetMapping("/moderator")
-    public String moderator() {
-        return "moderator";
-    }
-
     @ModelAttribute("addItemDTO")
     public AddItemDTO addItemDTO() {
         return new AddItemDTO();
     }
 
+    @GetMapping("/moderator")
+    public String moderator() {
+        return "moderator";
+    }
+
+    @GetMapping("/moderator/add-item")
+    public String addItem() {
+        return "add-item";
+    }
+
     @PostMapping("/moderator/add-item")
     public String addItem(@RequestParam("picture") MultipartFile picture, @Valid AddItemDTO addItemDTO,
-                          @AuthenticationPrincipal ShopUserDetails user,
                           BindingResult bindingResult,
                           RedirectAttributes redirectAttributes) throws IOException {
 
@@ -46,7 +50,7 @@ public class ModeratorController {
             redirectAttributes.addFlashAttribute("addItemDTO", addItemDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addItemDTO", bindingResult);
 
-            return "redirect:/users/moderator";
+            return "redirect:/users/moderator/add-item";
         }
 
         long addedItemId = this.itemService.addItem(addItemDTO);

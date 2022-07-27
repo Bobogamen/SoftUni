@@ -32,7 +32,8 @@
                                                class="form-control form-control-lg">
                                         <small th:if="${#fields.hasErrors('name')}"
                                                th:errors="*{name}"
-                                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small></div>
+                                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small>
+                                    </div>
 
                                     <div class="form-outline mb-4">
                                         <input th:field="*{email}"
@@ -41,7 +42,8 @@
                                                class="form-control form-control-lg">
                                         <small th:if="${#fields.hasErrors('email')}"
                                                th:errors="*{email}"
-                                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small></div>
+                                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small>
+                                    </div>
 
                                     <div class="form-outline mb-4">
                                         <input th:field="*{password}"
@@ -50,7 +52,8 @@
                                                class="form-control form-control-lg">
                                         <small th:if="${#fields.hasErrors('password')}"
                                                th:errors="*{password}"
-                                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small></div>
+                                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small>
+                                    </div>
 
                                     <div class="form-outline mb-4">
                                         <input th:errorclass="is-invalid"
@@ -61,19 +64,18 @@
                                                th:errors="*{confirmPassword}"
                                                class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small>
                                     </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                            Register
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="d-flex justify-content-center">
-                                <button type="submit"
-                                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                                    Register
-                                </button>
-                            </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 </main>

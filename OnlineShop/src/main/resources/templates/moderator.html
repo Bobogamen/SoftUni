@@ -17,62 +17,7 @@
     </div>
     <div class="bg-light border border-danger rounded m-3">
         <p class="h3 text-center">Items</p>
-        <button type="submit" class="btn btn-success p-1 mb-2 addItemButton" onclick="showForm()">Add item</button>
-        <div class="loginPopup">
-            <div id="popupForm" class="p-3">
-                <form th:action="@{/users/moderator/add-item}"
-                      th:method="POST"
-                      th:object="${addItemDTO}" class="formContainer" enctype="multipart/form-data">
-
-                    <label for="name"></label>
-                    <small>Enter name</small>
-                    <input th:field="*{name}"
-                           th:errorclass="is-invalid" type="text" id="name" name="name">
-                    <small th:if="${#fields.hasErrors('name')}"
-                           th:errors="*{name}"
-                           class="invalid-feedback bg-danger text-light rounded ml-3"></small>
-
-                    <label for="description"></label>
-                    <small>Describe item</small>
-                    <input th:field="*{description}" th:errorclass="is-invalid" type="text" id="description"
-                           name="description">
-                    <small th:if="${#fields.hasErrors('description')}"
-                           th:errors="*{description}"
-                           class="invalid-feedback bg-danger text-light rounded ml-3"></small>
-
-                    <label for="price"></label>
-                    <small>Enter price</small>
-                    <input th:field="*{price}" th:errorclass="is-invalid" type="text" id="price" name="price">
-                    <small th:if="${#fields.hasErrors('price')}"
-                           th:errors="*{price}"
-                           class="invalid-feedback bg-danger text-light rounded ml-3"></small>
-
-                    <label for="discount"></label>
-                    <small>Ender discount</small>
-                    <input th:field="*{discount}" th:errorclass="is-invalid" type="text" id="discount" name="discount">
-                    <small th:if="${#fields.hasErrors('discount')}"
-                           th:errors="*{discount}"
-                           class="invalid-feedback bg-danger text-light rounded ml-3"></small>
-
-                    <label for="category"></label>
-                    <small>Choose category</small>
-                    <select th:errorclass="is-invalid" class="browser-default custom-select mb-2" id="category"
-                            name="category">
-                        <option value="">Select category</option>
-                        <option th:each="c : ${T(com.onlineshop.model.enums.CategoryEnum).values()}"
-                                th:text="${c}"
-                                th:value="${c}"
-                                th:selected="${c} == *{category}">Category
-                        </option>
-                    </select>
-                    <small th:if="${#fields.hasErrors('category')}"
-                           th:errors="*{category}"
-                           class="invalid-feedback bg-danger text-light rounded ml-3"></small>
-                    <input type="file" name="picture" id="picture" style="width: 250px;" required/>
-                    <button type="submit" class="btn mt-3">Submit</button>
-                </form>
-            </div>
-        </div>
+        <button type="submit" class="btn btn-success p-1 mb-2 addItemButton" onclick="window.location='/users/moderator/add-item'">Add item</button>
     </div>
 </main>
 
