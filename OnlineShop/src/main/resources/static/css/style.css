@@ -157,14 +157,14 @@ form{
 }
 .formContainer {
     max-width: 600px;
-    padding: 20px;
+    padding: 12px;
     background-color: #33b5e5;
     border: #df4759;
 }
 .formContainer input[type=text] {
     width: 100%;
-    padding: 15px;
-    margin: 5px 0 20px 0;
+    padding: 3px;
+    margin: 3px 0 20px 0;
     border: none;
     background: #eee;
 }
@@ -173,7 +173,7 @@ form{
     outline: none;
 }
 .formContainer .btn {
-    padding: 12px 20px;
+    padding: 8px 14px;
     border: none;
     background-color: #8ebf42;
     color: #fff;

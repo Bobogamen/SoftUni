@@ -18,16 +18,21 @@ public class ItemService {
         this.categoryRepository = categoryRepository;
     }
 
-    public void addItem(AddItemDTO addItemDTO) {
+    public long addItem(AddItemDTO addItemDTO) {
 
         Category category = this.categoryRepository.getByName(addItemDTO.getCategory());
 
-        Item item = new Item(addItemDTO.getName(),
-                addItemDTO.getDescription(),
-                addItemDTO.getPrice(),
-                addItemDTO.getPictureURL(),
-                category);
+        Item item = new Item(addItemDTO.getName(), addItemDTO.getDescription(), addItemDTO.getPrice(), category);
 
         this.itemRepository.save(item);
+
+        return item.getId();
+    }
+
+    public void setPictureOfItem(long id, String picture) {
+        Item itemById = this.itemRepository.getItemById(id);
+        itemById.setPicture(picture);
+
+        this.itemRepository.save(itemById);
     }
 }

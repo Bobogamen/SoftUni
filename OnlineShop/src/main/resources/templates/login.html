@@ -19,8 +19,12 @@
                     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                         <div class="card bg-transparent border-0">
                             <div class="card-body p-1">
+                                <div th:if="${success}" id="success"
+                                     class="alert alert-success text-center" style="display:block">You have register
+                                    successfully!
+                                </div>
                                 <div class="h3 text-uppercase text-center mb-3 mt-5">Login</div>
-                                <form th:action="@{/login}"
+                                <form th:action="@{/login}"34
                                       th:method="POST">
                                     <div class="form-outline mb-4">
                                         <input type="text" placeholder="Your email" name="username" id="username"
@@ -50,7 +54,7 @@
     </section>
 </main>
 
-
+<script src="/js/app.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-3.5.1.slim.min.js"></script>
 </body>

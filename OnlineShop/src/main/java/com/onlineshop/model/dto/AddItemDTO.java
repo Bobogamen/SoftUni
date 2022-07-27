@@ -2,28 +2,25 @@ package com.onlineshop.model.dto;
 
 import com.onlineshop.model.enums.CategoryEnum;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.*;
 
 public class AddItemDTO {
 
-    @NotEmpty
+    @NotEmpty(message = "Name cannot be empty")
+//    @Size(min = 5, message = "Name must at least 5 character")
     private String name;
 
-    @NotEmpty
+//    @NotEmpty(message = "Description cannot be empty")
     private String description;
 
-    @NotNull
-    private String pictureURL;
-
-    @Positive
+//    @Positive(message = "Price must be positive number")
+//    @Digits(integer = 10, fraction = 2, message = "Price is more than 10 digits")
     private double price;
 
-    @Positive
+//    @NotNull(message = "Enter 0 if discount is not applied")
     private double discount;
 
-    @NotNull
+//    @NotNull(message = "Item must be in category")
     private CategoryEnum category;
 
     public String getName() {
@@ -40,14 +37,6 @@ public class AddItemDTO {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getPictureURL() {
-        return pictureURL;
-    }
-
-    public void setPictureURL(String pictureURL) {
-        this.pictureURL = pictureURL;
     }
 
     public double getPrice() {

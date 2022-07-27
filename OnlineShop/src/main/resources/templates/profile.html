@@ -12,7 +12,9 @@
 <body>
 <nav th:replace="fragments/nav"></nav>
 <main>
-
+    <div th:if="${success}" id="success"
+         class="alert alert-success text-center" style="display:block">Address successfully added!
+    </div>
     <div class="container py-5 bg-transparent">
         <div class="row m-1 bg-light border border-danger rounded text-center">
             <div class="col-4 p-2 m-2 bg-info border border-danger rounded align-self-center">
@@ -62,6 +64,7 @@
 
 
 </main>
+
 <script src="/js/app.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery-3.5.1.slim.min.js"></script>

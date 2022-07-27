@@ -7,7 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -34,9 +34,12 @@ public class ProfileController {
 
     @PostMapping("/add-address")
     public String addAddress(AddAddressDTO addAddressDTO,
-                             @AuthenticationPrincipal ShopUserDetails user) {
+                             @AuthenticationPrincipal ShopUserDetails user,
+                             RedirectAttributes redirectAttributes) {
 
         this.addressService.addAddress(addAddressDTO, user);
+
+        redirectAttributes.addFlashAttribute("success", true);
 
         return "redirect:/users/profile";
     }

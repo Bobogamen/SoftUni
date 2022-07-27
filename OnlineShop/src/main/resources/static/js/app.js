@@ -1,3 +1,9 @@
+window.setTimeout(successMessage, 3000)
+
+function successMessage() {
+    document.getElementById("success").style.display="none";
+}
+
 function showForm() {
     let x = document.getElementById("popupForm");
 
@@ -79,3 +85,15 @@ function loadUsers(event) {
         }))
         .catch(error => console.log('error', error));
 }
+// //For viewing BLOB object.
+// var xhr = new XMLHttpRequest();
+// xhr.open("GET", "http://localhost:8080/add-file/1");
+// xhr.responseType = "blob";
+// xhr.onload = response;
+// xhr.send();
+//
+// function response(e) {
+//     var urlCreator = window.URL || window.webkitURL;
+//     var imageURL = urlCreator.createObjectURL(this.response);
+//     document.querySelector("#image").src = imageURL;
+// }

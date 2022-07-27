@@ -20,6 +20,9 @@ spring:
     password: 1234
     username: root
     url: jdbc:mysql://localhost:3306/onlineshop?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+  thymeleaf:
+    cache: false
+    enabled: true
 logging:
   level:
     org:

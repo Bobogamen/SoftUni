@@ -16,25 +16,27 @@ public class Item {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = false, columnDefinition="DECIMAL(5,2)")
+    @Column(nullable = false, columnDefinition="DECIMAL(10,2)")
     private double price;
 
     private int discount;
 
-    @Column(nullable = false)
-    private String pictureURL;
-
     private int timesOrdered;
+
+    private String picture;
 
     @OneToOne
     private Category category;
 
-    public Item(String name, String description, double price, String pictureURL, Category category) {
+    public Item(String name, String description, double price, Category category) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.pictureURL = pictureURL;
         this.category = category;
+    }
+
+    public Item() {
+
     }
 
     public String getName() {
@@ -85,14 +87,6 @@ public class Item {
         this.price = price;
     }
 
-    public String getPictureURL() {
-        return pictureURL;
-    }
-
-    public void setPictureURL(String pictureURL) {
-        this.pictureURL = pictureURL;
-    }
-
     public Category getGame() {
         return category;
     }
@@ -107,5 +101,13 @@ public class Item {
 
     public void setTimesOrdered(int timesOrdered) {
         this.timesOrdered = timesOrdered;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

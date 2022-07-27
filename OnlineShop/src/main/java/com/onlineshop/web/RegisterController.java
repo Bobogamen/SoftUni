@@ -42,6 +42,8 @@ public class RegisterController {
 
         this.userService.register(registrationDTO);
 
+        redirectAttributes.addFlashAttribute("success", true);
+
 
         return "redirect:/login";
     }
