@@ -15,10 +15,49 @@
     <div th:if="${success}" id="success"
          class="alert alert-success text-center" style="display:block">Item successfully added!
     </div>
-    <div class="bg-light border border-danger rounded m-3">
-        <p class="h3 text-center">Items</p>
-        <button type="submit" class="btn btn-success p-1 mb-2 addItemButton" onclick="window.location='/users/moderator/add-item'">Add item</button>
+    <div th:if="${delete}" id="delete"
+         class="alert alert-danger text-center" style="display:block">Item deleted!
     </div>
+    <p class="h3 text-center">Items</p>
+    <a th:href="@{/users/moderator/add-item}" class="btn btn-success p-1 mb-2 addItemButton">Add item</a>
+
+    <table class="table-sm table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Times ordered</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${allItems}">
+            <td th:text="${item.id}">keyvalue</td>
+            <td th:text="${item.name}">keyvalue</td>
+            <td th:text="${item.price}">keyvalue</td>
+            <td th:text="${item.discount}">keyvalue</td>
+            <td th:text="${item.timesOrdered}">keyvalue</td>
+            <td th:text="${item.category.name}">keyvalue</td>
+            <td>
+                <form th:action="@{/users/moderator/delete/{id}(id=${item.id})}"
+                      th:method="POST">
+                    <button type="submit" class="btn btn-danger">DELETE</button>
+                </form>
+                <form th:action="@{/users/moderator/delete/{id}(id=${item.id})}"
+                      th:method="POST">
+                    <button type="submit" class="btn btn-info">Description</button>
+                </form>
+                <form th:action="@{/users/moderator/delete/{id}(id=${item.id})}"
+                      th:method="POST">
+                    <button type="submit" class="btn btn-warning">Picture</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </main>
 
 <script src="/js/app.js"></script>

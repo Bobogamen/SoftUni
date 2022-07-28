@@ -3,12 +3,13 @@ package com.onlineshop.web;
 import com.onlineshop.model.dto.UsersInfoDTO;
 import com.onlineshop.service.AdminService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/users/")
 public class AdminController {
 
@@ -18,21 +19,16 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @RequestMapping("/admin")
+    @GetMapping("/admin")
     public ModelAndView admin() {
 
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("allUsers", this.adminService.getAllUsers());
         modelAndView.setViewName("admin.html");
         return modelAndView;
     }
 
-    @GetMapping("/admin/all-users")
-    public ResponseEntity<List<UsersInfoDTO>> getAllUsers() {
-
-        return ResponseEntity.ok(this.adminService.getAllUsers());
-    }
-
-    @GetMapping("/admin/delete/{id}")
+    @PostMapping("/admin/delete/{id}")
     public ModelAndView deleteUser(@PathVariable long id) {
 
         this.adminService.deleteUser(id);

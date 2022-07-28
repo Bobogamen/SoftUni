@@ -1,29 +1,8 @@
-function loadSearchResult()
-{
-
-    $.ajax({
-        type: 'get',
-        url: [[ @{'/url'} ]],
-
-        success: function(data){
-
-            /*<![CDATA[*/
-
-
-            $('.search_list').html(data);
-
-
-            /*]]>*/
-        },
-
-    })
-
-}
-
 window.setTimeout(successMessage, 3000)
 
 function successMessage() {
     document.getElementById("success").style.display="none";
+    document.getElementById("delete").style.display="none";
 }
 
 function showForm() {

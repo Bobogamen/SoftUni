@@ -7,6 +7,8 @@ import com.onlineshop.repository.CategoryRepository;
 import com.onlineshop.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ItemService {
 
@@ -34,5 +36,13 @@ public class ItemService {
         itemById.setPicture(picture);
 
         this.itemRepository.save(itemById);
+    }
+
+    public List<Item> getAllItems() {
+        return this.itemRepository.findAll();
+    }
+
+    public void deleteItemById(long id) {
+        this.itemRepository.deleteById(id);
     }
 }

@@ -1,6 +1,8 @@
 package com.onlineshop.service;
 
 import com.onlineshop.model.dto.UsersInfoDTO;
+import com.onlineshop.model.entity.UserEntity;
+import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +17,8 @@ public class AdminService {
         this.userRepository = userRepository;
     }
 
-    public List<UsersInfoDTO> getAllUsers() {
-        return this.userRepository.getAllUsersInfo();
+    public List<UserEntity> getAllUsers() {
+        return this.userRepository.findAll();
     }
 
     public void deleteUser(long id) {

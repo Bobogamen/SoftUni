@@ -43,6 +43,18 @@ public class UserEntity {
         this.roles = new HashSet<>();
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public String getRolesNames() {
+        return String.join("; ", roles.stream().map(role -> role.getName().name()).toList());
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     public long getId() {
         return id;
     }

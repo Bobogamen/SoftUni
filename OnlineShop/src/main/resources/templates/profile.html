@@ -27,13 +27,6 @@
             <div class="col p-2 m-2 bg-light border border-danger rounded">
                 <p class="h3 text-center">Addresses</p>
                 <button type="submit" class="btn btn-success p-1 mb-2" onclick="showForm()">Add</button>
-                <table>
-                    <tr th:each="a: ${#authentication.getPrincipal().getAddresses()}">
-                        <td th:text="${a.name}"/>
-                        <td th:text="${a.addressLine}"/>
-                        <td th:text="${a.town}"/>
-                    </tr>
-                </table>
                 <div class="loginPopup">
                     <div id="popupForm" style="display:none">
                         <form th:action="@{/users/add-address}"
@@ -53,6 +46,27 @@
                         </form>
                     </div>
                 </div>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address line</th>
+                        <th>Town</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="a: ${addresses}">
+                        <td th:text="${a.name}" />
+                        <td th:text="${a.addressLine}" />
+                        <td th:text="${a.town}" />
+<!--                        <td>-->
+<!--                            <a th:href="@{/showUpdateForm(employeeId=${employee.id})}" class="btn btn-info">Update</a>-->
+<!--                        </td>-->
+                    </tr>
+                    </tbody>
+
+                </table>
             </div>
         </div>
         <div class="row m-1 bg-light border border-danger rounded text-center">

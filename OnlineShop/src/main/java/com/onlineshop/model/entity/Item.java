@@ -16,7 +16,7 @@ public class Item {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = false, columnDefinition="DECIMAL(10,2)")
+    @Column(nullable = false, columnDefinition = "DECIMAL(10,2)")
     private double price;
 
     private int discount;
@@ -39,36 +39,20 @@ public class Item {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(int discount) {
-        this.discount = discount;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -87,12 +71,12 @@ public class Item {
         this.price = price;
     }
 
-    public Category getGame() {
-        return category;
+    public int getDiscount() {
+        return discount;
     }
 
-    public void setGame(Category category) {
-        this.category = category;
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 
     public int getTimesOrdered() {
@@ -110,4 +94,14 @@ public class Item {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
+
+
