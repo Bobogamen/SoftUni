@@ -2,7 +2,6 @@ window.setTimeout(successMessage, 3000)
 
 function successMessage() {
     document.getElementById("success").style.display="none";
-    document.getElementById("delete").style.display="none";
 }
 
 function showForm() {

@@ -1,8 +1,6 @@
 package com.onlineshop.service;
 
-import com.onlineshop.model.dto.UsersInfoDTO;
 import com.onlineshop.model.entity.UserEntity;
-import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.repository.UserRepository;
 import org.springframework.stereotype.Service;
 

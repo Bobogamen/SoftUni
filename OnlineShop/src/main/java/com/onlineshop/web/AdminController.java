@@ -1,13 +1,9 @@
 package com.onlineshop.web;
 
-import com.onlineshop.model.dto.UsersInfoDTO;
 import com.onlineshop.service.AdminService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/users/")

@@ -32,10 +32,10 @@ public class UserEntity {
     @Column(columnDefinition="DECIMAL(10,2)")
     private double ordersSum;
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = Address.class, mappedBy = "userEntity")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userEntity")
     private List<Address> address;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class)
     private Set<Role> roles;
 
     public UserEntity() {

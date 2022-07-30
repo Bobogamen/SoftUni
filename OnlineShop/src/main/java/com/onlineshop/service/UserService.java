@@ -31,6 +31,14 @@ public class UserService {
 
     }
 
+    public void editNameByUserId(long id, String name) {
+        UserEntity userById = this.userRepository.getUserById(id);
+        userById.setName(name);
+
+        this.userRepository.save(userById);
+    }
+
+
 //    public void login(UserEntity userEntity) {
 //
 //        UserDetails userDetails = userDetailsService.loadUserByUsername(userEntity.getEmail());

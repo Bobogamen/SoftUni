@@ -15,10 +15,7 @@
     <div th:if="${success}" id="success"
          class="alert alert-success text-center" style="display:block">Item successfully added!
     </div>
-    <div th:if="${delete}" id="delete"
-         class="alert alert-danger text-center" style="display:block">Item deleted!
-    </div>
-    <p class="h3 text-center">Items</p>
+    <p class="h2 text-center">Items</p>
     <a th:href="@{/users/moderator/add-item}" class="btn btn-success p-1 mb-2 addItemButton">Add item</a>
 
     <table class="table-sm table-hover">
@@ -44,15 +41,7 @@
             <td>
                 <form th:action="@{/users/moderator/delete/{id}(id=${item.id})}"
                       th:method="POST">
-                    <button type="submit" class="btn btn-danger">DELETE</button>
-                </form>
-                <form th:action="@{/users/moderator/delete/{id}(id=${item.id})}"
-                      th:method="POST">
-                    <button type="submit" class="btn btn-info">Description</button>
-                </form>
-                <form th:action="@{/users/moderator/delete/{id}(id=${item.id})}"
-                      th:method="POST">
-                    <button type="submit" class="btn btn-warning">Picture</button>
+                    <button type="submit" class="btn btn-info">Update</button>
                 </form>
             </td>
         </tr>
