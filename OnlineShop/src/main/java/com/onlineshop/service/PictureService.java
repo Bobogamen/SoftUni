@@ -37,4 +37,8 @@ public class PictureService {
 
         return renamedFile.toString();
     }
+
+    public void deletePicture(Path picturePath) throws IOException {
+        Files.delete(picturePath);
+    }
 }

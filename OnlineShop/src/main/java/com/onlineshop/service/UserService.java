@@ -1,11 +1,13 @@
 package com.onlineshop.service;
 
 import com.onlineshop.model.dto.RegistrationDTO;
+import com.onlineshop.model.entity.Address;
 import com.onlineshop.model.entity.UserEntity;
 import com.onlineshop.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @Service
 public class UserService {
@@ -36,6 +38,10 @@ public class UserService {
         userById.setName(name);
 
         this.userRepository.save(userById);
+    }
+
+    public String getNameByUserEntityId(long id) {
+        return this.userRepository.getNameByUserEntityId(id);
     }
 
 

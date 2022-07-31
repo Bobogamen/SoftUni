@@ -24,37 +24,66 @@ public class ProfileController {
         this.addressService = addressService;
         this.userService = userService;
     }
+    @ModelAttribute("addAddressDTO")
+    public AddAddressDTO addAddressDTO()  {
+        return new AddAddressDTO();
+    }
 
     @GetMapping("/profile")
     public ModelAndView profile(@AuthenticationPrincipal ShopUserDetails user) {
 
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", this.userService.getNameByUserEntityId(user.getId()));
         modelAndView.addObject("addresses", getUserAddresses(user));
-        modelAndView.setViewName("profile.html");
-
+        modelAndView.setViewName("profile");
 
         return modelAndView;
     }
 
     private List<Address> getUserAddresses(ShopUserDetails user) {
-        return this.addressService.getAddressesById(user.getId());
+        return this.addressService.getAddressesByUserEntityId(user.getId());
     }
 
-    @GetMapping("/profile/edit")
-    public ModelAndView editAddress(@AuthenticationPrincipal ShopUserDetails user) {
+    @GetMapping("/profile/edit-name")
+    public ModelAndView editProfile(@AuthenticationPrincipal ShopUserDetails user) {
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("userInfo", user.getName());
         modelAndView.addObject("addresses", getUserAddresses(user));
-        modelAndView.setViewName("edit-profile.html");
-
+        modelAndView.addObject("userName", this.userService.getNameByUserEntityId(user.getId()));
+        modelAndView.setViewName("edit-name");
 
         return modelAndView;
     }
 
-    @ModelAttribute("addAddressDTO")
-    public AddAddressDTO addAddressDTO()  {
-        return new AddAddressDTO();
+    @PostMapping("/profile/edit-name")
+    public String editName(@AuthenticationPrincipal ShopUserDetails user,
+                           String name, RedirectAttributes redirectAttributes) {
+
+        this.userService.editNameByUserId(user.getId(), name);
+
+        redirectAttributes.addFlashAttribute("success", true);
+
+        return "redirect:/users/profile";
+    }
+
+    @GetMapping("/profile/edit-address/{id}")
+    public ModelAndView editAddress(@PathVariable long id) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("addressById", this.addressService.getAddressesById(id));
+        modelAndView.setViewName("edit-address");
+
+        return modelAndView;
+    }
+
+    @PostMapping("/profile/edit-address/{id}")
+    public String editAddress(@PathVariable long id, AddAddressDTO addAddressDTO,
+                              RedirectAttributes redirectAttributes) {
+        this.addressService.editAddressById(id, addAddressDTO);
+
+        redirectAttributes.addFlashAttribute("success", true);
+
+        return "redirect:/users/profile";
     }
 
     @PostMapping("/add-address")
@@ -69,14 +98,12 @@ public class ProfileController {
         return "redirect:/users/profile";
     }
 
-    @PostMapping("/profile/edit")
-    public ModelAndView editProfile(@AuthenticationPrincipal ShopUserDetails user, String name) {
+    @PostMapping("/profile/delete/{id}")
+    public String deleteAddress(@PathVariable long id, RedirectAttributes redirectAttributes) {
+        this.addressService.deleteAddressById(id);
 
-        this.userService.editNameByUserId(user.getId(), String name);
+        redirectAttributes.addFlashAttribute("success", true);
 
-
-
-
-        return profile(user);
+        return "redirect:/users/profile";
     }
 }

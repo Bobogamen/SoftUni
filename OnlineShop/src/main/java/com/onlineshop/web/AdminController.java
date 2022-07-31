@@ -20,7 +20,7 @@ public class AdminController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("allUsers", this.adminService.getAllUsers());
-        modelAndView.setViewName("admin.html");
+        modelAndView.setViewName("admin");
         return modelAndView;
     }
 
@@ -31,12 +31,6 @@ public class AdminController {
 
         return admin();
     }
-
-
-
-
-
-
 }
 
 

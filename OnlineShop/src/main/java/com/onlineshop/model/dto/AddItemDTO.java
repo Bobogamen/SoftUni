@@ -7,7 +7,7 @@ import javax.validation.constraints.*;
 public class AddItemDTO {
 
     @NotEmpty(message = "Name cannot be empty")
-    @Size(min = 3, message = "Name must at least 3 character")
+    @Size(min = 2, message = "Name must at least 2 character")
     private String name;
 
     @NotEmpty(message = "Description cannot be empty")
@@ -19,7 +19,7 @@ public class AddItemDTO {
 
     @NotNull(message = "Enter 0 if discount is not applied")
     @PositiveOrZero
-    private double discount;
+    private int discount;
 
     @NotNull(message = "Item must be in category")
     private CategoryEnum category;
@@ -57,11 +57,11 @@ public class AddItemDTO {
     }
 
 
-    public double getDiscount() {
+    public int getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(int discount) {
         this.discount = discount;
     }
 }

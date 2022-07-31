@@ -15,7 +15,7 @@ public class RegistrationDTO {
     @UniqueEmail
     private String email;
     @NotEmpty(message = "Name cannot be empty")
-    @Size(min = 5, max = 30, message = "Name must be between 5 and 30 character")
+    @Size(min = 2, max = 30, message = "Name must be between 2 and 30 character")
     private String name;
     @NotEmpty(message = "Password cannot be empty")
     @Size(min = 5, max = 20, message = "Password must be between 5 and 20 symbols")

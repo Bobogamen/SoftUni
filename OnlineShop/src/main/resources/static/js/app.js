@@ -14,14 +14,19 @@ function showForm() {
     }
 }
 
-function deleteConfirmation(link) {
-    let message = 'Are you sure you want to delete this user?'
+//show the confirmation div
+function deleteConfirmation() {
+    document.getElementById("delete").hidden=false
+}
 
-    if (message === true) {
-        return location.href = link
-    } else {
-        return false
-    }
+//redirect to the delete profile script
+function confirmYes() {
+    return true;
+}
+
+//hide the confirmation div
+function confirmNo() {
+    document.getElementById("delete").hidden=true
 }
 
 let refreshUsers = document.getElementById('refresh')

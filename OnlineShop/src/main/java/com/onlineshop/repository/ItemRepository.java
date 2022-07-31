@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface ItemRepository extends JpaRepository<Item, Long> {
     Item getItemById(long id);
 
-
 }

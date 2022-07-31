@@ -1,13 +1,8 @@
 package com.onlineshop.web;
 
 import com.onlineshop.model.dto.AddItemDTO;
-import com.onlineshop.model.entity.Item;
-import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.service.ItemService;
 import com.onlineshop.service.PictureService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.List;
+import java.nio.file.Path;
 
 @Controller
 @RequestMapping("/users/")
@@ -42,11 +37,10 @@ public class ModeratorController {
         ModelAndView modelAndView = new ModelAndView();
 
         modelAndView.addObject("allItems", this.itemService.getAllItems());
-        modelAndView.setViewName("moderator.html");
+        modelAndView.setViewName("moderator");
 
         return modelAndView;
     }
-
 
     @GetMapping("/moderator/add-item")
     public String addItem() {
@@ -54,9 +48,8 @@ public class ModeratorController {
     }
 
     @PostMapping("/moderator/add-item")
-    public String addItem(@RequestParam("picture") MultipartFile picture, @Valid AddItemDTO addItemDTO,
-                          BindingResult bindingResult,
-                          RedirectAttributes redirectAttributes) throws IOException {
+    public String addItem(@RequestParam() MultipartFile picture, @Valid AddItemDTO addItemDTO,
+                          BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("addItemDTO", addItemDTO);
@@ -67,9 +60,39 @@ public class ModeratorController {
 
         long addedItemId = this.itemService.addItem(addItemDTO);
 
-        String pictureURL = this.pictureService.save(picture, addItemDTO.getName() + "_" + addedItemId);
+        String pictureURL = getPictureURL(picture, addItemDTO, addedItemId);
 
         this.itemService.setPictureOfItem(addedItemId, pictureURL);
+
+        redirectAttributes.addFlashAttribute("success", true);
+
+        return "redirect:/users/moderator";
+    }
+
+    private String getPictureURL(MultipartFile picture, AddItemDTO addItemDTO, long addedItemId) throws IOException {
+        return this.pictureService.save(picture, addItemDTO.getName() + "_" + addedItemId);
+    }
+
+    @GetMapping("/moderator/edit-item/{id}")
+    public ModelAndView editItem(@PathVariable long id, RedirectAttributes redirectAttributes) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("item", this.itemService.getItemById(id));
+        modelAndView.setViewName("edit-item");
+
+        return modelAndView;
+    }
+
+    @PostMapping("/moderator/edit-item/{id}")
+    public String editItem(@PathVariable long id, @RequestParam() MultipartFile picture, AddItemDTO addItemDTO,
+                           RedirectAttributes redirectAttributes) throws IOException {
+
+        this.itemService.editItemById(id, addItemDTO);
+
+        if (!picture.isEmpty()) {
+            this.pictureService.deletePicture(Path.of(this.itemService.getItemById(id).getPicture()));
+            this.itemService.setPictureOfItem(id, getPictureURL(picture, addItemDTO, id));
+        }
 
         redirectAttributes.addFlashAttribute("success", true);
 

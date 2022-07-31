@@ -78,11 +78,13 @@ table th{
     padding: 10px;
     border: 2px solid black;
     font-weight: bold;
+    vertical-align: middle;
 
 }
 table tbody td{
     margin: auto;
     text-align: center;
+    vertical-align: middle;
     border: 2px solid black;
     padding: 0.7%;
 
@@ -93,6 +95,7 @@ table button{
     border: none;
     padding: 1px;
     border-radius: 5px;
+    width: fit-content;
 
 }
 
