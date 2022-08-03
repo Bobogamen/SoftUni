@@ -4,6 +4,7 @@ import com.onlineshop.service.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/users/")
@@ -25,11 +26,13 @@ public class AdminController {
     }
 
     @PostMapping("/admin/delete/{id}")
-    public ModelAndView deleteUser(@PathVariable long id) {
+    public String deleteUser(@PathVariable long id, RedirectAttributes redirectAttributes) {
 
         this.adminService.deleteUser(id);
 
-        return admin();
+        redirectAttributes.addFlashAttribute("success", true);
+
+        return "redirect:/users/admin";
     }
 }
 

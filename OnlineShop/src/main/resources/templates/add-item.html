@@ -12,8 +12,9 @@
 <body>
 <nav th:replace="fragments/nav"></nav>
 <main>
+    <p class="h2 text-center">Add item</p>
     <div class="bg-transparent m-3 d-flex align-items-center justify-content-center">
-        <div class="form-control bg-info" style="max-width: 45%;" >
+        <div class="form-control bg-info w-75">
             <div class="p-3">
                 <form th:action="@{/users/moderator/add-item}"
                       th:method="POST"
@@ -26,7 +27,7 @@
                                class="form-control form-control-lg">
                         <small th:if="${#fields.hasErrors('name')}"
                                th:errors="*{name}"
-                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small>
+                               class="invalid-feedback bg-danger text-light text-left rounded ml-3 p-1"></small>
                     </div>
 
                     <div class="form-outline mb-4">
@@ -36,7 +37,7 @@
                                   class="form-control form-control-lg"></textarea>
                         <small th:if="${#fields.hasErrors('description')}"
                                th:errors="*{description}"
-                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small>
+                               class="invalid-feedback bg-danger text-light text-left rounded ml-3 p-1"></small>
                     </div>
 
                     <div class="form-outline mb-4">
@@ -46,7 +47,7 @@
                                class="form-control form-control-lg" required>
                         <small th:if="${#fields.hasErrors('price')}"
                                th:errors="*{price}"
-                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small>
+                               class="invalid-feedback bg-danger text-light text-left rounded ml-3 p-1"></small>
                     </div>
 
                     <div class="form-outline mb-4">
@@ -56,7 +57,7 @@
                                class="form-control form-control-lg" required>
                         <small th:if="${#fields.hasErrors('discount')}"
                                th:errors="*{discount}"
-                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small>
+                               class="invalid-feedback bg-danger text-light text-left rounded ml-3 p-1"></small>
                     </div>
 
                     <div class="form-outline mb-4">
@@ -72,7 +73,7 @@
                         </select>
                         <small th:if="${#fields.hasErrors('category')}"
                                th:errors="*{category}"
-                               class="invalid-feedback bg-danger text-light text-left rounded ml-3"></small>
+                               class="invalid-feedback bg-danger text-light text-left rounded ml-3 p-1"></small>
                     </div>
 
                     <input type="file" accept=".jpg, .jpeg, .png" name="picture" id="picture" style="width: 250px;" required/>

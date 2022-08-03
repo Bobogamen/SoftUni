@@ -35,7 +35,7 @@ public class UserEntity {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "userEntity")
     private List<Address> address;
 
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public UserEntity() {

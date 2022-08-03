@@ -16,17 +16,18 @@
          class="alert alert-success text-center" style="display:inline-block; margin: auto; width: fit-content;">
         Successfully!
     </div>
-    <div class="container py-5 bg-transparent col-10">
+    <div class="container py-5 bg-transparent col-12">
         <div class="row m-1 bg-light border border-danger rounded text-center">
-            <div class="col-3 p-2 m-2 bg-info border border-danger rounded align-self-center">
-                <button onclick="location.href='/users/profile/edit-name'" type="submit" class="btn btn-warning p-1 mb-2">
+            <div class="col-4 p-2 m-2 bg-info border border-danger rounded align-self-center">
+                <button onclick="location.href='/users/profile/edit-name'" type="submit"
+                        class="btn btn-warning p-1 mb-2">
                     Edit
                 </button>
                 <p class="h4 font-weight-bold" th:text="${userName}"></p>
                 <p class="h5" th:text="${#authentication.getPrincipal().getUsername()}"></p>
-                <p class="h6" th:text="|Registered on: ${#authentication.getPrincipal().getRegisteredDate()}
-                        at: ${#authentication.getPrincipal().getRegisteredTime()}|"></p>
-                <p class="h6" th:text="|IP Address: ${#authentication.getDetails().getRemoteAddress()}|"></p>
+                <p class="small"
+                   th:text="|Registered on: ${#authentication.getPrincipal().getRegisteredDate()} at ${#authentication.getPrincipal().getRegisteredTime()}|"></p>
+                <p class="small" th:text="|IP Address: ${#authentication.getDetails().getRemoteAddress()}|"></p>
             </div>
             <div class="col p-2 m-2 bg-light border border-danger rounded">
                 <p class="h3 text-center">Addresses</p>

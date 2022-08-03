@@ -3,6 +3,7 @@ package com.onlineshop.model.entity;
 import com.onlineshop.model.enums.RoleEnum;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table
 @Entity(name = "roles")
@@ -40,3 +41,4 @@ public class Role {
         this.name = name;
     }
 }
+

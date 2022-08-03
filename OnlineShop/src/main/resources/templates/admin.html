@@ -17,11 +17,9 @@
          class="alert alert-success text-center" style="display:inline-block; margin: auto; width: fit-content;">
         Successfully!
     </div>
-    <div class="container py-5 bg-transparent">
-
-        <p class="h2 text-center">Users</p>
-
-        <table class="table table-bordered table-striped ">
+    <div class="container py-1 bg-transparent">
+        <p class="h5 text-center">Users</p>
+        <table class="table table-bordered table-striped table-sm">
             <thead>
             <tr>
                 <th class="align-middle">id</th>
@@ -47,11 +45,10 @@
                 <td th:text="${user.address.size}" class="align-middle">keyvalue</td>
                 <td th:text="${user.getRolesNames()}" class="align-middle">keyvalue</td>
                 <td>
-                    <form th:if="${user.id != #authentication.getPrincipal().getId()}"
-                          th:action="@{/users/admin/delete/{id}(id=${user.id})}"
-                          th:method="POST">
-                        <button type="submit" class="btn btn-danger">DELETE
-                        </button>
+                    <form  th:if="${user.id != #authentication.getPrincipal().getId()}"
+                           th:action="@{/users/admin/delete/{id}(id=${user.id})}"
+                           th:method="POST">
+                        <button type="submit" onclick="if(!confirm('Delete is permanently and nonrecoverable!')){return false}" class="btn-sm btn-danger">Delete</button>
                     </form>
                     <p th:unless="${user.id != #authentication.getPrincipal().getId()}">That's you!</p>
                 </td>

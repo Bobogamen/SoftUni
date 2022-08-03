@@ -32,13 +32,14 @@ public class Initializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        //CATEGORY CREATION
-        if (this.categoryRepository.count() == 0) {
-            List<Category> categories = Arrays.stream(CategoryEnum.values()).map(Category::new).toList();
+//        //CATEGORY CREATION
+//        if (this.categoryRepository.count() == 0) {
+//            List<Category> categories = Arrays.stream(CategoryEnum.values()).map(Category::new).toList();
+//
+//            this.categoryRepository.saveAll(categories);
+//        }
 
-            this.categoryRepository.saveAll(categories);
-        }
-
+        //ROLES CREATION
         if (this.roleRepository.count() == 0) {
             List<Role> roles = Arrays.stream(RoleEnum.values()).map(Role::new).toList();
 

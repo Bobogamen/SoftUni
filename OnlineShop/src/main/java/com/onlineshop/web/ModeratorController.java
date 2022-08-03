@@ -1,18 +1,28 @@
 package com.onlineshop.web;
 
 import com.onlineshop.model.dto.AddItemDTO;
+import com.onlineshop.model.user.ShopUserDetails;
+import com.onlineshop.service.CategoryService;
 import com.onlineshop.service.ItemService;
 import com.onlineshop.service.PictureService;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Collection;
 
 @Controller
 @RequestMapping("/users/")
@@ -20,10 +30,13 @@ public class ModeratorController {
 
     private final ItemService itemService;
     private final PictureService pictureService;
+    private final CategoryService categoryService;
 
-    public ModeratorController(ItemService itemService, PictureService pictureService) {
+
+    public ModeratorController(ItemService itemService, PictureService pictureService, CategoryService categoryService) {
         this.itemService = itemService;
         this.pictureService = pictureService;
+        this.categoryService = categoryService;
     }
 
     @ModelAttribute("addItemDTO")
@@ -37,13 +50,20 @@ public class ModeratorController {
         ModelAndView modelAndView = new ModelAndView();
 
         modelAndView.addObject("allItems", this.itemService.getAllItems());
+        modelAndView.addObject("allCategories", this.categoryService.getAllCategories());
+        modelAndView.addObject("itemsCountByCategory", this.itemService.itemsByCategory());
         modelAndView.setViewName("moderator");
 
         return modelAndView;
     }
 
     @GetMapping("/moderator/add-item")
-    public String addItem() {
+    public String addItem(@AuthenticationPrincipal ShopUserDetails user) {
+
+        if (user.getAuthorities().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
+
         return "add-item";
     }
 
@@ -74,7 +94,11 @@ public class ModeratorController {
     }
 
     @GetMapping("/moderator/edit-item/{id}")
-    public ModelAndView editItem(@PathVariable long id, RedirectAttributes redirectAttributes) {
+    public ModelAndView editItem(@PathVariable long id, @AuthenticationPrincipal ShopUserDetails user, RedirectAttributes redirectAttributes) {
+
+        if (user.getAuthorities().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("item", this.itemService.getItemById(id));
@@ -100,11 +124,32 @@ public class ModeratorController {
     }
 
     @PostMapping("/moderator/delete/{id}")
-    public String deleteItem(@PathVariable long id, RedirectAttributes redirectAttributes) {
+    public String deleteItem(@PathVariable long id, RedirectAttributes redirectAttributes) throws IOException {
 
+        this.pictureService.deletePicture(this.itemService.getPicturePathByItemId(id));
         this.itemService.deleteItemById(id);
 
         redirectAttributes.addFlashAttribute("delete", true);
+
+        return "redirect:/users/moderator";
+    }
+
+    @GetMapping("/moderator/add-category")
+    public String addCategory(@AuthenticationPrincipal ShopUserDetails user) {
+
+        if (user.getAuthorities().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
+
+        return "add-category";
+    }
+
+    @PostMapping("/moderator/add-category")
+    public String addItem(String name,RedirectAttributes redirectAttributes) {
+
+        this.categoryService.addCategory(name);
+
+        redirectAttributes.addFlashAttribute("success", true);
 
         return "redirect:/users/moderator";
     }

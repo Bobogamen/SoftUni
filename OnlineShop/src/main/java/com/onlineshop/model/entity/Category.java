@@ -11,12 +11,12 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Enumerated(EnumType.STRING)
-    private CategoryEnum name;
+//    @Enumerated(EnumType.STRING)
+    private String name;
 
-    public Category(CategoryEnum categoryEnum) {
-        this.name = categoryEnum;
-    }
+//    public Category(CategoryEnum categoryEnum) {
+//        this.name = categoryEnum;
+//    }
 
     public Category() {
 
@@ -31,12 +31,20 @@ public class Category {
         this.id = id;
     }
 
-    public CategoryEnum getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(CategoryEnum name) {
+    public void setName(String name) {
         this.name = name;
     }
+
+//    public CategoryEnum getName() {
+//          return name;
+//    }
+//
+//    public void setName(CategoryEnum name) {
+//        this.name = name;
+//    }
 }
 

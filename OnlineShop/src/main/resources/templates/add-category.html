@@ -12,20 +12,18 @@
 <body>
 <nav th:replace="fragments/nav"></nav>
 <main>
-    <p class="h2 text-center">Edit name</p>
+    <p class="h2 text-center">Add category</p>
     <div class="bg-transparent m-3 d-flex align-items-center justify-content-center">
         <div class="form-control bg-info w-50 m-3">
             <div class="p-3">
-                <form th:action="@{/users/profile/edit-name}"
+                <form th:action="@{/users/moderator/add-category}"
                       th:method="POST">
                     <div class="form-outline mb-4">
                         <small class="bg-dark text-light h4 justify-content-start rounded ml-3">Name</small>
-                        <input type="text" th:value="${userName}" name="name" id="id"
-                               minlength="2" maxlength="30" class="form-control form-control-lg mt-3" required>
+                        <input type="text" placeholder="Enter name" name="name" id="id"
+                               minlength="3" maxlength="30" class="form-control form-control-lg mt-3" required>
                     </div>
-                    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                        Submit
-                    </button>
+                    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Submit</button>
                 </form>
             </div>
         </div>

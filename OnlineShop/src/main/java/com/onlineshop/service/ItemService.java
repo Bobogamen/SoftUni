@@ -7,7 +7,11 @@ import com.onlineshop.repository.CategoryRepository;
 import com.onlineshop.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.Path;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service
 public class ItemService {
@@ -64,5 +68,27 @@ public class ItemService {
         itemById.setCategory(getCategory(addItemDTO));
 
         this.itemRepository.save(itemById);
+    }
+
+    public Map<String, Integer> itemsByCategory() {
+
+        Map<String, Integer> itemsCount = new LinkedHashMap<>();
+
+        this.categoryRepository.findAll().forEach(c -> itemsCount.put(c.getName(), 0));
+
+        for (String category : itemsCount.keySet()) {
+            this.itemRepository.findAll().forEach(item -> {
+                if (category.equals(item.getCategory().getName())) {
+                    int currentValue = itemsCount.get(category);
+                    itemsCount.put(category, ++currentValue);
+                }
+            });
+        }
+
+        return itemsCount;
+    }
+
+    public Path getPicturePathByItemId(long id) {
+        return Path.of(this.itemRepository.getItemById(id).getPicture());
     }
 }

@@ -29,6 +29,14 @@ function confirmNo() {
     document.getElementById("delete").hidden=true
 }
 
+function deleteUser() {
+    if (confirm("Delete is permanently and nonrecoverable!") !== true) {
+        window.location='/users/admin'
+    } else {
+        return false;
+    }
+}
+
 let refreshUsers = document.getElementById('refresh')
 
 refreshUsers.addEventListener('click', loadUsers);

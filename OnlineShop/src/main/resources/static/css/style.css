@@ -20,7 +20,7 @@ body {
 }
 
 textarea {
-    resize: none;
+    height: 200px;
 }
 
 footer {
@@ -63,15 +63,16 @@ footer {
 }
 
 *{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 20px;
+    /*font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+    font-size: 16px;
 }
 
 table{
     border:2px solid black;
     padding: 2%;
     margin: 0 auto;
-    width: 70%;
+    width: 80%;
+    font-size: 10px;
 }
 table th{
     text-align: center;
@@ -193,9 +194,9 @@ form{
     opacity: 1;
 }
 
-.addItemButton {
+.addButton {
     margin: 0;
     position: relative;
     top: 1%;
-    left: 50%;
+    left: 5%;
 }

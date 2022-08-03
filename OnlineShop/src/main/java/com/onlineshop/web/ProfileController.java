@@ -5,12 +5,17 @@ import com.onlineshop.model.entity.Address;
 import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.service.AddressService;
 import com.onlineshop.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Controller
@@ -56,8 +61,7 @@ public class ProfileController {
     }
 
     @PostMapping("/profile/edit-name")
-    public String editName(@AuthenticationPrincipal ShopUserDetails user,
-                           String name, RedirectAttributes redirectAttributes) {
+    public String editName(@AuthenticationPrincipal ShopUserDetails user, String name, RedirectAttributes redirectAttributes) {
 
         this.userService.editNameByUserId(user.getId(), name);
 
@@ -67,13 +71,21 @@ public class ProfileController {
     }
 
     @GetMapping("/profile/edit-address/{id}")
-    public ModelAndView editAddress(@PathVariable long id) {
+    public ModelAndView editAddress(@PathVariable long id, @AuthenticationPrincipal ShopUserDetails user) {
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("addressById", this.addressService.getAddressesById(id));
-        modelAndView.setViewName("edit-address");
+        long userId = user.getId();
+        Address addressesById = this.addressService.getAddressesById(id);
 
-        return modelAndView;
+        if (userId == addressesById.getUserEntity().getId()) {
+
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.addObject("addressById", addressesById);
+            modelAndView.setViewName("edit-address");
+
+            return modelAndView;
+        } else {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
     }
 
     @PostMapping("/profile/edit-address/{id}")
