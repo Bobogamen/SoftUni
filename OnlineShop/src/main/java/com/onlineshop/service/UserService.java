@@ -1,23 +1,28 @@
 package com.onlineshop.service;
 
 import com.onlineshop.model.dto.RegistrationDTO;
-import com.onlineshop.model.entity.Address;
+import com.onlineshop.model.entity.Role;
 import com.onlineshop.model.entity.UserEntity;
+import com.onlineshop.repository.RoleRepository;
 import com.onlineshop.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository,
-                       PasswordEncoder passwordEncoder) {
+                       RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -30,6 +35,16 @@ public class UserService {
         newUserEntity.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
 
         this.userRepository.save(newUserEntity);
+
+        if (userRepository.count() == 1) {
+            UserEntity user = this.userRepository.getUserById(1);
+
+            Set<Role> roles = new HashSet<>(this.roleRepository.findAll());
+
+            user.setRoles(roles);
+
+            this.userRepository.save(user);
+        }
 
     }
 

@@ -36,6 +36,9 @@ public class UserEntity {
     private List<Address> address;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_entity_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
     private Set<Role> roles;
 
     public UserEntity() {
@@ -48,7 +51,7 @@ public class UserEntity {
     }
 
     public String getRolesNames() {
-        return String.join("; ", roles.stream().map(role -> role.getName().name()).toList());
+        return String.join("/", roles.stream().map(role -> role.getName().name()).toList());
     }
 
     public void setRoles(Set<Role> roles) {

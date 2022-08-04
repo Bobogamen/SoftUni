@@ -1,6 +1,7 @@
 package com.onlineshop.web;
 
 import com.onlineshop.model.dto.AddItemDTO;
+import com.onlineshop.model.entity.Category;
 import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.service.CategoryService;
 import com.onlineshop.service.ItemService;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,7 @@ import javax.validation.constraints.Size;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping("/users/")
@@ -44,13 +47,20 @@ public class ModeratorController {
         return new AddItemDTO();
     }
 
+    @ModelAttribute("allCategories")
+    public List<Category> allCategories() {
+        return this.categoryService.getAllCategories();
+    }
+
+
+
     @GetMapping("/moderator")
     public ModelAndView moderator() {
 
         ModelAndView modelAndView = new ModelAndView();
 
         modelAndView.addObject("allItems", this.itemService.getAllItems());
-        modelAndView.addObject("allCategories", this.categoryService.getAllCategories());
+        modelAndView.addObject("allCategories", allCategories());
         modelAndView.addObject("itemsCountByCategory", this.itemService.itemsByCategory());
         modelAndView.setViewName("moderator");
 
@@ -58,11 +68,13 @@ public class ModeratorController {
     }
 
     @GetMapping("/moderator/add-item")
-    public String addItem(@AuthenticationPrincipal ShopUserDetails user) {
+    public String addItem(@AuthenticationPrincipal ShopUserDetails user, Model model) {
 
         if (user.getAuthorities().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
+
+        model.addAttribute("categories", allCategories());
 
         return "add-item";
     }
@@ -123,7 +135,7 @@ public class ModeratorController {
         return "redirect:/users/moderator";
     }
 
-    @PostMapping("/moderator/delete/{id}")
+    @PostMapping("/moderator/delete-item/{id}")
     public String deleteItem(@PathVariable long id, RedirectAttributes redirectAttributes) throws IOException {
 
         this.pictureService.deletePicture(this.itemService.getPicturePathByItemId(id));
@@ -148,6 +160,16 @@ public class ModeratorController {
     public String addItem(String name,RedirectAttributes redirectAttributes) {
 
         this.categoryService.addCategory(name);
+
+        redirectAttributes.addFlashAttribute("success", true);
+
+        return "redirect:/users/moderator";
+    }
+
+    @PostMapping("/moderator/delete-category/{id}")
+    public String deleteCategory(@PathVariable long id, RedirectAttributes redirectAttributes) {
+
+        this.categoryService.deleteCategoryById(id);
 
         redirectAttributes.addFlashAttribute("success", true);
 

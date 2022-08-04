@@ -11,17 +11,11 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @Enumerated(EnumType.STRING)
     private String name;
-
-//    public Category(CategoryEnum categoryEnum) {
-//        this.name = categoryEnum;
-//    }
 
     public Category() {
 
     }
-
 
     public long getId() {
         return id;
@@ -39,12 +33,5 @@ public class Category {
         this.name = name;
     }
 
-//    public CategoryEnum getName() {
-//          return name;
-//    }
-//
-//    public void setName(CategoryEnum name) {
-//        this.name = name;
-//    }
 }
 

@@ -18,26 +18,17 @@ import java.util.List;
 public class Initializer implements CommandLineRunner {
 
     private final RoleRepository roleRepository;
-    private final CategoryRepository categoryRepository;
 
     private final PictureService pictureService;
 
     @Autowired //not need it, but I put it in purpose, to remind me.
-    public Initializer(RoleRepository roleRepository, CategoryRepository categoryRepository, PictureService pictureService) {
+    public Initializer(RoleRepository roleRepository, PictureService pictureService) {
         this.roleRepository = roleRepository;
-        this.categoryRepository = categoryRepository;
         this.pictureService = pictureService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-
-//        //CATEGORY CREATION
-//        if (this.categoryRepository.count() == 0) {
-//            List<Category> categories = Arrays.stream(CategoryEnum.values()).map(Category::new).toList();
-//
-//            this.categoryRepository.saveAll(categories);
-//        }
 
         //ROLES CREATION
         if (this.roleRepository.count() == 0) {

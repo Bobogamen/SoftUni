@@ -25,8 +25,6 @@ public class ShopUserDetailsService implements UserDetailsService {
                 orElseThrow(() -> new UsernameNotFoundException("Email not found!"));
     }
 
-
-
     private UserDetails map(UserEntity userEntity) {
 
         return new ShopUserDetails(userEntity.getId(), userEntity.getEmail(), userEntity.getPassword(),

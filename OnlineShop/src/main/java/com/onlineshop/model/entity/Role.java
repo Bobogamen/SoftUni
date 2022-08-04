@@ -4,6 +4,7 @@ import com.onlineshop.model.enums.RoleEnum;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Table
 @Entity(name = "roles")
@@ -16,6 +17,12 @@ public class Role {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private RoleEnum name;
+
+    @ManyToMany
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "user_entity_id", referencedColumnName = "id"))
+    private Set<UserEntity> users;
 
     public Role(RoleEnum name) {
         this.name = name;
@@ -39,6 +46,14 @@ public class Role {
 
     public void setName(RoleEnum name) {
         this.name = name;
+    }
+
+    public Set<UserEntity> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserEntity> users) {
+        this.users = users;
     }
 }
 

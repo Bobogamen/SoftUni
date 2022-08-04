@@ -65,10 +65,15 @@
                                 th:errorclass="is-invalid" class="browser-default custom-select mb-2" id="category"
                                 name="category">
                             <option value="">Select category</option>
-                            <option th:each="c : ${T(com.onlineshop.model.enums.CategoryEnum).values()}"
-                                    th:text="${c}"
-                                    th:value="${c}"
-                                    th:selected="${c} == *{category}">Category
+                            <option th:each="c : ${allCategories}"
+                                    th:text="${c.name}"
+                                    th:value="${c.name}"
+                                    th:selected="${c.name} == *{category}">Category</option>
+
+<!--                            <option th:each="c : ${T(com.onlineshop.model.enums.CategoryEnum).values()}"-->
+<!--                                    th:text="${c}"-->
+<!--                                    th:value="${c}"-->
+<!--                                    th:selected="${c} == *{category}">Category-->
                             </option>
                         </select>
                         <small th:if="${#fields.hasErrors('category')}"

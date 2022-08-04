@@ -48,13 +48,11 @@
                     </div>
 
                     <div class="form-outline mb-4">
-                        <select class="browser-default custom-select mb-2" name="category">
-                            <option th:field="*{category}"
-                                    th:each="c : ${T(com.onlineshop.model.enums.CategoryEnum).values()}"
-                                    th:text="${c}"
-                                    th:value="${c}"
-                                    th:selected="${item.category.name}">Category
-                            </option>
+                        <select class="browser-default custom-select mb-2" name="category" id="category">
+                            <option th:each="c : ${allCategories}"
+                                    th:text="${c.name}"
+                                    th:value="${c.name}"
+                                    th:selected="${c.name} == ${item.category.name}"></option>
                         </select>
                     </div>
 
@@ -70,8 +68,10 @@
             </div>
         </div>
     </div>
-    <form  th:action="@{/users/moderator/delete/{id}(id=${item.id})}" th:method="POST">
-        <button type="submit" onclick="if(!confirm('Delete is permanently and nonrecoverable!')){return false}" class="btn-sm btn-danger">Delete</button>
+    <form  th:action="@{/users/moderator/delete-item/{id}(id=${item.id})}"
+           th:method="POST">
+        <button type="submit" onclick="if(!confirm('Delete is permanently and nonrecoverable!')){return false}"
+                class="btn-sm btn-danger">Delete</button>
     </form>
 </main>
 

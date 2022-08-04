@@ -1,5 +1,6 @@
 package com.onlineshop.model.dto;
 
+import com.onlineshop.model.entity.Category;
 import com.onlineshop.model.enums.CategoryEnum;
 
 import javax.validation.constraints.*;
@@ -22,7 +23,7 @@ public class AddItemDTO {
     private int discount;
 
     @NotNull(message = "Item must be in category")
-    private CategoryEnum category;
+    private String category;
 
     public String getName() {
         return name;
@@ -48,20 +49,19 @@ public class AddItemDTO {
         this.price = price;
     }
 
-    public CategoryEnum getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryEnum category) {
-        this.category = category;
-    }
-
-
     public int getDiscount() {
         return discount;
     }
 
     public void setDiscount(int discount) {
         this.discount = discount;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

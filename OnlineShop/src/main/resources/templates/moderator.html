@@ -13,10 +13,11 @@
 <nav th:replace="fragments/nav"></nav>
 <main>
     <div th:if="${success}" id="success"
-         class="alert alert-success text-center" style="display:inline-block; margin: auto; width: fit-content;">Successfully!
+         class="alert alert-success text-center font-weight-bold" style="display:block; margin: auto; width: fit-content;">Successfully!
     </div>
     <div class="container py-2 bg-transparent">
-        <p class="h6 ml-2 font-weight-bold">Items<a th:href="@{/users/moderator/add-item}" class="btn-sm btn-success p-1 mb-3 addButton">Add item</a></p>
+        <p class="h6 ml-2 font-weight-bold">Items<a th:href="@{/users/moderator/add-item}" class="btn-sm btn-success p-1 mb-3 addButton">Add
+            item</a></p>
         <table class="table table-bordered table-striped table-sm">
             <thead>
             <tr>
@@ -48,7 +49,8 @@
     <div class="container py-1 bg-transparent">
         <p class="h6 ml-2 font-weight-bold">Categories
             <a th:href="@{/users/moderator/add-category}" class="btn-sm btn-success p-1 mb-2 addButton">Add category</a>
-            <small class="bg-danger align-content-center text-light rounded float-right mr-3">To DELETE category must be empty</small></p>
+            <small class="bg-danger align-content-center text-light rounded float-right mr-3 p-1">To DELETE a category, it must be
+                empty</small></p>
         <table class="table table-bordered table-striped table-sm">
             <thead>
             <tr>
@@ -62,7 +64,13 @@
                 <td th:text="${cat.id}" class="align-middle">keyvalue</td>
                 <td th:text="${cat.name}" class="align-middle">keyvalue</td>
                 <td th:text="${itemsCountByCategory.get(cat.name)}" class="align-middle">keyvalue</td>
-                <td><img src="/static/images/delete-button.png" class="bg-dark"></td>
+                <td th:if="${itemsCountByCategory.get(cat.name)} == 0" style="border: none">
+                    <form  th:action="@{/users/moderator/delete-category/{id}(id=${cat.id})}"
+                           th:method="POST">
+                    <button type="submit" onclick="if(!confirm('Delete is permanently and nonrecoverable!')){return false}"
+                            class="bg-transparent"><img src="/images/delete-button.png"></button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>

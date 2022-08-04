@@ -14,43 +14,76 @@
     <nav th:replace="fragments/nav"></nav>
 
     <div th:if="${success}" id="success"
-         class="alert alert-success text-center" style="display:inline-block; margin: auto; width: fit-content;">
+         class="alert alert-success text-center font-weight-bold" style="display:block; margin: auto; width: fit-content;">
         Successfully!
     </div>
     <div class="container py-1 bg-transparent">
-        <p class="h5 text-center">Users</p>
+        <p class="h5 text-center">Users
+            <small class="bg-danger align-content-center text-light rounded float-right mr-3 p-1">
+                To be ADMIN, must be MODERATOR first!
+            </small>
+        </p>
         <table class="table table-bordered table-striped table-sm">
             <thead>
             <tr>
                 <th class="align-middle">id</th>
                 <th class="align-middle">Email</th>
                 <th class="align-middle">Registration date</th>
-                <th class="align-middle">Orders Count</th>
-                <th class="align-middle">Orders Sum</th>
-                <th class="align-middle">Address count</th>
+                <th class="align-middle col-1">Orders Count</th>
+                <th class="align-middle col-1">Orders Sum</th>
+                <th class="align-middle col-1">Address count</th>
                 <th class="align-middle">Roles</th>
                 <th class="align-middle">Action</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="user : ${allUsers}">
-                <td th:text="${user.id}">keyvalue</td>
-                <td th:text="${user.email}">keyvalue</td>
+                <td th:text="${user.id}" class="align-middle"></td>
+                <td th:text="${user.email}" class="align-middle"></td>
                 <td th:text="|${user.registeredOn.getDayOfMonth()}-${user.registeredOn.getMonth().name()}-${user.registeredOn.getYear()}
-            (${user.registeredOn.getHour()}:${user.registeredOn.getMinute()}:${user.registeredOn.getSecond()})|">
-                    keyvalue
+            (${user.registeredOn.getHour()}:${user.registeredOn.getMinute()}:${user.registeredOn.getSecond()})|" class="align-middle">
+
                 </td>
-                <td th:text="${user.ordersCount}" class="align-middle">keyvalue</td>
-                <td th:text="${user.ordersSum}" class="align-middle">keyvalue</td>
-                <td th:text="${user.address.size}" class="align-middle">keyvalue</td>
-                <td th:text="${user.getRolesNames()}" class="align-middle">keyvalue</td>
-                <td>
-                    <form  th:if="${user.id != #authentication.getPrincipal().getId()}"
-                           th:action="@{/users/admin/delete/{id}(id=${user.id})}"
-                           th:method="POST">
-                        <button type="submit" onclick="if(!confirm('Delete is permanently and nonrecoverable!')){return false}" class="btn-sm btn-danger">Delete</button>
-                    </form>
-                    <p th:unless="${user.id != #authentication.getPrincipal().getId()}">That's you!</p>
+                <td th:text="${user.ordersCount}" class="align-middle"></td>
+                <td th:text="${user.ordersSum}" class="align-middle"></td>
+                <td th:text="${user.address.size}" class="align-middle"></td>
+                <td class="align-middle">
+                    <div th:if="${user.getRoles().size() > 0}">
+                        <p th:each="r : ${user.getRoles()}" th:text="${r.name}"></p>
+                    </div>
+                    <div th:unless="${user.getRoles().size() > 0}">
+                        <p>USER</p>
+                    </div>
+                </td>
+                <td class="align-middle col-auto">
+                    <div th:if="${user.id != #authentication.getPrincipal().getId()}" class="row align-items-center justify-content-center">
+                        <div th:switch="${#lists.size(user.getRoles())}">
+                            <p th:case="2"></p>
+
+                            <form th:case="1"
+                                  th:action="@{/users/admin/make-admin/{id}(id=${user.id})}" th:method="POST" class="ml-1 mr-0">
+                                <button type="submit"
+                                        onclick="if(!confirm('You are about to give ADMIN privileges. The process is not reversible')){return false}"
+                                        class="btn-sm btn-primary">Admin
+                                </button>
+                            </form>
+
+                            <form th:case="*"
+                                  th:action="@{/users/admin/make-moderator/{id}(id=${user.id})}" th:method="POST" class="ml-1 mr-0">
+                                <button type="submit"
+                                        onclick="if(!confirm('You are about to give MODERATOR privileges. The process is not reversible')){return false}"
+                                        class="btn-sm btn-secondary">Moderator
+                                </button>
+                            </form>
+                        </div>
+                        <form  th:if="${user.getRoles().size() < 2}"
+                               th:action="@{/users/admin/delete/{id}(id=${user.id})}" th:method="POST" class="ml-1 mr-0">
+                            <button type="submit" onclick="if(!confirm('Delete is permanently and nonrecoverable!')){return false}"
+                                    class="btn-sm btn-danger">Delete
+                            </button>
+                        </form>
+                    </div>
+                    <div th:unless="${user.id != #authentication.getPrincipal().getId()}">That's you!</div>
                 </td>
             </tr>
             </tbody>
