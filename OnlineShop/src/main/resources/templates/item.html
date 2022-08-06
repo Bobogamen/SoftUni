@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/reset-css.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>OnlineShop</title>
+</head>
+<body>
+<nav th:replace="fragments/nav"></nav>
+<main>
+    <div th:if="${success}" id="success"
+         class="alert alert-success text-center font-weight-bold" style="display:block; margin: auto; width: fit-content;">
+        Successfully added to cart!
+    </div>
+    <div class="container py-3 bg-transparent col-11">
+        <div class="row justify-content-center">
+            <div class="col-auto p-0 m-0">
+                <img th:src="@{${item.pictureURL}}" class="imgItemView">
+            </div>
+            <div class="col-sm-3 ml-3 border border-dark bg-light h-50">
+                <div class="row justify-content-center itemTitle"><p th:text="${item.name}" class="h3"></p></div>
+                <div class="row justify-content-center itemDescription"><p th:text="${item.description}" class="h6 text-justify"></p>
+                </div>
+                <div class="row justify-content-center">
+                    <form th:action="@{/shop/buy/{id}(id=${item.id})}" th:method="POST">
+                        <button type="submit" class="btn btn-success m-3">Buy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="/js/app.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>

@@ -43,7 +43,7 @@ public class AdminController {
         boolean result = this.adminService.makeAdminByUserId(id);
 
         if (!result) {
-            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE);
+            throw new ResponseStatusException(HttpStatus.METHOD_NOT_ALLOWED);
         }
 
         redirectAttributes.addFlashAttribute("success", true);
@@ -57,7 +57,7 @@ public class AdminController {
         boolean result = this.adminService.makeModeratorById(id);
 
         if (!result) {
-            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE);
+            throw new ResponseStatusException(HttpStatus.METHOD_NOT_ALLOWED);
         }
 
         redirectAttributes.addFlashAttribute("success", true);

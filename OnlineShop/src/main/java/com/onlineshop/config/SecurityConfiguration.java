@@ -6,6 +6,7 @@ import com.onlineshop.service.ShopUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,7 +29,7 @@ public class SecurityConfiguration {
              authorizeRequests(). // define which requests are allowed and which not
              requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll(). // everyone can download static resources (css, js, images)
              //which links can have access by who
-             antMatchers("/", "/login", "/register").permitAll(). //by everyone
+             antMatchers("/", "/login", "/register", "/shop", "/shop/item/*", "/shop/buy/*", "/shop/cart", "/discount").permitAll(). //by everyone
              antMatchers("/users/admin").hasRole(RoleEnum.ADMIN.name()). //only for admins
              antMatchers("/users/moderator").hasRole(RoleEnum.MODERATOR.name()). //only for moderators
              anyRequest().authenticated(). //any other links

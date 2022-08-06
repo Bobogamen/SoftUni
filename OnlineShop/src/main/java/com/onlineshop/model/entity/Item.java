@@ -51,6 +51,10 @@ public class Item {
         return name;
     }
 
+    public String getOnlyName() {
+        return this.name.split("\\s+")[0];
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -89,6 +93,10 @@ public class Item {
 
     public String getPicture() {
         return picture;
+    }
+
+    public String getPictureURL() {
+        return this.picture.substring(25);
     }
 
     public void setPicture(String picture) {

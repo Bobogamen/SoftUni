@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/reset-css.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>OnlineShop</title>
+</head>
+<body>
+<nav th:replace="fragments/nav"></nav>
+<main>
+    <div class="container-fluid border-danger rounded p-5">
+        <div class="container align-items-center">
+            <div class="row border-dark justify-content-center">
+                <div th:each="item : ${allItem}" class="item m-3">
+                    <a th:href="@{/shop/item/{id}(id=${item.id})}">
+                        <img th:src="@{${item.pictureURL}}" class="imgItem">
+                    </a>
+                        <div class="row">
+                            <div class="col pt-1">
+                                <span th:text="${item.onlyName}" class="h4 ml-1 float-left"></span>
+                                <span th:if="${item.discount == 0}" th:text="'$' + ${item.price}" class="h4 mr-1 float-right"></span>
+                                <span th:unless="${item.discount == 0}">
+                                <span th:text="'$' + ${item.price - (item.price * item.discount/100)}" class="h4 mr-1 float-right"></span>
+                                <del th:text="'$' + ${item.price}" class="h5 mr-1 float-right pt-1"></del>
+                            </span>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/js/app.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>

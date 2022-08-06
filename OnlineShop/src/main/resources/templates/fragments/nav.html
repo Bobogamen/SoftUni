@@ -16,7 +16,7 @@
             <button type="submit" class="btn btn-outline-danger" onclick="location.href='/'">Home</button>
         </div>
         <div class="mr-1">
-            <button type="submit" class="btn btn-outline-danger">Shop</button>
+            <button type="submit" class="btn btn-outline-danger" onclick="location.href='/shop'">Shop</button>
         </div>
         <div>
             <button type="submit" class="btn btn-outline-danger">Discount</button>
@@ -24,6 +24,7 @@
         </div>
 
         <div class="ml-auto">
+            <button type="submit" class="btn btn-dark" onclick="location.href='/shop/cart'">Cart            </button>
             <button sec:authorize="hasRole('ADMIN')" type="submit" class="btn btn-primary"
                     onclick="location.href='/users/admin'">Admin
             </button>

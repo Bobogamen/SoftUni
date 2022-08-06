@@ -15,7 +15,7 @@ import java.nio.file.StandardCopyOption;
 @Service
 public class PictureService {
 
-    private final Path root = Paths.get("src/main/resources/pictures");
+    private final Path root = Paths.get("src/main/resources/static/images/items");
 
     public void init() throws IOException {
         if (!Files.exists(root)) {
