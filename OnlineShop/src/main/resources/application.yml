@@ -15,6 +15,10 @@ spring:
     hiddenmethod:
       filter:
         enabled: 'true'
+  web:
+    resources:
+      static-locations[0]: "file:src/main/resources/static/"
+      static-locations[1]: "classpath:/static/"
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     password: 1234

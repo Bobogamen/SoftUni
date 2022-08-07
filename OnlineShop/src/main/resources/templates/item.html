@@ -23,7 +23,14 @@
             </div>
             <div class="col-sm-3 ml-3 border border-dark bg-light h-50">
                 <div class="row justify-content-center itemTitle"><p th:text="${item.name}" class="h3"></p></div>
-                <div class="row justify-content-center itemDescription"><p th:text="${item.description}" class="h6 text-justify"></p>
+                <div class="row justify-content-center itemDescription"><p th:text="${item.description}" class="h6 text-justify"></p></div>
+                <div th:if="${item.discount == 0}" class="row justify-content-center itemPrice">
+                    <p th:text="'Price: $' + ${item.price}" class="h4 text-justify"></p>
+                </div>
+                <div th:unless="${item.discount == 0}" class="row justify-content-center itemPrice">
+                    <p th:text="'Price: $' + ${item.price - (item.price * item.discount/100)}"
+                       class="h4 text-justify"></p>
+                    <del th:text="'$' + ${item.price}" class="h5 mr-1  ml-1 float-right pt-1"></del>
                 </div>
                 <div class="row justify-content-center">
                     <form th:action="@{/shop/buy/{id}(id=${item.id})}" th:method="POST">

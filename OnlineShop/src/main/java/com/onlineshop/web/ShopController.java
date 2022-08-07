@@ -56,7 +56,7 @@ public class ShopController {
 
         redirectAttributes.addFlashAttribute("success", true);
 
-        return "redirect:/shop";
+        return "redirect:/shop/item/{id}";
     }
 
 
