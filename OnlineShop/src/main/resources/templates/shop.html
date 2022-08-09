@@ -21,11 +21,11 @@
                     </a>
                         <div class="row">
                             <div class="col pt-1">
-                                <span th:text="${item.onlyName}" class="h4 ml-1 float-left"></span>
-                                <span th:if="${item.discount == 0}" th:text="'$' + ${item.price}" class="h4 mr-1 float-right"></span>
+                                <span th:text="${item.onlyName}" class="h5 ml-1 float-left"></span>
+                                <span th:if="${item.discount == 0}" th:text="'$' + ${item.price}" class="h5 mr-1 float-right"></span>
                                 <span th:unless="${item.discount == 0}">
-                                <span th:text="'$' + ${item.price - (item.price * item.discount/100)}" class="h4 mr-1 float-right"></span>
-                                <del th:text="'$' + ${item.price}" class="h5 mr-1 float-right pt-1"></del>
+                                <span th:text="'$' + ${item.price - (item.price * item.discount/100)}" class="h5 mr-1 float-right"></span>
+                                <del th:text="'$' + ${item.price}" class="h6 mr-1 float-right pt-1"></del>
                             </span>
                             </div>
                         </div>

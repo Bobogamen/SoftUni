@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/reset-css.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>OnlineShop</title>
+</head>
+<body>
+<nav th:replace="fragments/nav"></nav>
+<main>
+    <section class="h-100 mr-5 ml-5 mt-3">
+        <div th:if="${success}" id="success"
+             class="alert alert-success text-center font-weight-bold" style="display:block; margin: auto; width: fit-content;">Successfully!
+        </div>
+        <div class="container h-100 py-5" style="background-color: #eee;">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <div class="text-center mb-4">
+                        <h3 th:text="'Order #' + ${order.id}" class="mb-0 text-dark"></h3>
+                    </div>
+                    <div class="card rounded mb-4">
+                        <div class="card-body p-4">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Name</th>
+                                        <th>Regular Price</th>
+                                        <th>Discount</th>
+                                        <th>Final Price</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="align-middle">
+                                    <tr th:each="oi : ${order.getItems()}">
+                                        <!--Item-->
+                                        <td><img th:src="${oi.pictureURL}" class="imgCart" th:alt="${oi.pictureURL}"></td>
+
+                                        <!--Name-->
+                                        <td class="text-left align-middle">
+                                            <p th:text="${oi.onlyName}" class="lead font-weight-bold"></p>
+                                            <p th:text="${oi.category.name}" class="h6"></p></td>
+
+                                        <!--Price-->
+                                        <td th:if="${oi.discount == 0}" class="align-middle">
+                                            <h4 th:text="'$' + ${oi.price}" class="align-middle"></h4></td>
+                                        <td th:unless="${oi.discount == 0}" class="align-middle">
+                                            <del th:text="'$' + ${oi.price}" class="align-middle"></del>
+                                        </td>
+
+                                        <!--Discount-->
+                                        <td th:if="${oi.discount == 0}" class="align-middle">
+                                            <h5 class="align-middle"></h5></td>
+                                        <td th:unless="${oi.discount == 0}" class="align-middle">
+                                            <h5 th:text="${oi.discount + '%'}" class="align-middle"></h5>
+                                            <h6 th:text="'$' + ${oi.price * oi.discount / 100}"></h6>
+                                        </td>
+
+                                        <!--Final Price-->
+                                        <td class="align-middle">
+                                            <h4 th:text="'$' + ${oi.price - (oi.price * oi.discount/100)}"></h4></td>
+
+                                        <!--Action-->
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body p-4 col text-left">
+                            <p th:text="${order.address.addressLine}"></p>
+                            <p th:text="${order.address.town}"></p>
+                        </div>
+                    </div>
+                    <div class="card mb-4 text-right">
+                        <div class="card-body p-4 flex-row">
+                            <p class="h5"
+                               th:text="'Sub total: $' + ${order.subTotal}"></p>
+                            <p class="h5"
+                               th:text="'Total discount: $' + ${order.totalDiscount}"></p>
+                            <p class="h4"
+                               th:text="'Total price: $' + ${order.totalPrice}"></p>
+                        </div>
+                    </div>
+                </div>
+    </section>
+</main>
+<script src="/js/app.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>

@@ -68,13 +68,14 @@
                             <option th:each="c : ${allCategories}"
                                     th:text="${c.name}"
                                     th:value="${c.name}"
-                                    th:selected="${c.name} == *{category}">Category</option>
+                                    th:selected="${c.name} == *{category}">Category
+                            </option>
 
 <!--                            <option th:each="c : ${T(com.onlineshop.model.enums.CategoryEnum).values()}"-->
 <!--                                    th:text="${c}"-->
 <!--                                    th:value="${c}"-->
 <!--                                    th:selected="${c} == *{category}">Category-->
-                            </option>
+<!--                            </option>-->
                         </select>
                         <small th:if="${#fields.hasErrors('category')}"
                                th:errors="*{category}"

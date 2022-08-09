@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -12,7 +11,10 @@
 <body>
 <nav th:replace="fragments/nav"></nav>
 <main>
-    <section class="h-100 mr-5 ml-5">
+    <section class="h-100 mr-5 ml-5 mt-3">
+        <div th:if="${success}" id="success"
+             class="alert alert-success text-center font-weight-bold" style="display:block; margin: auto; width: fit-content;">Successfully!
+        </div>
         <div class="container h-100 py-5" style="background-color: #eee;">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div th:if="${cartItems.size() > 0}" class="col">
@@ -21,53 +23,116 @@
                     </div>
                     <div class="card rounded mb-4">
                         <div class="card-body p-4">
-                            <div th:each="ci : ${cartItems}" class="row d-flex justify-content-between align-items-center">
-                                <div class="col-md-2 col-lg-2 col-xl-2">
-                                    <img th:src="${ci.pictureURL}" class="imgCart">
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-xl-3">
-                                    <p th:text="${ci.onlyName}" class="lead mb-2"></p>
-                                    <p th:text="${ci.category.name}" class="h6 mb-2"></p>
-                                </div>
-                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                    <h5 th:text="'Price: $' + ${ci.price}" class="mb-0"></h5>
-                                </div>
-                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                    <h5 th:text="'Discount: %' + ${ci.discount}" class="mb-0"></h5>
-                                </div>
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Name</th>
+                                        <th>Regular Price</th>
+                                        <th>Discount</th>
+                                        <th>Final Price</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="align-middle">
+                                    <tr th:each="ci : ${cartItems}">
+                                        <!--Item-->
+                                        <td><img th:src="${ci.pictureURL}" class="imgCart" th:alt="${ci.pictureURL}"></td>
 
-                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                    <h5 th:text="'Price: $' + ${ci.price}" class="mb-0"></h5>
-                                </div>
+                                        <!--Name-->
+                                        <td class="text-left align-middle">
+                                            <p th:text="${ci.onlyName}" class="lead font-weight-bold"></p>
+                                            <p th:text="${ci.category.name}" class="h6"></p></td>
 
+                                        <!--Price-->
+                                        <td th:if="${ci.discount == 0}" class="align-middle">
+                                            <h4 th:text="'$' + ${ci.price}" class="align-middle"></h4></td>
+                                        <td th:unless="${ci.discount == 0}" class="align-middle">
+                                            <del th:text="'$' + ${ci.price}" class="align-middle"></del>
+                                        </td>
 
-                                <div class="col-md-1 col-lg-1 col-xl-1 text-right">
-                                    <a href="#!" class="text-danger">X<i class="fas fa-trash fa-lg"></i></a>
-                                </div>
+                                        <!--Discount-->
+                                        <td th:if="${ci.discount == 0}" class="align-middle">
+                                            <h5 class="align-middle"></h5></td>
+                                        <td th:unless="${ci.discount == 0}" class="align-middle">
+                                            <h5 th:text="${ci.discount + '%'}" class="align-middle"></h5>
+                                            <h6 th:text="'$' + ${user.getDiscountValue(ci.price, ci.discount)}"></h6>
+                                        </td>
+
+                                        <!--Final Price-->
+                                        <td class="align-middle">
+                                            <h4 th:text="'$' + ${ci.price - (ci.price * ci.discount/100)}"></h4></td>
+
+                                        <!--Action-->
+                                        <td class="align-middle">
+                                            <form th:action="@{/shop/cart/remove/{id}(id=${ci.id})}"
+                                                  th:method="POST">
+                                                <button type="submit" class="bg-transparent">
+                                                    <img src="/images/utils/trash-blue.png" alt="/images/utils/trash-blue.png"></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card mb-4">
-                        <div class="card-body p-4 d-flex flex-row">
-                            <div class="">
-                                <p>Address</p>
+                    <form th:action="@{/shop/order}"
+                          th:method="POST"
+                          th:object="${orderDTO}">
+                        <div class="card mb-4">
+                            <div class="card-body p-4 col text-left">
+                                <label for="address" class="p-2 ml-2">Choose address</label>
+                                <select th:field="*{addressLine}" id="address"
+                                        class="ml-2" onchange="showAddressLine()" required>
+                                    <option th:each="a : ${addresses}"
+                                            th:text="${a.name}"
+                                            th:value="|${a.addressLine}town:${a.town}|"
+                                            th:selected="${a.addressLine} == *{addressLine}">
+                                    </option>
+                                </select>
+                                <div class="col">
+                                    <div id="addressLine" class="col-3 text-left pt-1">
+                                    </div>
+                                    <div id="town" class="col-3 text-left pt-1">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+                        <div th:if="${user.totalDiscountValue > 0}" class="card mb-4 text-right">
+                            <div class="card-body p-4 flex-row">
+                                <p class="h5"
+                                   th:text="'Sub total: $' + ${user.getTotalPrice()}"></p>
+                                <p class="h5"
+                                   th:text="'Total discount: $' + ${#numbers.formatDecimal(user.getTotalDiscountValue(), 1, 2)}"></p>
+                                <p class="h4"
+                                   th:text="'Total price: $' + ${#numbers.formatDecimal(user.getTotalPrice() - user.getTotalDiscountValue(), 1, 2)}"></p>
+                            </div>
                         </div>
-                    </div>
-
+                        <div th:if="${user.totalDiscountValue == 0}" class="card mb-4 text-right">
+                            <div class="card-body p-4 flex-row">
+                                <p class="h5" th:text="'Total: $' + ${user.getTotalPrice()}"></p>
+                            </div>
+                        </div>
+                        <div class="card text-right col-md">
+                            <div class="card-body">
+                                <p class="h5 text-danger font-weight-bold">Payment at delivery</p>
+                            </div>
+                        </div>
+                        <div class="m-auto">
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-warning btn-lg pr-4 pl-4"
+                                        onclick="if(!confirm('Confirm your order!')){return false}">Order
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div th:if="${cartItems.size() == 0}" class="d-flex justify-content-between align-items-center mb-4">
                     <h3 class="mb-0 text-dark">Shopping Cart is empty</h3>
                 </div>
             </div>
-        </div>
     </section>
 </main>
 <script src="/js/app.js"></script>

@@ -23,14 +23,14 @@
                                      class="alert alert-success text-center" style="display:block">You have register
                                     successfully!
                                 </div>
-                                <div class="h3 text-uppercase text-center mb-3 mt-5">Login</div>
+                                <div class="h3 text-uppercase text-center mb-3 mt-5">Login
+                                </div>
                                 <form th:action="@{/login}"
                                       th:method="POST">
                                     <div class="form-outline mb-4">
                                         <input type="text" placeholder="Your email" name="username" id="username"
                                                class="form-control form-control-lg">
                                     </div>
-
                                     <div class="form-outline mb-4">
                                         <input type="password" placeholder="Password" name="password" id="password"
                                                class="form-control form-control-lg"></div>
@@ -44,6 +44,11 @@
                                            class="errors bg-danger text-light rounded m2-3 mt-5 p-1">
                                         Invalid username or password.
                                     </small>
+                                    <div class="mt-3">
+                                        <p>Don't have account?
+                                            <a th:href="register" class="mt-2 font-weight-bold" style="color: #1b1e21">Sign up</a>
+                                        </p>
+                                    </div>
                                 </form>
                             </div>
                         </div>

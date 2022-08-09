@@ -21,7 +21,7 @@
             <div class="col-auto p-0 m-0">
                 <img th:src="@{${item.pictureURL}}" class="imgItemView">
             </div>
-            <div class="col-sm-3 ml-3 border border-dark bg-light h-50">
+            <div class="col-sm-4 ml-3 border border-dark bg-light h-50">
                 <div class="row justify-content-center itemTitle"><p th:text="${item.name}" class="h3"></p></div>
                 <div class="row justify-content-center itemDescription"><p th:text="${item.description}" class="h6 text-justify"></p></div>
                 <div th:if="${item.discount == 0}" class="row justify-content-center itemPrice">
@@ -33,9 +33,13 @@
                     <del th:text="'$' + ${item.price}" class="h5 mr-1  ml-1 float-right pt-1"></del>
                 </div>
                 <div class="row justify-content-center">
-                    <form th:action="@{/shop/buy/{id}(id=${item.id})}" th:method="POST">
-                        <button type="submit" class="btn btn-success m-3">Buy</button>
+                    <form sec:authorize="isAuthenticated()" th:action="@{/shop/buy/{id}(id=${item.id})}" th:method="POST">
+                        <button type="submit" class="btn btn-success m-3">Add to cart</button>
                     </form>
+                    <div sec:authorize="isAnonymous()" class="row justify-content-center mb-5 w-25">
+                        <p class="mb-2">You want it?</p><br>
+                        <p>Please, <a href="/login" class="font-weight-bold">Login</a></p>
+                    </div>
                 </div>
             </div>
         </div>

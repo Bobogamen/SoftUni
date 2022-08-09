@@ -1,11 +1,14 @@
 package com.onlineshop.model.user;
 
 import com.onlineshop.model.entity.Address;
+import com.onlineshop.model.entity.Item;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class ShopUserDetails implements UserDetails {
 
@@ -18,6 +21,8 @@ public class ShopUserDetails implements UserDetails {
     private final LocalDateTime registeredOn;
     private final Collection<Address> addresses;
     private final Collection<GrantedAuthority> authorities;
+    private final Collection<Item> cart;
+
 
     public ShopUserDetails(long id, String username,
                            String password,
@@ -34,6 +39,7 @@ public class ShopUserDetails implements UserDetails {
         this.registeredOn = registeredOn;
         this.addresses = addresses;
         this.authorities = authorities;
+        this.cart = new ArrayList<>();
     }
 
     public long getId() {
@@ -56,6 +62,38 @@ public class ShopUserDetails implements UserDetails {
 
     public Collection<Address> getAddresses() {
         return addresses;
+    }
+
+    public Collection<Item> getCart() {
+        return cart;
+    }
+
+    public double getDiscountValue(int price, int discount) {
+        return price * 1.0 * discount / 100;
+    }
+
+    public double getTotalPrice() {
+        return this.cart.stream().mapToDouble(Item::getPrice).sum();
+    }
+
+    public double getTotalDiscountValue() {
+        return this.cart.stream().
+                filter(i -> i.getDiscount() > 0).
+                mapToDouble(x -> x.getPrice() * x.getDiscount() / 100).
+                sum();
+    }
+
+    public void removeCartItem(long id) {
+        for (Item item : this.cart) {
+            if (item.getId() == id) {
+                this.cart.remove(item);
+                return;
+            }
+        }
+    }
+
+    public void addItem(Item item) {
+        this.cart.add(item);
     }
 
     @Override

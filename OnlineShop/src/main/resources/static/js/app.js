@@ -1,3 +1,15 @@
+function showAddressLine() {
+    var select = document.getElementById('address');
+    var option = select.options[select.selectedIndex]
+
+    let split = option.value.split('town:');
+
+    console.log(split);
+
+    document.getElementById('addressLine').innerText = split[0];
+    document.getElementById('town').innerText = split[1];
+}
+
 window.setTimeout(successMessage, 3000)
 
 function successMessage() {

@@ -19,17 +19,16 @@
             <button type="submit" class="btn btn-outline-danger" onclick="location.href='/shop'">Shop</button>
         </div>
         <div>
-            <button type="submit" class="btn btn-outline-danger">Discount</button>
+            <button type="submit" class="btn btn-outline-danger" onclick="location.href='/shop/discount'">Discount</button>
 
         </div>
 
         <div class="ml-auto">
-            <button type="submit" class="btn btn-dark" onclick="location.href='/shop/cart'">Cart            </button>
-            <button sec:authorize="hasRole('ADMIN')" type="submit" class="btn btn-primary"
-                    onclick="location.href='/users/admin'">Admin
+            <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-dark" onclick="location.href='/shop/cart'">Cart
             </button>
-            <button sec:authorize="hasRole('MODERATOR')" type="submit" class="btn btn-secondary"
-                    onclick="location.href='/users/moderator'">Moderator
+            <button sec:authorize="hasRole('ADMIN')" type="submit" class="btn btn-primary" onclick="location.href='/users/admin'">Admin
+            </button>
+            <button sec:authorize="hasRole('MODERATOR')" type="submit" class="btn btn-secondary" onclick="location.href='/users/moderator'">Moderator
             </button>
         </div>
 

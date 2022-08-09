@@ -2,9 +2,7 @@ package com.onlineshop.model.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,7 +31,7 @@ public class UserEntity {
     private double ordersSum;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "userEntity")
-    private List<Address> address;
+    private Set<Address> address;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
@@ -42,7 +40,7 @@ public class UserEntity {
     private Set<Role> roles;
 
     public UserEntity() {
-        this.address = new ArrayList<>();
+        this.address = new HashSet<>();
         this.roles = new HashSet<>();
     }
 
@@ -82,11 +80,11 @@ public class UserEntity {
         this.name = name;
     }
 
-    public List<Address> getAddress() {
+    public Set<Address> getAddress() {
         return address;
     }
 
-    public void setAddress(List<Address> address) {
+    public void setAddress(Set<Address> address) {
         this.address = address;
     }
 

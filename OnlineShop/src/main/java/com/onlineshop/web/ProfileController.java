@@ -4,18 +4,16 @@ import com.onlineshop.model.dto.AddAddressDTO;
 import com.onlineshop.model.entity.Address;
 import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.service.AddressService;
+import com.onlineshop.service.OrderService;
 import com.onlineshop.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Controller
@@ -24,10 +22,12 @@ public class ProfileController {
 
     private final AddressService addressService;
     private final UserService userService;
+    private final OrderService ordersService;
 
-    public ProfileController(AddressService addressService, UserService userService) {
+    public ProfileController(AddressService addressService, UserService userService, OrderService ordersService) {
         this.addressService = addressService;
         this.userService = userService;
+        this.ordersService = ordersService;
     }
     @ModelAttribute("addAddressDTO")
     public AddAddressDTO addAddressDTO()  {
@@ -40,9 +40,25 @@ public class ProfileController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userName", this.userService.getNameByUserEntityId(user.getId()));
         modelAndView.addObject("addresses", getUserAddresses(user));
+        modelAndView.addObject("orders", this.ordersService.getAllOrdersByUserId(user.getId()));
         modelAndView.setViewName("profile");
 
         return modelAndView;
+    }
+
+    @GetMapping("/view-order/{id}")
+    public ModelAndView viewOrder(@PathVariable long id) {
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.addObject("order", this.ordersService.getOrderById(id));
+
+
+
+        modelAndView.setViewName("view-order");
+
+        return modelAndView;
+
     }
 
     private List<Address> getUserAddresses(ShopUserDetails user) {

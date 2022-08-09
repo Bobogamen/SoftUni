@@ -12,6 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemService {
@@ -48,6 +49,10 @@ public class ItemService {
 
     public List<Item> getAllItems() {
         return this.itemRepository.findAll();
+    }
+
+    public List<Item> getAllItemWithDiscount() {
+        return getAllItems().stream().filter(i -> i.getDiscount() > 0).toList();
     }
 
     public void deleteItemById(long id) {

@@ -32,12 +32,12 @@
             </thead>
             <tbody class="align-middle">
             <tr th:each="item : ${allItems}">
-                <td th:text="${item.id}" class="align-middle">keyvalue</td>
-                <td th:text="${item.name}" class="align-middle">keyvalue</td>
-                <td th:text="${item.price}" class="align-middle">keyvalue</td>
-                <td th:text="${item.discount}" class="align-middle">keyvalue</td>
-                <td th:text="${item.timesOrdered}" class="align-middle">keyvalue</td>
-                <td th:text="${item.category.name}" class="align-middle">keyvalue</td>
+                <td th:text="${item.id}" class="align-middle"></td>
+                <td th:text="${item.name}" class="align-middle"></td>
+                <td th:text="${item.price}" class="align-middle"></td>
+                <td th:text="${item.discount}" class="align-middle"></td>
+                <td th:text="${item.timesOrdered}" class="align-middle"></td>
+                <td th:text="${item.category.name}" class="align-middle"></td>
                 <td>
                     <a th:href="@{/users/moderator/edit-item/{id}(id=${item.id})}" class="btn-sm btn-warning">Update</a>
                 </td>
