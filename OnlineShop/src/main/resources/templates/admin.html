@@ -40,7 +40,11 @@
             <tbody>
             <tr th:each="user : ${allUsers}">
                 <td th:text="${user.id}" class="align-middle"></td>
-                <td th:text="${user.email}" class="align-middle"></td>
+                <td class="align-middle">
+                    <a th:href="@{/users/admin/view-profile/{id}(id=${user.id})}">
+                        <span th:text="${user.email}">
+                    </span></a>
+                </td>
                 <td th:text="${user.name}" class="align-middle"></td>
                 <td th:text="|${user.registeredOn.getDayOfMonth()}-${user.registeredOn.getMonth().name()}-${user.registeredOn.getYear()}
             (${user.registeredOn.getHour()}:${user.registeredOn.getMinute()}:${user.registeredOn.getSecond()})|" class="align-middle">

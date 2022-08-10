@@ -5,6 +5,7 @@ import com.onlineshop.model.entity.Role;
 import com.onlineshop.model.entity.UserEntity;
 import com.onlineshop.repository.RoleRepository;
 import com.onlineshop.repository.UserRepository;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -56,6 +57,10 @@ public class UserService {
 
     public String getNameByUserEntityId(long id) {
         return this.userRepository.getNameByUserEntityId(id);
+    }
+
+    public UserEntity getUserEntityById(long id) {
+        return this.userRepository.getUserById(id);
     }
 
 

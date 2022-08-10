@@ -14,8 +14,6 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/users")
 public class ProfileController {
@@ -39,8 +37,8 @@ public class ProfileController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("userName", this.userService.getNameByUserEntityId(user.getId()));
-        modelAndView.addObject("addresses", getUserAddresses(user));
-        modelAndView.addObject("orders", this.ordersService.getAllOrdersByUserId(user.getId()));
+        modelAndView.addObject("addresses", this.addressService.getAddressesByUserEntityId(user.getId()));
+        modelAndView.addObject("orders", this.ordersService.getAllOrdersByUserEntityId(user.getId()));
         modelAndView.setViewName("profile");
 
         return modelAndView;
@@ -50,26 +48,16 @@ public class ProfileController {
     public ModelAndView viewOrder(@PathVariable long id) {
 
         ModelAndView modelAndView = new ModelAndView();
-
         modelAndView.addObject("order", this.ordersService.getOrderById(id));
-
-
-
         modelAndView.setViewName("view-order");
 
         return modelAndView;
-
-    }
-
-    private List<Address> getUserAddresses(ShopUserDetails user) {
-        return this.addressService.getAddressesByUserEntityId(user.getId());
     }
 
     @GetMapping("/profile/edit-name")
     public ModelAndView editProfile(@AuthenticationPrincipal ShopUserDetails user) {
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("addresses", getUserAddresses(user));
         modelAndView.addObject("userName", this.userService.getNameByUserEntityId(user.getId()));
         modelAndView.setViewName("edit-name");
 

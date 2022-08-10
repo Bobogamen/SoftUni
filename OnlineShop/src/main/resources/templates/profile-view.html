@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/reset-css.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>OnlineShop</title>
+</head>
+<body>
+<nav th:replace="fragments/nav"></nav>
+<main>
+    <div class="container py-5 bg-transparent col-12">
+        <div class="row m-1 bg-light border border-danger rounded text-center">
+            <div class="col-4 p-2 m-2 bg-info border border-danger rounded align-self-center">
+                <p class="h4 font-weight-bold" th:text="${userEntity.name}"></p>
+                <p class="h5" th:text="${userEntity.email}"></p>
+                <p class="small"
+                   th:text="|Registered on:
+                   ${userEntity.getRegisteredOn().dayOfMonth} - ${userEntity.getRegisteredOn().month.name()} - ${userEntity.getRegisteredOn().year}
+                   at ${userEntity.getRegisteredOn().toLocalTime().getHour()}:${userEntity.getRegisteredOn().toLocalTime().getMinute()}|"></p>
+            </div>
+            <div class="col p-2 m-2 bg-light border border-danger rounded">
+                <p class="h3 text-center">Addresses</p>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address line</th>
+                        <th>Town</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="a: ${addresses}">
+                        <td th:text="${a.name}" class="align-middle"/>
+                        <td th:text="${a.addressLine}" class="align-middle"/>
+                        <td th:text="${a.town}" class="align-middle"/>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row m-1 bg-light border border-danger rounded text-center">
+            <div class="col p-2 m-2 bg-light border border-danger rounded">
+                <p class="h3 text-center text-center">Orders</p>
+                <table class="table table-bordered table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Items count</th>
+                        <th>SubTotal</th>
+                        <th>Total Discount</th>
+                        <th>Total Price</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                    <tr th:each="o : ${orders}">
+                        <td th:text="${o.id}" class="align-middle"></td>
+                        <td th:text="${o.items.size()}" class="align-middle"></td>
+                        <td th:text="${o.subTotal}" class="align-middle"></td>
+                        <td th:text="${o.totalDiscount}" class="align-middle"></td>
+                        <td th:text="${o.totalPrice}" class="align-middle"></td>
+                        <td>
+                            <a th:href="@{/users/view-order/{id}(id=${o.id})}" class="btn-sm btn-warning">View</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="/js/app.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>

@@ -2,7 +2,6 @@ package com.onlineshop.service;
 
 import com.onlineshop.model.dto.OrderDTO;
 import com.onlineshop.model.entity.Address;
-import com.onlineshop.model.entity.Item;
 import com.onlineshop.model.entity.Order;
 import com.onlineshop.model.entity.UserEntity;
 import com.onlineshop.model.user.ShopUserDetails;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -59,7 +57,7 @@ public class OrderService {
         this.userRepository.save(userById);
     }
 
-    public List<Order> getAllOrdersByUserId(long id) {
+    public List<Order> getAllOrdersByUserEntityId(long id) {
         return this.orderRepository.getAllByUserId(id);
     }
 
