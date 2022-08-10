@@ -40,15 +40,23 @@ public class OrderService {
         order.setItems(new HashSet<>(user.getCart()));
 
         if (user.getTotalDiscountValue() > 0) {
-            order.setSubTotal(user.getTotalPrice() - user.getTotalDiscountValue());
+            order.setSubTotal(user.getTotalPrice());
         }
 
         order.setTotalDiscount(user.getTotalDiscountValue());
-        order.setTotalPrice(user.getTotalPrice());
+        order.setTotalPrice(user.getTotalPrice() - user.getTotalDiscountValue());
         order.setAddress(addressByAddressLine);
         order.setUser(userById);
 
         this.orderRepository.save(order);
+
+        double userCurrentOrderSum = userById.getOrdersSum();
+        userById.setOrdersSum(userCurrentOrderSum + order.getTotalPrice());
+        int userCurrentOrderCount = userById.getOrdersCount();
+        userCurrentOrderCount++;
+        userById.setOrdersCount(userCurrentOrderCount);
+
+        this.userRepository.save(userById);
     }
 
     public List<Order> getAllOrdersByUserId(long id) {

@@ -17,17 +17,18 @@
          class="alert alert-success text-center font-weight-bold" style="display:block; margin: auto; width: fit-content;">
         Successfully!
     </div>
-    <div class="container py-1 bg-transparent">
+    <div class="container-fluid p-2 mt-2 bg-transparent">
         <p class="h5 text-center">Users
             <small class="bg-danger align-content-center text-light rounded float-right mr-3 p-1">
                 To be ADMIN, must be MODERATOR first!
             </small>
         </p>
-        <table class="table table-bordered table-striped table-sm">
+        <table class="table table-bordered table-striped">
             <thead>
             <tr>
                 <th class="align-middle">id</th>
                 <th class="align-middle">Email</th>
+                <th class="align-middle">Name</th>
                 <th class="align-middle">Registration date</th>
                 <th class="align-middle col-1">Orders Count</th>
                 <th class="align-middle col-1">Orders Sum</th>
@@ -40,6 +41,7 @@
             <tr th:each="user : ${allUsers}">
                 <td th:text="${user.id}" class="align-middle"></td>
                 <td th:text="${user.email}" class="align-middle"></td>
+                <td th:text="${user.name}" class="align-middle"></td>
                 <td th:text="|${user.registeredOn.getDayOfMonth()}-${user.registeredOn.getMonth().name()}-${user.registeredOn.getYear()}
             (${user.registeredOn.getHour()}:${user.registeredOn.getMinute()}:${user.registeredOn.getSecond()})|" class="align-middle">
 

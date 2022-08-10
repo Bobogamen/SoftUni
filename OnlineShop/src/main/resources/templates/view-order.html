@@ -62,8 +62,6 @@
                                         <!--Final Price-->
                                         <td class="align-middle">
                                             <h4 th:text="'$' + ${oi.price - (oi.price * oi.discount/100)}"></h4></td>
-
-                                        <!--Action-->
                                     </tr>
                                     </tbody>
                                 </table>
@@ -72,6 +70,7 @@
                     </div>
                     <div class="card mb-4">
                         <div class="card-body p-4 col text-left">
+                            <p class="pb-1 font-weight-bold">Shipping address:</p>
                             <p th:text="${order.address.addressLine}"></p>
                             <p th:text="${order.address.town}"></p>
                         </div>
