@@ -4,8 +4,14 @@
 # INSERT INTO onlineshop.users (id, email, name, orders_count, orders_sum, password, registered_on) VALUES (4, 'client@mail.com', 'Client', 0, 0.00, '40d6ddf6388ba640cb4b11198af05d687b15afce4224651d7b446d809e575c6b393b9c9ad9621791', '2022-07-25 20:35:23.903599');
 #
 # INSERT INTO onlineshop.users_roles (user_entity_id, roles_id) VALUES (1, 1);
-# INSERT INTO onlineshop.users_roles (user_entity_id, roles_id) VALUES (2, 1);
 # INSERT INTO onlineshop.users_roles (user_entity_id, roles_id) VALUES (1, 2);
+# INSERT INTO onlineshop.users_roles (user_entity_id, roles_id) VALUES (2, 2);
+#
+# INSERT INTO onlineshop.addresses (id, address_line, name, town, user_entity_id) VALUES (1, 'жк. Надежда 1 бл. 103 вх. А', 'Вкъщи', 'София', 1);
+# INSERT INTO onlineshop.addresses (id, address_line, name, town, user_entity_id) VALUES (2, 'офис Еконт Ломско шосе', 'Еконт-Ломско шосе', 'София', 1);
+# INSERT INTO onlineshop.addresses (id, address_line, name, town, user_entity_id) VALUES (3, 'жк. Враждебна', 'Работа', 'София', 1);
+# INSERT INTO onlineshop.addresses (id, address_line, name, town, user_entity_id) VALUES (4, 'жк. Надежда 1 бл. 103 вх. А1', 'Вкъщи', 'София', 2);
+#
 #
 # INSERT INTO onlineshop.categories (id, name) VALUES (1, 'LEAGUE_OF_LEGENDS');
 # INSERT INTO onlineshop.categories (id, name) VALUES (2, 'FLEXI');

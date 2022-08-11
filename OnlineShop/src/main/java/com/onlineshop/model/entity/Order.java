@@ -1,6 +1,7 @@
 package com.onlineshop.model.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -10,12 +11,6 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "orders_items",
-                joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
-                inverseJoinColumns = @JoinColumn(name = "items_id", referencedColumnName = "id"))
-    private Set<Item> items;
 
     @Column(nullable = false, columnDefinition = "DECIMAL(10,2)")
     private double subTotal;
@@ -29,10 +24,16 @@ public class Order {
     @ManyToOne
     private Address address;
 
-    @OneToOne
+    @ManyToOne
     private UserEntity user;
 
+    @OneToMany(mappedBy = "order",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+    private Set<OrderItem> orderDetails;
+
     public Order() {
+        this.orderDetails = new HashSet<>();
     }
 
     public long getId() {
@@ -41,14 +42,6 @@ public class Order {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public Set<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(Set<Item> items) {
-        this.items = items;
     }
 
     public UserEntity getUser() {
@@ -89,5 +82,17 @@ public class Order {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Set<OrderItem> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(Set<OrderItem> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        this.orderDetails.add(orderItem);
     }
 }

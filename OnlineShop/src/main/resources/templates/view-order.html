@@ -35,14 +35,14 @@
                                     </tr>
                                     </thead>
                                     <tbody class="align-middle">
-                                    <tr th:each="oi : ${order.getItems()}">
+                                    <tr th:each="oi : ${order.orderDetails}">
                                         <!--Item-->
-                                        <td><img th:src="${oi.pictureURL}" class="imgCart" th:alt="${oi.pictureURL}"></td>
+                                        <td><img th:src="${oi.getItem().getPictureURL()}" class="imgCart" th:alt="${oi.item.pictureURL}"></td>
 
                                         <!--Name-->
                                         <td class="text-left align-middle">
-                                            <p th:text="${oi.onlyName}" class="lead font-weight-bold"></p>
-                                            <p th:text="${oi.category.name}" class="h6"></p></td>
+                                            <p th:text="${oi.item.onlyName}" class="lead font-weight-bold"></p>
+                                            <p th:text="${oi.item.category.name}" class="h6"></p></td>
 
                                         <!--Price-->
                                         <td th:if="${oi.discount == 0}" class="align-middle">

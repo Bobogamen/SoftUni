@@ -59,7 +59,7 @@
                     <tbody class="align-middle">
                     <tr th:each="o : ${orders}">
                         <td th:text="${o.id}" class="align-middle"></td>
-                        <td th:text="${o.items.size()}" class="align-middle"></td>
+                        <td th:text="${o.orderDetails.size()}" class="align-middle"></td>
                         <td th:text="${o.subTotal}" class="align-middle"></td>
                         <td th:text="${o.totalDiscount}" class="align-middle"></td>
                         <td th:text="${o.totalPrice}" class="align-middle"></td>

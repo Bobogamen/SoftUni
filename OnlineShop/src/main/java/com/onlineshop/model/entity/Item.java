@@ -1,6 +1,7 @@
 package com.onlineshop.model.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "items")
@@ -27,6 +28,11 @@ public class Item {
 
     @OneToOne
     private Category category;
+
+    @OneToMany(mappedBy = "item",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+    private Set<OrderItem> order;
 
     public Item(String name, String description, double price, Category category) {
         this.name = name;
@@ -109,6 +115,14 @@ public class Item {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Set<OrderItem> getOrder() {
+        return order;
+    }
+
+    public void setOrder(Set<OrderItem> order) {
+        this.order = order;
     }
 }
 
