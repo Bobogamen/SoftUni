@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -15,6 +14,38 @@
     <div th:if="${success}" id="success"
          class="alert alert-success text-center font-weight-bold" style="display:block; margin: auto; width: fit-content;">Successfully!
     </div>
+    <div class="container py-2 bg-transparent">
+        <p class="h6 ml-2 font-weight-bold">Orders</p>
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>User</th>
+                <th>Items count</th>
+                <th>SubTotal</th>
+                <th>Total Discount</th>
+                <th>Total Price</th>
+                <th>Action</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody class="align-middle">
+            <tr th:each="order : ${allOrders}">
+                <td th:text="${order.id}" class="align-middle"></td>
+                <td th:text="|${order.user.name} ${order.user.email}|" class="align-middle"></td>
+                <td th:text="${order.orderDetails.size()}" class="align-middle"></td>
+                <td th:text="${order.subTotal}" class="align-middle"></td>
+                <td th:text="${order.totalDiscount}" class="align-middle"></td>
+                <td th:text="${order.totalPrice}" class="align-middle"></td>
+                <td>
+                    <a th:if="${order.status.id < 5}" th:href="@{/users/moderator/update-order/{id}(id=${order.id})}" class="btn-sm btn-warning">Update</a>
+                </td>
+                <td th:text="${order.status.name.name()}" class="align-middle"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
     <div class="container py-2 bg-transparent">
         <p class="h6 ml-2 font-weight-bold">Items<a th:href="@{/users/moderator/add-item}" class="btn-sm btn-success p-1 mb-3 addButton">Add
             item</a></p>

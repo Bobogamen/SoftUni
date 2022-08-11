@@ -5,14 +5,13 @@ import com.onlineshop.model.entity.Category;
 import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.service.CategoryService;
 import com.onlineshop.service.ItemService;
+import com.onlineshop.service.OrderService;
 import com.onlineshop.service.PictureService;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -20,11 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -34,12 +30,14 @@ public class ModeratorController {
     private final ItemService itemService;
     private final PictureService pictureService;
     private final CategoryService categoryService;
+    private final OrderService orderService;
 
 
-    public ModeratorController(ItemService itemService, PictureService pictureService, CategoryService categoryService) {
+    public ModeratorController(ItemService itemService, PictureService pictureService, CategoryService categoryService, OrderService orderService) {
         this.itemService = itemService;
         this.pictureService = pictureService;
         this.categoryService = categoryService;
+        this.orderService = orderService;
     }
 
     @ModelAttribute("addItemDTO")
@@ -61,11 +59,25 @@ public class ModeratorController {
 
         modelAndView.addObject("allItems", this.itemService.getAllItems());
         modelAndView.addObject("allCategories", allCategories());
+        modelAndView.addObject("allOrders", this.orderService.getAllOrders());
         modelAndView.addObject("itemsCountByCategory", this.itemService.itemsByCategory());
         modelAndView.setViewName("moderator");
 
         return modelAndView;
     }
+
+    @GetMapping("/moderator/update-order/{id}")
+    public ModelAndView viewOrder(@PathVariable long id) {
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.addObject("order", this.orderService.getOrderById(id));
+        modelAndView.setViewName("view-order");
+
+        return modelAndView;
+    }
+
+
 
     @GetMapping("/moderator/add-item")
     public String addItem(@AuthenticationPrincipal ShopUserDetails user, Model model) {
@@ -106,7 +118,8 @@ public class ModeratorController {
     }
 
     @GetMapping("/moderator/edit-item/{id}")
-    public ModelAndView editItem(@PathVariable long id, @AuthenticationPrincipal ShopUserDetails user, RedirectAttributes redirectAttributes) {
+    public ModelAndView editItem(@PathVariable long id,
+                                 @AuthenticationPrincipal ShopUserDetails user) {
 
         if (user.getAuthorities().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
@@ -170,6 +183,16 @@ public class ModeratorController {
     public String deleteCategory(@PathVariable long id, RedirectAttributes redirectAttributes) {
 
         this.categoryService.deleteCategoryById(id);
+
+        redirectAttributes.addFlashAttribute("success", true);
+
+        return "redirect:/users/moderator";
+    }
+
+    @PostMapping("/moderator/change-status/{id}/{status}")
+    public String changeStatus(@PathVariable long id,
+                               @PathVariable String status, RedirectAttributes redirectAttributes) {
+        this.orderService.changeOrderStatus(id, status);
 
         redirectAttributes.addFlashAttribute("success", true);
 

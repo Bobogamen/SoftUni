@@ -1,8 +1,5 @@
 package com.onlineshop.model.dto;
 
-import com.onlineshop.model.entity.Category;
-import com.onlineshop.model.enums.CategoryEnum;
-
 import javax.validation.constraints.*;
 
 public class AddItemDTO {

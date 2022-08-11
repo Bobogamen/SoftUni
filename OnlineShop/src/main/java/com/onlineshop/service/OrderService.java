@@ -2,23 +2,31 @@ package com.onlineshop.service;
 
 import com.onlineshop.model.dto.OrderDTO;
 import com.onlineshop.model.entity.*;
+import com.onlineshop.model.enums.OrderStatusEnum;
 import com.onlineshop.model.user.ShopUserDetails;
 import com.onlineshop.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final OrderStatusRepository orderStatusRepository;
     private final UserRepository userRepository;
     private final AddressRepository addressRepository;
     private final ItemRepository itemRepository;
 
-    public OrderService(OrderRepository orderRepository, UserRepository userRepository, AddressRepository addressRepository, ItemRepository itemRepository) {
+    public OrderService(OrderRepository orderRepository,
+                        OrderStatusRepository orderStatusRepository,
+                        UserRepository userRepository,
+                        AddressRepository addressRepository,
+                        ItemRepository itemRepository) {
         this.orderRepository = orderRepository;
+        this.orderStatusRepository = orderStatusRepository;
         this.userRepository = userRepository;
         this.addressRepository = addressRepository;
         this.itemRepository = itemRepository;
@@ -32,6 +40,8 @@ public class OrderService {
         Address addressByAddressLine = this.addressRepository.findAddressByAddressLine(addressLine);
 
         Collection<Item> cartItems = user.getCart();
+
+        OrderStatus orderStatus = this.orderStatusRepository.getOrderStatusByName(OrderStatusEnum.PENDING);
 
         //Order set up
         Order order = new Order();
@@ -49,6 +59,7 @@ public class OrderService {
         order.setTotalPrice(user.getTotalPrice() - user.getTotalDiscountValue());
         order.setAddress(addressByAddressLine);
         order.setUser(userById);
+        order.setStatus(orderStatus);
 
 
         //Item timesOrdered set up
@@ -73,11 +84,29 @@ public class OrderService {
         this.userRepository.save(userById);
     }
 
+    public void changeOrderStatus(long id, String status) {
+
+        Order orderById = this.orderRepository.getOrderById(id);
+
+        List<OrderStatusEnum> newStatus = Arrays.stream(OrderStatusEnum.values()).
+                filter(o -> o.name().equals(status)).toList();
+
+        OrderStatus orderStatus = this.orderStatusRepository.getOrderStatusByName(newStatus.get(0));
+
+        orderById.setStatus(orderStatus);
+
+        this.orderRepository.save(orderById);
+    }
+
     public List<Order> getAllOrdersByUserEntityId(long id) {
         return this.orderRepository.getAllByUserId(id);
     }
 
     public Order getOrderById(long id) {
         return this.orderRepository.getOrderById(id);
+    }
+
+    public List<Order> getAllOrders() {
+        return this.orderRepository.findAll().stream().sorted(Comparator.comparingLong(x -> x.getStatus().getId())).toList();
     }
 }

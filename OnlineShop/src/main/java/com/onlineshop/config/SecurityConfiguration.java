@@ -29,7 +29,7 @@ public class SecurityConfiguration {
              authorizeRequests(). // define which requests are allowed and which not
              requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll(). // everyone can download static resources (css, js, images)
              //which links can have access by who
-             antMatchers("/", "/login", "/register", "/shop", "/shop/item/*", "/shop/discount").permitAll(). //by everyone
+             antMatchers( "/favicon.ico", "/", "/login", "/register", "/shop", "/shop/item/*", "/shop/discount").permitAll(). //by everyone
              antMatchers("/users/admin").hasRole(RoleEnum.ADMIN.name()). //only for admins
              antMatchers("/users/moderator").hasRole(RoleEnum.MODERATOR.name()). //only for moderators
              anyRequest().authenticated(). //any other links

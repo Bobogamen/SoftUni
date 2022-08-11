@@ -21,6 +21,10 @@ public class Order {
     @Column(nullable = false, columnDefinition = "DECIMAL(10,2)")
     private double totalPrice;
 
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private OrderStatus status;
+
     @ManyToOne
     private Address address;
 
@@ -94,5 +98,13 @@ public class Order {
 
     public void addOrderItem(OrderItem orderItem) {
         this.orderDetails.add(orderItem);
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 }

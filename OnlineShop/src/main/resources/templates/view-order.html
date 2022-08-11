@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -37,7 +38,8 @@
                                     <tbody class="align-middle">
                                     <tr th:each="oi : ${order.orderDetails}">
                                         <!--Item-->
-                                        <td><img th:src="${oi.getItem().getPictureURL()}" class="imgCart" th:alt="${oi.item.pictureURL}"></td>
+                                        <td><img th:src="${oi.getItem().getPictureURL()}" class="imgCart" th:alt="${oi.item.pictureURL}">
+                                        </td>
 
                                         <!--Name-->
                                         <td class="text-left align-middle">
@@ -69,10 +71,44 @@
                         </div>
                     </div>
                     <div class="card mb-4">
-                        <div class="card-body p-4 col text-left">
-                            <p class="pb-1 font-weight-bold">Shipping address:</p>
-                            <p th:text="${order.address.addressLine}"></p>
-                            <p th:text="${order.address.town}"></p>
+                        <div class="card-body p-4 text-left">
+                            <div class="row align-middle">
+                                <div class="col-6 text-left">
+                                    <p sec:authorize="hasRole('MODERATOR')" th:text="${order.user.name}"></p>
+                                    <p class="pb-1 font-weight-bold">Shipping address:</p>
+                                    <p th:text="${order.address.addressLine}"></p>
+                                    <p th:text="${order.address.town}"></p>
+                                </div>
+                                <div class="col-6 text-right pt-4">
+                                    <span class="h3">
+                                        <span>STATUS: </span>
+                                        <span th:text="${order.status.name}" class="font-weight-bold"></span>
+                                    </span>
+                                    <div sec:authorize="hasRole('MODERATOR')" class="row ml-5 pl-5">
+                                        <div th:switch="${order.status.id}" class="row ml-5 pl-5">
+                                            <div th:case="1" class="row ml-5 pl-5">
+                                                <form th:action="@{/users/moderator/change-status/{id}/{status}(id=${order.id}, status='ACCEPTED')}"
+                                                      th:method="POST" class="ml-4 pl-3">
+                                                    <button type="submit" class="btn btn-success ml-5 mr-1">Accept</button>
+                                                </form>
+                                                <form th:action="@{/users/moderator/change-status/{id}/{status}(id=${order.id}, status='CANCELED')}"
+                                                      th:method="POST">
+                                                    <button type="submit" class="btn btn-danger">Cancel</button>
+                                                </form></div>
+                                            <div th:case="3" class="row ml-5 pl-5">
+                                                <form th:action="@{/users/moderator/change-status/{id}/{status}(id=${order.id}, status='SHIPPED')}"
+                                                      th:method="POST" class="ml-5 pl-2">
+                                                    <button type="submit" class="btn btn-success ml-5">Ship order</button>
+                                                </form></div>
+                                            <div th:case="4" class="row ml-5 pl-5">
+                                                <form th:action="@{/users/moderator/change-status/{id}/{status}(id=${order.id}, status='DELIVERED')}"
+                                                      th:method="POST" class="ml-5 pl-2">
+                                                    <button type="submit" class="btn btn-info ml-5">Deliver order</button>
+                                                </form></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card mb-4 text-right">

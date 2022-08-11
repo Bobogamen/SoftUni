@@ -1,6 +1,5 @@
 package com.onlineshop.model.entity;
 
-import com.onlineshop.model.enums.CategoryEnum;
 import javax.persistence.*;
 
 @Entity

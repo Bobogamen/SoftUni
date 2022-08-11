@@ -1,7 +1,6 @@
 package com.onlineshop.service;
 
 import com.onlineshop.model.entity.Category;
-import com.onlineshop.model.enums.CategoryEnum;
 import com.onlineshop.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
