@@ -1,18 +1,18 @@
-package com.onlineshop;
+package com.onlineshop.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "orders", schema = "onlineshop", catalog = "")
-public class OrdersEntity {
+@Table(name = "categories", schema = "onlineshop", catalog = "")
+public class CategoriesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private long id;
     @Basic
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "name")
+    private String name;
 
     public long getId() {
         return id;
@@ -22,24 +22,24 @@ public class OrdersEntity {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getName() {
+        return name;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrdersEntity that = (OrdersEntity) o;
-        return id == that.id && Objects.equals(userId, that.userId);
+        CategoriesEntity that = (CategoriesEntity) o;
+        return id == that.id && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId);
+        return Objects.hash(id, name);
     }
 }

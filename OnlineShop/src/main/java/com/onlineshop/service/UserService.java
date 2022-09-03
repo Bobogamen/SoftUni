@@ -62,18 +62,4 @@ public class UserService {
     public UserEntity getUserEntityById(long id) {
         return this.userRepository.getUserById(id);
     }
-
-
-//    public void login(UserEntity userEntity) {
-//
-//        UserDetails userDetails = userDetailsService.loadUserByUsername(userEntity.getEmail());
-//
-//        Authentication auth =
-//                new UsernamePasswordAuthenticationToken(
-//                        userDetails,
-//                        userDetails.getPassword(),
-//                        userDetails.getAuthorities());
-//
-//        SecurityContextHolder.getContext().setAuthentication(auth);
-//    };
 }

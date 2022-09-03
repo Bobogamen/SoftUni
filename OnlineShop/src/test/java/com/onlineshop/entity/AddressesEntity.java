@@ -1,4 +1,4 @@
-package com.onlineshop;
+package com.onlineshop.entity;
 
 import javax.persistence.*;
 import java.util.Objects;

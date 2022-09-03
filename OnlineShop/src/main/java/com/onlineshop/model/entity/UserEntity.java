@@ -112,10 +112,6 @@ public class UserEntity {
         return roles;
     }
 
-    public void setUserRole(Role role) {
-        this.roles.add(role);
-    }
-
     public void addRole(Role role) {
         this.roles.add(role);
     }

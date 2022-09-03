@@ -1,20 +1,30 @@
-package com.onlineshop;
+package com.onlineshop.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "orders_items", schema = "onlineshop", catalog = "")
 public class OrdersItemsEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private long id;
+
     @Basic
     @Column(name = "order_id")
     private long orderId;
     @Basic
     @Column(name = "items_id")
     private long itemsId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public long getOrderId() {
         return orderId;

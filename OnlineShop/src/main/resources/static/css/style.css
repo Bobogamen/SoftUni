@@ -245,6 +245,15 @@ form{
     border-radius: 5px;
 }
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 1rem;
+    border: #0056b3 solid 2px;
+}
+
 /*a:link {*/
 /*    color: #1b1e21;*/
 /*    background-color: transparent;*/

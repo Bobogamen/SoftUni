@@ -38,7 +38,8 @@
                 <td th:text="${order.totalDiscount}" class="align-middle"></td>
                 <td th:text="${order.totalPrice}" class="align-middle"></td>
                 <td>
-                    <a th:if="${order.status.id < 5}" th:href="@{/users/moderator/update-order/{id}(id=${order.id})}" class="btn-sm btn-warning">Update</a>
+                    <a th:if="${order.status.id == 1 || order.status.id == 3 || order.status.id == 4}"
+                       th:href="@{/users/moderator/update-order/{id}(id=${order.id})}" class="btn-sm btn-warning">Update</a>
                 </td>
                 <td th:text="${order.status.name.name()}" class="align-middle"></td>
             </tr>

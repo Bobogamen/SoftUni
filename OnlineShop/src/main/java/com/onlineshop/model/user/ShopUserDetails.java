@@ -60,10 +60,6 @@ public class ShopUserDetails implements UserDetails {
         return registeredOn;
     }
 
-    public Collection<Address> getAddresses() {
-        return addresses;
-    }
-
     public Collection<Item> getCart() {
         return cart;
     }
@@ -129,21 +125,5 @@ public class ShopUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public int getOrdersCount() {
-        return ordersCount;
-    }
-
-    public void setOrdersCount(int ordersCount) {
-        this.ordersCount = ordersCount;
-    }
-
-    public double getOrdersSum() {
-        return ordersSum;
-    }
-
-    public void setOrdersSum(double ordersSum) {
-        this.ordersSum = ordersSum;
     }
 }

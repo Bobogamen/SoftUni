@@ -1,19 +1,20 @@
-package com.onlineshop;
+package com.onlineshop.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "users_roles", schema = "onlineshop", catalog = "")
-@IdClass(UsersRolesEntityPK.class)
-public class UsersRolesEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+public class UsersRolesEntityPK implements Serializable {
     @Column(name = "user_entity_id")
-    private long userEntityId;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long userEntityId;
     @Column(name = "roles_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long rolesId;
 
     public long getUserEntityId() {
@@ -36,7 +37,7 @@ public class UsersRolesEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsersRolesEntity that = (UsersRolesEntity) o;
+        UsersRolesEntityPK that = (UsersRolesEntityPK) o;
         return userEntityId == that.userEntityId && rolesId == that.rolesId;
     }
 
