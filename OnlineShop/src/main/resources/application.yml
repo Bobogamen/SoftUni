@@ -21,9 +21,9 @@ spring:
       static-locations[1]: "classpath:/static/"
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    password: 1234
-    username: root
-    url: jdbc:mysql://localhost:3306/onlineshop?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    url: jdbc:mysql://${{ MYSQLUSER }}:${{ MYSQLPASSWORD }}@${{ MYSQLHOST }}:${{ MYSQLPORT }}/${{ MYSQLDATABASE }}
+    username: ${MYSQLUSER}
+    password: ${MYSQLPASSWORD}
   thymeleaf:
     cache: false
     enabled: true
